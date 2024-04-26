@@ -1,5 +1,6 @@
 {
   "name": "Weather Chart Cardx",
   "render_readme": true,
-  "filename": "dist/weather-chart-cardx.js"
+  "filename": "weather-chart-cardx.js",
+  "content_in_root": false
 }
