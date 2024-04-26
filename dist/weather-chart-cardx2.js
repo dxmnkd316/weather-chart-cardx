@@ -845,7 +845,7 @@ const ALT_SCHEMA = [
   { name: "visibility", title: "Alternative visibility sensor", selector: { entity: { domain: 'sensor' } } },
 ];
 
-class WeatherChartCardxEditor extends s {
+class WeatherChartCardx2Editor extends s {
   static get properties() {
     return {
       _config: { type: Object },
@@ -1630,7 +1630,7 @@ class WeatherChartCardxEditor extends s {
     `;
   }
 }
-customElements.define("weather-chart-cardx-editor", WeatherChartCardxEditor);
+customElements.define("weather-chart-cardx2-editor", WeatherChartCardx2Editor);
 
 /**
  * @license
@@ -17752,10 +17752,10 @@ var plugin = {
 
 Chart.register(...registerables, plugin);
 
-class WeatherChartCardx extends s {
+class WeatherChartCardx2 extends s {
 
 static getConfigElement() {
-  return document.createElement("weather-chart-cardx-editor");
+  return document.createElement("weather-chart-cardx2-editor");
 }
 
 static getStubConfig(hass, unusedEntities, allEntities) {
@@ -19082,13 +19082,13 @@ renderLastUpdated() {
   }
 }
 
-customElements.define('weather-chart-cardx', WeatherChartCardx);
+customElements.define('weather-chart-cardx2', WeatherChartCardx2);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "weather-chart-cardx",
-  name: "Weather Chart Cardx",
+  type: "weather-chart-cardx2",
+  name: "Weather Chart Cardx2",
   description: "A custom weather card with chart. Updated by dxmnkd316",
   preview: true,
-  documentationURL: "https://github.com/dxmnd316/weather-chart-cardx",
+  documentationURL: "https://github.com/dxmnd316/weather-chart-cardx2",
 });
