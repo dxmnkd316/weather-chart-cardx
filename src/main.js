@@ -124,8 +124,8 @@ setConfig(config) {
   cardConfig.units.speed = config.speed ? config.speed : cardConfig.units.speed;
 
   this.baseIconPath = cardConfig.icon_style === 'style2' ?
-    'https://cdn.jsdelivr.net/gh/mlamberts78/weather-chart-card/dist/icons2/':
-    'https://cdn.jsdelivr.net/gh/mlamberts78/weather-chart-card/dist/icons/' ;
+    'https://cdn.jsdelivr.net/gh/dxmnkd316/weather-chart-cardx/dist/icons2/':
+    'https://cdn.jsdelivr.net/gh/dxmnkd316/weather-chart-cardx/dist/icons/' ;
 
   this.config = cardConfig;
   if (!config.entity) {
@@ -527,7 +527,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
       categoryPercentage: 1.0,
       datalabels: {
         display: function (context) {
-          return context.dataset.data[context.dataIndex] > 0 ? 'true' : false;
+          return context.dataset.data[context.dataIndex] > 0 ? 'auto' : false;
         },
       formatter: function (value, context) {
         const precipitationType = config.forecast.precipitation_type;
@@ -562,7 +562,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
   if (config.forecast.style === 'style2') {
     datasets[0].datalabels = {
       display: function (context) {
-        return 'true';
+        return 'auto';
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
@@ -580,7 +580,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
 
     datasets[1].datalabels = {
       display: function (context) {
-        return 'true';
+        return 'auto';
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
@@ -608,7 +608,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
       animation: config.forecast.disable_animation === true ? { duration: 0 } : {},
       layout: {
         padding: {
-          bottom: 10,
+          bottom: 50,//upped from 10 to help with datalabels
         },
       },
       scales: {
@@ -1343,13 +1343,13 @@ renderLastUpdated() {
   }
 }
 
-customElements.define('weather-chart-card', WeatherChartCard);
+customElements.define('weather-chart-cardx', WeatherChartCard);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "weather-chart-card",
-  name: "Weather Chart Card",
+  type: "weather-chart-cardx",
+  name: "Weather Chart Cardx",
   description: "A custom weather card with chart.",
   preview: true,
-  documentationURL: "https://github.com/mlamberts78/weather-chart-card",
+  documentationURL: "https://github.com/dxmnkd316/weather-chart-cardx",
 });
