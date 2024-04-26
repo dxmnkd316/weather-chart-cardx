@@ -512,6 +512,15 @@ class WeatherChartCardxEditor extends LitElement {
           </div>
           <div class="switch-container">
             <ha-switch
+              @change="${(e) => this._valueChanged(e, 'reduce_data_label_overlap')}"
+              .checked="${this._config.reduce_data_label_overlap !== false}"
+            ></ha-switch>
+            <label class="switch-label">
+              Show fewer labels
+            </label>
+          </div>
+          <div class="switch-container">
+            <ha-switch
               @change="${(e) => this._valueChanged(e, 'use_12hour_format')}"
               .checked="${this._config.use_12hour_format !== false}"
             ></ha-switch>
@@ -529,6 +538,7 @@ class WeatherChartCardxEditor extends LitElement {
                 Show Current Time
               </label>
             </div>
+	    
             <div class="switch-right checkbox-container" style="${this._config.show_time ? 'display: flex;' : 'display: none;'}">
               <ha-checkbox
                 @change="${(e) => this._valueChanged(e, 'show_time_seconds')}"
