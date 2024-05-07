@@ -644,6 +644,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
                       };
                       var date = dateObj.toLocaleDateString(language, dateFormatOptions);
                       time = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
+		      values[index].major = true; // this sets the boundaries where the time crosses midnight to be a major tick
                       return [date, time];
                   }
 
