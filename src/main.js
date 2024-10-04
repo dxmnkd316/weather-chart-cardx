@@ -786,9 +786,9 @@ updateChart({ config, language, weather, forecastItems } = this) {
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
     if (showDewpoint) {
-	    if (typeof d.dew_point !== 'undefined') {
-		    dewPoint.push(d.dew_point);
-	    }
+      if (typeof d.dew_point !== 'undefined') {
+        dewPoint.push(d.dew_point);
+      }
     }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
