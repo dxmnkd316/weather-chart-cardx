@@ -55,7 +55,7 @@ static getStubConfig(hass, unusedEntities, allEntities) {
       precip_bar_size: '100',
       style: 'style1',
       show_wind_forecast: true,
-      show_dew_point_forecast: true,
+      show_dew_point_forecast: false,
       condition_icons: true,
       round_temp: false,
       type: 'daily',
@@ -111,7 +111,7 @@ setConfig(config) {
       precipitation_color: 'rgba(132, 209, 253, 1.0)',
       condition_icons: true,
       show_wind_forecast: true,
-      show_dew_point_forecast: true,
+      show_dew_point_forecast: false,
       round_temp: false,
       type: 'daily',
       number_of_forecasts: '0',
@@ -459,9 +459,9 @@ drawChart({ config, language, weather, forecastItems } = this) {
     tempHigh.push(d.temperature);
     if (showDewpoint) {
 			if (typeof d.dew_point !== 'undefined') {
-		    dewPoint.push(d.dew_point);
-	    }
-    }
+				dewPoint.push(d.dew_point);
+			}
+		}
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
     }
