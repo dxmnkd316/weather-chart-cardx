@@ -458,7 +458,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
     if (showDewpoint) {
-	    if typeof d.dew_point !== 'undefined') {
+			if (typeof d.dew_point !== 'undefined') {
 		    dewPoint.push(d.dew_point);
 	    }
     }
@@ -786,7 +786,7 @@ updateChart({ config, language, weather, forecastItems } = this) {
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
     if (showDewpoint) {
-	    if typeof d.dew_point !== 'undefined') {
+	    if (typeof d.dew_point !== 'undefined') {
 		    dewPoint.push(d.dew_point);
 	    }
     }
