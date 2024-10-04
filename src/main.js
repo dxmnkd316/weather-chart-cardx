@@ -448,11 +448,13 @@ drawChart({ config, language, weather, forecastItems } = this) {
   var dateTime = [];
   var tempHigh = [];
   var tempLow = [];
+  var dewPoint = [];
   var precip = [];
   for (i = 0; i < forecast.length; i++) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
+    dewPoint.push(d.dew_point);
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
     }
@@ -557,6 +559,15 @@ drawChart({ config, language, weather, forecastItems } = this) {
         anchor: 'start',
         offset: -10,
       },
+    },
+    {
+      label: this.ll('dewpoint'),
+      type: 'line',
+      data: dewPoint,
+      yAxisID: 'DPAxis',
+      borderColor: config.forecast.dewpoint_color,
+      backgroundColor: config.forecast.dewpoint_color,
+      pointRadius: 1,
     },
   ];
 
@@ -674,6 +685,19 @@ drawChart({ config, language, weather, forecastItems } = this) {
         PrecipAxis: {
           position: 'right',
           suggestedMax: precipMax,
+          grid: {
+            display: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          },
+        },
+        DPAxis: {
+          position: 'left',
+          beginAtZero: false,
+          suggestedMin: Math.min(...tempHigh, ...tempLow, ...dewPoint) - 5,
+          suggestedMax: Math.max(...tempHigh, ...tempLow, ...dewPoint) + 3,
           grid: {
             display: false,
             drawTicks: false,
