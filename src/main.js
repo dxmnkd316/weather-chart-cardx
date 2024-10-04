@@ -55,6 +55,7 @@ static getStubConfig(hass, unusedEntities, allEntities) {
       precip_bar_size: '100',
       style: 'style1',
       show_wind_forecast: true,
+      show_dew_point_forecast: true,
       condition_icons: true,
       round_temp: false,
       type: 'daily',
@@ -110,6 +111,7 @@ setConfig(config) {
       precipitation_color: 'rgba(132, 209, 253, 1.0)',
       condition_icons: true,
       show_wind_forecast: true,
+      show_dew_point_forecast: true,
       round_temp: false,
       type: 'daily',
       number_of_forecasts: '0',
@@ -444,6 +446,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
     console.log("Insufficient forecast data.");
   }
   var roundTemp = config.forecast.round_temp == true;
+  var showDewpoint = config.forecast.show_dew_point_forecast == true;
   var i;
   var dateTime = [];
   var tempHigh = [];
@@ -454,7 +457,11 @@ drawChart({ config, language, weather, forecastItems } = this) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
-    dewPoint.push(d.dew_point);
+    if (showDewpoint) {
+	    if typeof d.dew_point !== 'undefined') {
+		    dewPoint.push(d.dew_point);
+	    }
+    }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
     }
@@ -767,15 +774,22 @@ updateChart({ config, language, weather, forecastItems } = this) {
 
   var forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
   var roundTemp = config.forecast.round_temp == true;
+  var showDewpoint = config.forecast.show_dew_point_forecast == true;
   var dateTime = [];
   var tempHigh = [];
   var tempLow = [];
+  var dewPoint = [];
   var precip = [];
 
   for (var i = 0; i < forecast.length; i++) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
+    if (showDewpoint) {
+	    if typeof d.dew_point !== 'undefined') {
+		    dewPoint.push(d.dew_point);
+	    }
+    }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
     }
