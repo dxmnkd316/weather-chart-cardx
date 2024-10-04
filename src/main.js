@@ -446,7 +446,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
     console.log("Insufficient forecast data.");
   }
   var roundTemp = config.forecast.round_temp == true;
-  var showDewpoint = config.forecast.show_dew_point_forecast == true;
+  var showDewpointForecast = config.forecast.show_dew_point_forecast == true;
   var i;
   var dateTime = [];
   var tempHigh = [];
@@ -457,8 +457,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
-		if (showDewpoint && typeof d.dew_point !== 'undefined') {
-				dewPoint.push(d.dew_point);
+    if (showDewpointForecast && typeof d.dew_point !== 'undefined') {
+      dewPoint.push(d.dew_point);
 		}
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
@@ -772,7 +772,7 @@ updateChart({ config, language, weather, forecastItems } = this) {
 
   var forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
   var roundTemp = config.forecast.round_temp == true;
-  var showDewpoint = config.forecast.show_dew_point_forecast == true;
+  var showDewpointForecast = config.forecast.show_dew_point_forecast == true;
   var dateTime = [];
   var tempHigh = [];
   var tempLow = [];
@@ -783,7 +783,7 @@ updateChart({ config, language, weather, forecastItems } = this) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
-    if (showDewpoint && typeof d.dew_point !== 'undefined') {
+    if (showDewpointForecast && typeof d.dew_point !== 'undefined') {
 			dewPoint.push(d.dew_point);
     }
     if (typeof d.templow !== 'undefined') {
