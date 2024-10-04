@@ -18207,9 +18207,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
     if (showDewpoint) {
-      if (typeof d.dew_point !== 'undefined') {
-        dewPoint.push(d.dew_point);
-      }
+      typeof d.dew_point !== 'undefined' ? (dewPoint.push(d.dew_point) : null);
     }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
@@ -18535,9 +18533,7 @@ updateChart({ config, language, weather, forecastItems } = this) {
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
     if (showDewpoint) {
-      if (typeof d.dew_point !== 'undefined') {
-        dewPoint.push(d.dew_point);
-      }
+      typeof d.dew_point !== 'undefined' ? (dewPoint.push(d.dew_point) : null);
     }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
