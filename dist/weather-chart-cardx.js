@@ -140,6 +140,7 @@ const locale = {
   en: {
     'tempHi': 'Temperature',
     'tempLo': 'Temperature night',
+	  'dewpoint': 'Dew Point',
     'precip': 'Precipitations',
     'feelsLike': 'Feels like',
     'units': {
@@ -1516,6 +1517,15 @@ class WeatherChartCardxEditor extends s {
             ></ha-switch>
             <label class="switch-label">
               Rounding Temperatures
+            </label>
+          </div>
+          <div class="switch-container">
+            <ha-switch
+              @change="${(e) => this._valueChanged(e, 'forecast.show_dew_point_forecast')}"
+              .checked="${forecastConfig.show_dew_point_forecast !== false}"
+            ></ha-switch>
+            <label class="switch-label">
+              Show Dew Point Forecast
             </label>
           </div>
           <div class="switch-container">
@@ -17794,6 +17804,7 @@ static getStubConfig(hass, unusedEntities, allEntities) {
       precip_bar_size: '100',
       style: 'style1',
       show_wind_forecast: true,
+			show_dew_point_forecast: false,
       condition_icons: true,
       round_temp: false,
       type: 'daily',
@@ -17845,9 +17856,11 @@ setConfig(config) {
       style: 'style1',
       temperature1_color: 'rgba(255, 152, 0, 1.0)',
       temperature2_color: 'rgba(68, 115, 158, 1.0)',
+	    dewpoint_color: 'blue',
       precipitation_color: 'rgba(132, 209, 253, 1.0)',
       condition_icons: true,
       show_wind_forecast: true,
+			show_dew_point_forecast: false,
       round_temp: false,
       type: 'daily',
       number_of_forecasts: '0',
@@ -18182,15 +18195,20 @@ drawChart({ config, language, weather, forecastItems } = this) {
     console.log("Insufficient forecast data.");
   }
   var roundTemp = config.forecast.round_temp == true;
+	var showDewpoint = config.forecast.show_dew_point_forecast == true;
   var i;
   var dateTime = [];
   var tempHigh = [];
   var tempLow = [];
+	var dewPoint = [];
   var precip = [];
   for (i = 0; i < forecast.length; i++) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
+    if (showDewpoint && typeof d.dew_point !== 'undefined') {
+      dewPoint.push(d.dew_point);
+    }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
     }
@@ -18295,6 +18313,15 @@ drawChart({ config, language, weather, forecastItems } = this) {
         anchor: 'start',
         offset: -50,//updated to add extra spacing for future datalabel change
       },
+    },
+    {
+      label: this.ll('dewpoint'),
+      type: 'line',
+      data: dewPoint,
+      yAxisID: 'DPAxis',
+      borderColor: config.forecast.dewpoint_color,
+      backgroundColor: config.forecast.dewpoint_color,
+      pointRadius: 1,
     },
   ];
 
@@ -18420,6 +18447,19 @@ drawChart({ config, language, weather, forecastItems } = this) {
             display: false,
           },
         },
+        DPAxis: {
+          position: 'left',
+          beginAtZero: false,
+          suggestedMin: Math.min(...tempHigh, ...tempLow, ...dewPoint) - 5,
+          suggestedMax: Math.max(...tempHigh, ...tempLow, ...dewPoint) + 3,
+          grid: {
+            display: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          },
+        },
       },
       plugins: {
         legend: {
@@ -18481,15 +18521,20 @@ updateChart({ config, language, weather, forecastItems } = this) {
 
   var forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
   var roundTemp = config.forecast.round_temp == true;
+	var showDewpoint = config.forecast.show_dew_point_forecast == true;
   var dateTime = [];
   var tempHigh = [];
   var tempLow = [];
+	var dewPoint = [];
   var precip = [];
 
   for (var i = 0; i < forecast.length; i++) {
     var d = forecast[i];
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
+    if (showDewpoint && typeof d.dew_point !== 'undefined') {
+      dewPoint.push(d.dew_point);
+    }
     if (typeof d.templow !== 'undefined') {
       tempLow.push(d.templow);
     }
