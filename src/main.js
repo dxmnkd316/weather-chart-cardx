@@ -612,6 +612,24 @@ drawChart({ config, language, weather, forecastItems } = this) {
         lineHeight: 0.7,
       },
     };
+
+    datasets[3].datalabels = {
+      display: function (context) {
+        return 'auto';
+      },
+      formatter: function (value, context) {
+        return context.dataset.data[context.dataIndex] + '°';
+      },
+      align: 'bottom',
+      anchor: 'center',
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      color: config.forecast.chart_text_color || config.forecast.dewpoint_color,
+      font: {
+        size: parseInt(config.forecast.labels_font_size) + 1,
+        lineHeight: 0.7,
+      },
+    };
   }
 
   this.forecastChart = new Chart(ctx, {
@@ -808,6 +826,7 @@ updateChart({ config, language, weather, forecastItems } = this) {
     this.forecastChart.data.datasets[0].data = tempHigh;
     this.forecastChart.data.datasets[1].data = tempLow;
     this.forecastChart.data.datasets[2].data = precip;
+    this.forecastChart.data.datasets[3].data = dewPoint;
     this.forecastChart.update();
   }
 }
