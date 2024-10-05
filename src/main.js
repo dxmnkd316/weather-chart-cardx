@@ -624,7 +624,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
       anchor: 'center',
       backgroundColor: 'transparent',
       borderColor: 'transparent',
-      color: config.forecast.chart_text_color || config.forecast.dewpoint_color,
+      color: config.forecast.chart_text_color,
       font: {
         size: parseInt(config.forecast.labels_font_size) + 1,
         lineHeight: 0.7,
