@@ -59,6 +59,7 @@ static getStubConfig(hass, unusedEntities, allEntities) {
       condition_icons: true,
       round_temp: false,
       show_dew_point_forecast: false,
+      show_all_labels: true,
       type: 'daily',
       number_of_forecasts: '0',
       disable_animation: false,
@@ -114,6 +115,7 @@ setConfig(config) {
       show_wind_forecast: true,
       round_temp: false,
       show_dew_point_forecast: false,
+      show_all_labels: true,
       type: 'daily',
       number_of_forecasts: '0',
       '12hourformat': false,
@@ -575,8 +577,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
         textAlign: 'center',
         textBaseline: 'middle',
         align: 'top',
-        anchor: 'start',
-        offset: -10,
+        anchor: 'end',
+        offset: 10,
       },
     },
     {
@@ -670,7 +672,9 @@ drawChart({ config, language, weather, forecastItems } = this) {
             width: 0,
           },
           grid: {
+            display: true,
             drawTicks: false,
+            offset: false,
             color: dividerColor,
             lineWidth: data.dateTime.map((iso) => (isHourlyChart && new Date(iso).getHours() === 0) ? 5 : 1),
           },
@@ -759,6 +763,13 @@ drawChart({ config, language, weather, forecastItems } = this) {
           display: false,
         },
         datalabels: {
+          display: function (context) {
+            if (config.forecast.show_all_labels === false) {
+              if (!isHourlyChart) return true;
+              return data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex);
+            }
+            return true;
+          },
           backgroundColor: backgroundColor,
           borderColor: context => context.dataset.backgroundColor,
           borderRadius: 0,
