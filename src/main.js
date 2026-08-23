@@ -478,6 +478,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
     var precipUnit = lengthUnit === 'km' ? this.ll('units')['mm'] : this.ll('units')['in'];
   }
   const data = this.computeForecastData();
+  const numeric = (arr) => arr.filter((v) => typeof v === 'number');
 
   var style = getComputedStyle(document.body);
   var backgroundColor = style.getPropertyValue('--card-background-color');
@@ -718,8 +719,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
         TempAxis: {
           position: 'left',
           beginAtZero: false,
-          suggestedMin: Math.min(...data.tempHigh, ...data.tempLow, ...data.dewPoint) - 5,
-          suggestedMax: Math.max(...data.tempHigh, ...data.tempLow, ...data.dewPoint) + 3,
+          suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
+          suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
           grid: {
             display: false,
             drawTicks: false,
@@ -731,8 +732,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
         DPAxis: {
           position: 'left',
           beginAtZero: false,
-          suggestedMin: Math.min(...data.tempHigh, ...data.tempLow, ...data.dewPoint) - 5,
-          suggestedMax: Math.max(...data.tempHigh, ...data.tempLow, ...data.dewPoint) + 3,
+          suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
+          suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
           grid: {
             display: false,
             drawTicks: false,
@@ -855,17 +856,16 @@ computeForecastData({ config, forecastItems } = this) {
     }
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
-    if (showDewpointForecast && typeof d.dew_point !== 'undefined') {
-      dewPoint.push(d.dew_point);
+    if (showDewpointForecast) {
+      dewPoint.push(typeof d.dew_point !== 'undefined' ? d.dew_point : null);
     }
-    if (typeof d.templow !== 'undefined') {
-      tempLow.push(d.templow);
-    }
+    tempLow.push(typeof d.templow !== 'undefined' ? d.templow : null);
 
     if (roundTemp) {
-      tempHigh[i] = Math.round(tempHigh[i]);
-      if (typeof d.templow !== 'undefined') {
-        tempLow[i] = Math.round(tempLow[i]);
+      const lastIndex = tempHigh.length - 1;
+      tempHigh[lastIndex] = Math.round(tempHigh[lastIndex]);
+      if (tempLow[lastIndex] !== null) {
+        tempLow[lastIndex] = Math.round(tempLow[lastIndex]);
       }
     }
     if (config.forecast.precipitation_type === 'probability') {
