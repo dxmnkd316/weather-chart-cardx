@@ -18468,14 +18468,23 @@ drawChart({ config, language, weather, forecastItems } = this) {
   Chart.defaults.elements.point.radius = 2;
   Chart.defaults.elements.point.hitRadius = 10;
 
+  const isHourlyChart = config.forecast.type === 'hourly';
+  const highlightColor = (index, fallback) => {
+    if (!isHourlyChart) return fallback;
+    if (data.minHrs.includes(index)) return 'blue';
+    if (data.maxHrs.includes(index)) return 'red';
+    return fallback;
+  };
+
   var datasets = [
     {
       label: this.ll('tempHi'),
       type: 'line',
       data: data.tempHigh,
       yAxisID: 'TempAxis',
-      borderColor: config.forecast.temperature1_color,
-      backgroundColor: config.forecast.temperature1_color,
+      borderColor: data.tempHigh.map((_, index) => highlightColor(index, config.forecast.temperature1_color)),
+      backgroundColor: data.tempHigh.map((_, index) => highlightColor(index, config.forecast.temperature1_color)),
+      pointRadius: data.tempHigh.map((_, index) => (isHourlyChart && (data.minHrs.includes(index) || data.maxHrs.includes(index))) ? 5 : Chart.defaults.elements.point.radius),
     },
     {
       label: this.ll('tempLo'),
@@ -18547,11 +18556,12 @@ drawChart({ config, language, weather, forecastItems } = this) {
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
-      align: 'top',
+      align: (context) => isHourlyChart && data.minHrs.includes(context.dataIndex) ? 'bottom' : isHourlyChart && data.maxHrs.includes(context.dataIndex) ? 'top' : 'top',
       anchor: 'center',
       backgroundColor: 'transparent',
-      borderColor: 'transparent',
-      color: chart_text_color || config.forecast.temperature1_color,
+      borderColor: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? highlightColor(context.dataIndex, 'transparent') : 'transparent',
+      borderRadius: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? 3 : 0,
+      color: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? config.forecast.temperature1_color : (chart_text_color || config.forecast.temperature1_color),
       font: {
         size: parseInt(config.forecast.labels_font_size) + 1,
         lineHeight: 0.7,
@@ -18747,6 +18757,35 @@ drawChart({ config, language, weather, forecastItems } = this) {
   });
 }
 
+computeDailyMinMaxIndices(dateTime, tempHigh) {
+  const minHrs = [];
+  const maxHrs = [];
+  const dayKey = (iso) => {
+    const d = new Date(iso);
+    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+  };
+
+  let groupStart = 0;
+  for (let i = 1; i <= dateTime.length; i++) {
+    const atBoundary = i === dateTime.length || dayKey(dateTime[i]) !== dayKey(dateTime[groupStart]);
+    if (atBoundary) {
+      const group = tempHigh.slice(groupStart, i);
+      const min = Math.min(...group);
+      const max = Math.max(...group);
+      for (let j = 0; j < group.length; j++) {
+        if (group[j] === min) {
+          minHrs.push(groupStart + j);
+        } else if (group[j] === max) {
+          maxHrs.push(groupStart + j);
+        }
+      }
+      groupStart = i;
+    }
+  }
+
+  return { minHrs, maxHrs };
+}
+
 computeForecastData({ config, forecastItems } = this) {
   var forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
   var roundTemp = config.forecast.round_temp == true;
@@ -18787,6 +18826,10 @@ computeForecastData({ config, forecastItems } = this) {
     }
   }
 
+  const { minHrs, maxHrs } = config.forecast.type === 'hourly' && dateTime.length
+    ? this.computeDailyMinMaxIndices(dateTime, tempHigh)
+    : { minHrs: [], maxHrs: [] };
+
   return {
     forecast,
     dateTime,
@@ -18794,6 +18837,8 @@ computeForecastData({ config, forecastItems } = this) {
     tempLow,
     dewPoint,
     precip,
+    minHrs,
+    maxHrs,
   }
 }
 
