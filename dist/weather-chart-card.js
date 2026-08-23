@@ -18063,7 +18063,7 @@ setConfig(config) {
       chart_height: 180,
       precip_bar_size: 100,
       style: 'style1',
-      temperature1_color: 'rgba(255, 152, 0, 1.0)',
+      temperature1_color: 'rgba(189, 189, 189, 1.0)',
       temperature2_color: 'rgba(68, 115, 158, 1.0)',
       precipitation_color: 'rgba(132, 209, 253, 1.0)',
       dewpoint_color: 'blue',
@@ -18465,7 +18465,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
   Chart.defaults.elements.line.fill = false;
   Chart.defaults.elements.line.tension = 0.3;
   Chart.defaults.elements.line.borderWidth = 1.5;
-  Chart.defaults.elements.point.radius = 2;
+  Chart.defaults.elements.point.radius = 1;
   Chart.defaults.elements.point.hitRadius = 10;
 
   const isHourlyChart = config.forecast.type === 'hourly';
@@ -18641,7 +18641,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
               callback: function (value, index, values) {
                   var datetime = this.getLabelForValue(value);
                   var dateObj = new Date(datetime);
-        
+
                   var timeFormatOptions = {
                       hour12: config.use_12hour_format,
                       hour: 'numeric',
