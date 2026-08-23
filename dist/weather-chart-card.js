@@ -18628,11 +18628,16 @@ drawChart({ config, language, weather, forecastItems } = this) {
           grid: {
             drawTicks: false,
             color: dividerColor,
+            lineWidth: data.dateTime.map((iso) => (isHourlyChart && new Date(iso).getHours() === 0) ? 5 : 1),
           },
           ticks: {
               maxRotation: 0,
               color: config.forecast.chart_datetime_color || textColor,
               padding: config.forecast.precipitation_type === 'rainfall' && config.forecast.show_probability && config.forecast.type !== 'hourly' ? 4 : 10,
+              major: {
+                  enabled: true,
+                  fontStyle: 'bold',
+              },
               callback: function (value, index, values) {
                   var datetime = this.getLabelForValue(value);
                   var dateObj = new Date(datetime);
@@ -18652,6 +18657,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
                       };
                       var date = dateObj.toLocaleDateString(language, dateFormatOptions);
                       time = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
+                      values[index].major = true;
                       return [date, time];
                   }
 
