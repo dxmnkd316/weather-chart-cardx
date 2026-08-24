@@ -473,11 +473,11 @@ drawChart({ config, language, weather, forecastItems } = this) {
     this.forecastChart.destroy();
   }
   var tempUnit = this._hass.config.unit_system.temperature;
-  var lengthUnit = this._hass.config.unit_system.length;
+  var precipitationUnit = this.weather.attributes.precipitation_unit;
   if (config.forecast.precipitation_type === 'probability') {
     var precipUnit = '%';
   } else {
-    var precipUnit = lengthUnit === 'km' ? this.ll('units')['mm'] : this.ll('units')['in'];
+    var precipUnit = precipitationUnit === 'mm' ? this.ll('units')['mm'] : this.ll('units')['in'];
   }
   const data = this.computeForecastData();
   const numeric = (arr) => arr.filter((v) => typeof v === 'number');
@@ -500,9 +500,9 @@ drawChart({ config, language, weather, forecastItems } = this) {
     precipMax = 100;
   } else {
     if (config.forecast.type === 'hourly') {
-      precipMax = lengthUnit === 'km' ? 4 : 1;
+      precipMax = precipitationUnit === 'mm' ? 4 : 1;
     } else {
-      precipMax = lengthUnit === 'km' ? 20 : 1;
+      precipMax = precipitationUnit === 'mm' ? 20 : 1;
     }
   }
 
