@@ -346,10 +346,10 @@ class WeatherChartCardEditor extends LitElement {
         <!-- Buttons to switch between pages -->
        <h4>Settings:</h4>
        <div class="buttons-container">
-         <mwc-button @click="${() => this.showPage('card')}">Main</mwc-button>
-         <mwc-button @click="${() => this.showPage('forecast')}">Forecast</mwc-button>
-         <mwc-button @click="${() => this.showPage('units')}">Units</mwc-button>
-         <mwc-button @click="${() => this.showPage('alternate')}">Alternate entities</mwc-button>
+         <ha-button @click="${() => this.showPage('card')}">Main</ha-button>
+         <ha-button @click="${() => this.showPage('forecast')}">Forecast</ha-button>
+         <ha-button @click="${() => this.showPage('units')}">Units</ha-button>
+         <ha-button @click="${() => this.showPage('alternate')}">Alternate entities</ha-button>
        </div>
 
         <!-- Card Settings Page -->
