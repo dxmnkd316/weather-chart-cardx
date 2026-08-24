@@ -1,10 +1,13 @@
 # Phase 1 Audit
 
-Audit pass per CLAUDE.md's First Task (step 3) and Spec.md §7, done against the
-`recovery/reconcile-live-edits` branch (PR #28) — the actual starting point per
-CLAUDE.md, not stale `master`. This is a log, not a fix list: per CLAUDE.md,
-nothing here gets fixed opportunistically. Work this list deliberately, in a
-follow-up pass, once it's reviewed.
+Audit pass per CLAUDE.md's First Task (step 3) and Spec.md §7, originally done
+against the `recovery/reconcile-live-edits` branch (PR #28) once that was the
+actual starting point per CLAUDE.md, superseding stale `master`. Started as a
+log-first, fix-later document; every item identified has since been fixed and
+verified live (see "Status: Phase 1 fix list complete" below) and this file is
+kept as the record of what was found, why, and how it was actually resolved —
+several findings here turned out different from the initial diagnosis once
+tested live, which is exactly why that record has value.
 
 Confidence is marked per item:
 - **CONFIRMED** — verified against current HA core source/docs, or a reproducible logic error in the code itself.
@@ -173,48 +176,70 @@ they differ. That's a legitimate design, not a bug.
 
 ### 4. Broken forecast-type picker in the UI config editor
 
-**Status: cannot conclusively diagnose from static code — needs live HA 2026.6 testing.** (SUSPECTED)
+**Status: RESOLVED, root cause confirmed live.** (CONFIRMED)
 
-The daily/hourly picker uses `<ha-radio>` elements grouped by `name`, bound via
-`.checked="${forecastConfig.type === 'daily'}"` and `@change="${this._handleTypeChange}"`.
-The handler logic itself looks correct (clones config, sets `forecast.type`, dispatches
-`config-changed`, calls `requestUpdate()`). This structure is identical between `master`
-and the `testlive`/live-edited lineage — it isn't something either side broke, which
-points toward either an HA frontend component API change (`ha-radio`/`mwc-radio`
-binding conventions have changed within the HA frontend more than once) or an
-interaction with something outside this specific code path. Per CLAUDE.md, resolving
-this requires verification against the actual current HA 2026.6 frontend rather than
-guessing from training data — flagging for live testing rather than a blind fix.
+This took several rounds of live testing to actually run down, and the real
+cause turned out to be different from every initial guess:
 
-Separately, and possibly related: the very recent, already-merged upstream commit
-`88b5243` ("Fix entity selection in card editor") removed `this.requestUpdate()` and
-a `key === 'entity'` guard from `_EntityChanged` (the *entity* picker, not the
-forecast-type picker — different control, worth checking both since they're easy to
-conflate when reproducing "the picker doesn't work"). Given the timing (this is the
-newest editor change on `master`) and that it removed a `requestUpdate()` call, it's
-a reasonable first thing to test/bisect against when reproducing config-editor
-picker issues generally.
+- **Not** the entity-selection commit (`88b5243`) — that was a real, separate
+  bug (see below), but not the explanation for the pickers themselves.
+- **Not** `ha-radio` being renamed to `ha-radio-group`/`ha-radio-option` in HA
+  2026.6, despite that being a real, documented change (confirmed against the
+  actual 2026.6 frontend blog post and component source). Migrating to the new
+  component name made no difference when tested live.
+- **Actual root cause**: Home Assistant lazy-loads many of its own internal
+  frontend components. `ha-radio-group` is only used in one place in HA's own
+  UI (the theme-mode picker in Profile settings) — if a user's browser session
+  never happened to trigger loading that specific chunk, the tag is simply
+  never registered, regardless of which of its names a custom card uses.
+  Confirmed directly on the maintainer's live instance (HA 2026.7.3):
+  `customElements.get('ha-radio-group')` returned `undefined`. Old `ha-radio`
+  had the identical problem for the identical reason, which is why it looked
+  broken from the very start, unrelated to any of this project's own changes.
+  The page-tab buttons (`<mwc-button>`) turned out to have the same class of
+  bug: `customElements.get('mwc-button')` also returned `undefined`.
+- **Fix**: replaced the passive dependency on `<ha-radio>`/`<ha-radio-group>`
+  with a standalone `<ha-selector>` (a `select` selector, `mode: 'list'`).
+  `ha-selector` doesn't assume its sub-components are already loaded — it
+  actively `import()`s the specific selector implementation it needs and
+  awaits it before rendering (confirmed in `ha-selector.ts`'s `LOAD_ELEMENTS`
+  map), which is what actually solves this class of bug rather than just
+  matching whatever HA happens to call the component this release. The page
+  tabs were swapped from `<mwc-button>` to `<ha-button>` (confirmed reliably
+  loaded — used constantly throughout HA's own interface, unlike the niche
+  radio-group), a plain tag swap since both fire a normal `click` event.
+
+Separately, the entity-selection commit (`88b5243`, "Fix entity selection in
+card editor") removed `this.requestUpdate()` and a `key === 'entity'` guard
+from `_EntityChanged` — this was investigated and found to not be the cause
+of the picker issue, but is worth keeping in mind if entity-selection-specific
+problems ever surface, since it's still a real, if minor, behavioral change
+from before that commit.
 
 ### 5. Other latent breakage found while reconciling
 
-Already fixed in this recovery (PR #28), not open items:
+All items below are now fixed — kept here as a record of what was found and why,
+per CLAUDE.md's "log the audit, don't just fix and forget" spirit.
+
 - chartjs-plugin-datalabels `display` callbacks returning the string `'true'`
   instead of the string `'auto'` (not a valid value for that option) — fixed,
   commit `4a107be`.
-
-New, found during this audit:
-- `calculateBeaufortScale()` (`src/main.js`) throws (`throw new Error(...)`) if
-  `weather.attributes.wind_speed_unit` is missing or unrecognized. It's called
+- `calculateBeaufortScale()` (`src/main.js`) threw (`throw new Error(...)`) if
+  `weather.attributes.wind_speed_unit` was missing or unrecognized, called
   directly from `renderAttributes()` and the wind-forecast render path — an
-  uncaught throw here during render would crash the whole card, not just degrade
-  the wind-speed field. This is exactly the "HA entities can return unexpected
-  shapes during restarts/integration reloads" scenario CLAUDE.md calls out by name
-  as this project's historical failure pattern. Should become a graceful fallback
-  (e.g. render nothing / omit Beaufort conversion) rather than a thrown error,
-  when the TS conversion touches this function.
-- No other `throw` sites in render-reachable code beyond `setConfig`'s
-  entity-required check (acceptable — that one fires before first render, not
-  mid-render).
+  uncaught throw there during render crashed the whole card, not just degraded
+  the wind-speed field. Exactly the "HA entities can return unexpected shapes
+  during restarts/integration reloads" scenario CLAUDE.md calls out by name as
+  this project's historical failure pattern. Fixed to log and return `undefined`
+  instead — PR #31.
+- `WeatherChartCardEditor.render()` guarded `this._config` before reading
+  `.entity` but not before unconditionally reading `.forecast`/`.units`/
+  `.show_time` right after — if Lit's initial render fired before HA called
+  `setConfig()` (a real timing race, not hypothetical), the editor threw and
+  the whole config UI broke. Found live, not from static review — it only
+  surfaced clearly once an unrelated card's duplicate custom-element
+  registration crash (a different HACS card entirely, not this project) was
+  fixed and stopped disrupting page load order. Fixed — PR #29.
 
 ---
 
@@ -237,16 +262,22 @@ New, found during this audit:
 
 ---
 
-## Suggested next steps (not started)
+## Status: Phase 1 fix list complete
 
-1. Fix the forecast array misalignment (headline finding) — high-confidence,
-   well-scoped, and the one directly reported from live testing.
-2. Fix precipitation unit (§2) — small, well-scoped, high-confidence fix.
-3. Live-HA verification pass: forecast-type picker, entity picker (post-`88b5243`),
-   tooltip interaction-mode behavior, and the newly-recovered chart features
-   (dew-point axis stacking, min/max highlighting, day-separator gridlines) — none
-   of this recovery's chart work has been visually verified in an actual HA
-   frontend yet.
-4. Harden `calculateBeaufortScale()` against missing/unexpected `wind_speed_unit`.
-5. Everything else per Spec.md phase order — TypeScript conversion is next only
-   after this list is worked, per CLAUDE.md.
+Every item identified in this audit has been fixed and verified live in Home
+Assistant (2026.7.3) across several rounds of testing:
+
+- Forecast array index misalignment — PR #29
+- Chart label positioning (precip anchor/offset, gridline centering) and the
+  `show_all_labels` density option, in both chart styles — PR #29
+- Editor crash on render before `setConfig()` — PR #29
+- Precipitation unit — PR #30
+- `calculateBeaufortScale()` hardening — PR #31
+- `ha-radio` → `ha-selector` (forecast type, chart style, icon style pickers) — PR #33
+- `mwc-button` → `ha-button` (editor page tabs) — PR #34
+
+Entity picker, language/units pickers, and checkboxes were all confirmed
+working correctly during this same testing and needed no changes.
+
+Per CLAUDE.md's phase discipline, TypeScript conversion (Spec.md §11 Phase 2)
+is the next real work — no further Phase 1 items are open.
