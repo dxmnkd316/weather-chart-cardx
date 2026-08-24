@@ -18322,14 +18322,16 @@ calculateBeaufortScale(windSpeed) {
   };
 
   if (!this.weather || !this.weather.attributes.wind_speed_unit) {
-    throw new Error('wind_speed_unit not available in weather attributes.');
+    console.error('calculateBeaufortScale: wind_speed_unit not available in weather attributes.');
+    return undefined;
   }
 
   const wind_speed_unit = this.weather.attributes.wind_speed_unit;
   const conversionFactor = unitConversion[wind_speed_unit];
 
   if (typeof conversionFactor !== 'number') {
-    throw new Error(`Unknown wind_speed_unit: ${wind_speed_unit}`);
+    console.error(`calculateBeaufortScale: unknown wind_speed_unit "${wind_speed_unit}".`);
+    return undefined;
   }
 
   const windSpeedInKmPerHour = windSpeed * conversionFactor;
@@ -19427,6 +19429,10 @@ renderWind({ config, weather, windSpeed, windDirection, forecastItems } = this) 
             }
           } else {
             dWindSpeed = Math.round(dWindSpeed);
+          }
+
+          if (dWindSpeed === undefined) {
+            return x``;
           }
 
           return x`
