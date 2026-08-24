@@ -864,6 +864,36 @@ var t;const i=window,s$1=i.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{creat
  * SPDX-License-Identifier: BSD-3-Clause
  */var l,o;class s extends u$1{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0;}createRenderRoot(){var t,e;const i=super.createRenderRoot();return null!==(t=(e=this.renderOptions).renderBefore)&&void 0!==t||(e.renderBefore=i.firstChild),i}update(t){const i=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=D(i,this.renderRoot,this.renderOptions);}connectedCallback(){var t;super.connectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(true);}disconnectedCallback(){var t;super.disconnectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(false);}render(){return T}}s.finalized=true,s._$litElement$=true,null===(l=globalThis.litElementHydrateSupport)||void 0===l||l.call(globalThis,{LitElement:s});const n$1=globalThis.litElementPolyfillSupport;null==n$1||n$1({LitElement:s});(null!==(o=globalThis.litElementVersions)&&void 0!==o?o:globalThis.litElementVersions=[]).push("3.3.3");
 
+const FORECAST_TYPE_SELECTOR = {
+  select: {
+    mode: 'list',
+    options: [
+      { value: 'daily', label: 'Daily forecast' },
+      { value: 'hourly', label: 'Hourly forecast' },
+    ],
+  },
+};
+
+const CHART_STYLE_SELECTOR = {
+  select: {
+    mode: 'list',
+    options: [
+      { value: 'style1', label: 'Chart style 1' },
+      { value: 'style2', label: 'Chart style 2' },
+    ],
+  },
+};
+
+const ICON_STYLE_SELECTOR = {
+  select: {
+    mode: 'list',
+    options: [
+      { value: 'style1', label: 'Style 1' },
+      { value: 'style2', label: 'Style 2' },
+    ],
+  },
+};
+
 const ALT_SCHEMA = [
   { name: "temp", title: "Alternative temperature sensor", selector: { entity: { domain: 'sensor' } } },
   { name: "feels_like", title: "Alternative feels like temperature sensor", selector: { entity: { domain: 'sensor' } } },
@@ -1018,7 +1048,7 @@ class WeatherChartCardEditor extends s {
       return;
     }
     const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.forecast.style = event.target.value;
+    newConfig.forecast.style = event.detail.value;
     this.configChanged(newConfig);
     this.requestUpdate();
   }
@@ -1028,7 +1058,7 @@ class WeatherChartCardEditor extends s {
       return;
     }
     const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.forecast.type = event.target.value;
+    newConfig.forecast.type = event.detail.value;
     this.configChanged(newConfig);
     this.requestUpdate();
   }
@@ -1038,7 +1068,7 @@ class WeatherChartCardEditor extends s {
       return;
     }
     const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.icon_style = event.target.value;
+    newConfig.icon_style = event.detail.value;
     this.configChanged(newConfig);
     this.requestUpdate();
   }
@@ -1162,56 +1192,20 @@ class WeatherChartCardEditor extends s {
 
       <h5>Forecast type:</h5>
 
-      <div class="radio-group">
-        <ha-radio
-          name="type"
-          value="daily"
-          @change="${this._handleTypeChange}"
-          .checked="${forecastConfig.type === 'daily'}"
-        ></ha-radio>
-        <label class="check-label">
-          Daily forecast
-        </label>
-      </div>
-
-      <div class="radio-group">
-        <ha-radio
-          name="type"
-          value="hourly"
-          @change="${this._handleTypeChange}"
-          .checked="${forecastConfig.type === 'hourly'}"
-        ></ha-radio>
-        <label class="check-label">
-          Hourly forecast
-        </label>
-      </div>
+      <ha-selector
+        .hass="${this.hass}"
+        .selector="${FORECAST_TYPE_SELECTOR}"
+        .value="${forecastConfig.type}"
+        @value-changed="${this._handleTypeChange}"
+      ></ha-selector>
 
       <h5>Chart style:</h5>
-      <div class="radio-container">
-        <div class="switch-right">
-          <ha-radio
-            name="style"
-            value="style1"
-            @change="${this._handleStyleChange}"
-            .checked="${forecastConfig.style === 'style1'}"
-          ></ha-radio>
-          <label class="check-label">
-            Chart style 1
-          </label>
-        </div>
-
-        <div class="switch-right">
-          <ha-radio
-            name="style"
-            value="style2"
-            @change="${this._handleStyleChange}"
-            .checked="${forecastConfig.style === 'style2'}"
-          ></ha-radio>
-          <label class="check-label">
-            Chart style 2
-          </label>
-        </div>
-      </div>
+      <ha-selector
+        .hass="${this.hass}"
+        .selector="${CHART_STYLE_SELECTOR}"
+        .value="${forecastConfig.style}"
+        @value-changed="${this._handleStyleChange}"
+      ></ha-selector>
 
         <!-- Buttons to switch between pages -->
        <h4>Settings:</h4>
@@ -1450,27 +1444,13 @@ class WeatherChartCardEditor extends s {
                 </label>
               </div>
               <div class="switch-right radio-container" style="${this._config.animated_icons ? 'display: flex;' : 'display: none;'}">
-                  <ha-radio
-                    name="icon_style"
-                    value="style1"
-                    @change="${this._handleIconStyleChange}"
-                    .checked="${this._config.icon_style === 'style1'}"
-                  ></ha-radio>
-                  <label class="check-label">
-                    Style 1
-                  </label>
-                </div>
-              <div class="switch-right radio-container" style="${this._config.animated_icons ? 'display: flex;' : 'display: none;'}">
-                  <ha-radio
-                    name="icon_style"
-                    value="style2"
-                    @change="${this._handleIconStyleChange}"
-                    .checked="${this._config.icon_style === 'style2'}"
-                  ></ha-radio>
-                  <label class="check-label">
-                    Style 2
-                  </label>
-                </div>
+                <ha-selector
+                  .hass="${this.hass}"
+                  .selector="${ICON_STYLE_SELECTOR}"
+                  .value="${this._config.icon_style}"
+                  @value-changed="${this._handleIconStyleChange}"
+                ></ha-selector>
+              </div>
               </div>
        <div class="textfield-container">
          <ha-textfield
