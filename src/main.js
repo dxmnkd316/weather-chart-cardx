@@ -521,6 +521,13 @@ drawChart({ config, language, weather, forecastItems } = this) {
     if (data.maxHrs.includes(index)) return 'red';
     return fallback;
   };
+  const labelDisplay = (index) => {
+    if (config.forecast.show_all_labels === false) {
+      if (!isHourlyChart) return 'auto';
+      return (data.dailyLowIndex.includes(index) || data.dailyHighIndex.includes(index)) ? 'auto' : false;
+    }
+    return 'auto';
+  };
 
   var datasets = [
     {
@@ -597,13 +604,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
   if (config.forecast.style === 'style2') {
     datasets[0].datalabels = {
       display: function (context) {
-        return 'auto';
+        return labelDisplay(context.dataIndex);
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
       align: (context) => isHourlyChart && data.minHrs.includes(context.dataIndex) ? 'bottom' : isHourlyChart && data.maxHrs.includes(context.dataIndex) ? 'top' : 'top',
       anchor: 'center',
+      offset: 6,
       backgroundColor: 'transparent',
       borderColor: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? highlightColor(context.dataIndex, 'transparent') : 'transparent',
       borderRadius: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? 3 : 0,
@@ -616,13 +624,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
 
     datasets[1].datalabels = {
       display: function (context) {
-        return 'auto';
+        return labelDisplay(context.dataIndex);
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
       align: 'bottom',
       anchor: 'center',
+      offset: 6,
       backgroundColor: 'transparent',
       borderColor: 'transparent',
       color: chart_text_color || config.forecast.temperature2_color,
@@ -634,13 +643,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
 
     datasets[3].datalabels = {
       display: function (context) {
-        return 'auto';
+        return labelDisplay(context.dataIndex);
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
       align: 'bottom',
       anchor: 'center',
+      offset: 6,
       backgroundColor: 'transparent',
       borderColor: 'transparent',
       color: config.forecast.chart_text_color,
@@ -765,11 +775,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
         datalabels: {
           display: function (context) {
             if (config.forecast.show_all_labels === false) {
-              if (!isHourlyChart) return true;
-              return data.dailyLowIndex.includes(context.dataIndex) || data.dailyHighIndex.includes(context.dataIndex);
+              if (!isHourlyChart) return 'auto';
+              return (data.dailyLowIndex.includes(context.dataIndex) || data.dailyHighIndex.includes(context.dataIndex)) ? 'auto' : false;
             }
-            return true;
+            return 'auto';
           },
+          align: (context) => context.datasetIndex === 1 ? 'bottom' : 'top',
+          anchor: 'center',
+          offset: 6,
           backgroundColor: backgroundColor,
           borderColor: context => context.dataset.backgroundColor,
           borderRadius: 0,
