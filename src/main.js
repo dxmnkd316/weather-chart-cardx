@@ -766,7 +766,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
           display: function (context) {
             if (config.forecast.show_all_labels === false) {
               if (!isHourlyChart) return true;
-              return data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex);
+              return data.dailyLowIndex.includes(context.dataIndex) || data.dailyHighIndex.includes(context.dataIndex);
             }
             return true;
           },
@@ -821,6 +821,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
 computeDailyMinMaxIndices(dateTime, tempHigh) {
   const minHrs = [];
   const maxHrs = [];
+  const dailyLowIndex = [];
+  const dailyHighIndex = [];
   const dayKey = (iso) => {
     const d = new Date(iso);
     return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
@@ -833,18 +835,28 @@ computeDailyMinMaxIndices(dateTime, tempHigh) {
       const group = tempHigh.slice(groupStart, i);
       const min = Math.min(...group);
       const max = Math.max(...group);
+      let minFound = false;
+      let maxFound = false;
       for (let j = 0; j < group.length; j++) {
         if (group[j] === min) {
           minHrs.push(groupStart + j);
+          if (!minFound) {
+            dailyLowIndex.push(groupStart + j);
+            minFound = true;
+          }
         } else if (group[j] === max) {
           maxHrs.push(groupStart + j);
+          if (!maxFound) {
+            dailyHighIndex.push(groupStart + j);
+            maxFound = true;
+          }
         }
       }
       groupStart = i;
     }
   }
 
-  return { minHrs, maxHrs };
+  return { minHrs, maxHrs, dailyLowIndex, dailyHighIndex };
 }
 
 computeForecastData({ config, forecastItems } = this) {
@@ -886,9 +898,9 @@ computeForecastData({ config, forecastItems } = this) {
     }
   }
 
-  const { minHrs, maxHrs } = config.forecast.type === 'hourly' && dateTime.length
+  const { minHrs, maxHrs, dailyLowIndex, dailyHighIndex } = config.forecast.type === 'hourly' && dateTime.length
     ? this.computeDailyMinMaxIndices(dateTime, tempHigh)
-    : { minHrs: [], maxHrs: [] };
+    : { minHrs: [], maxHrs: [], dailyLowIndex: [], dailyHighIndex: [] };
 
   return {
     forecast,
@@ -899,6 +911,8 @@ computeForecastData({ config, forecastItems } = this) {
     precip,
     minHrs,
     maxHrs,
+    dailyLowIndex,
+    dailyHighIndex,
   }
 }
 
