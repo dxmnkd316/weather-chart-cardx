@@ -154,7 +154,7 @@ class WeatherChartCardEditor extends LitElement {
       return;
     }
     const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.forecast.style = event.target.value;
+    newConfig.forecast.style = event.currentTarget.value;
     this.configChanged(newConfig);
     this.requestUpdate();
   }
@@ -164,7 +164,7 @@ class WeatherChartCardEditor extends LitElement {
       return;
     }
     const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.forecast.type = event.target.value;
+    newConfig.forecast.type = event.currentTarget.value;
     this.configChanged(newConfig);
     this.requestUpdate();
   }
@@ -174,7 +174,7 @@ class WeatherChartCardEditor extends LitElement {
       return;
     }
     const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.icon_style = event.target.value;
+    newConfig.icon_style = event.currentTarget.value;
     this.configChanged(newConfig);
     this.requestUpdate();
   }
@@ -298,56 +298,26 @@ class WeatherChartCardEditor extends LitElement {
 
       <h5>Forecast type:</h5>
 
-      <div class="radio-group">
-        <ha-radio
-          name="type"
-          value="daily"
-          @change="${this._handleTypeChange}"
-          .checked="${forecastConfig.type === 'daily'}"
-        ></ha-radio>
-        <label class="check-label">
-          Daily forecast
-        </label>
-      </div>
-
-      <div class="radio-group">
-        <ha-radio
-          name="type"
-          value="hourly"
-          @change="${this._handleTypeChange}"
-          .checked="${forecastConfig.type === 'hourly'}"
-        ></ha-radio>
-        <label class="check-label">
-          Hourly forecast
-        </label>
-      </div>
+      <ha-radio-group
+        name="type"
+        .value="${forecastConfig.type}"
+        @change="${this._handleTypeChange}"
+        orientation="vertical"
+      >
+        <ha-radio-option value="daily">Daily forecast</ha-radio-option>
+        <ha-radio-option value="hourly">Hourly forecast</ha-radio-option>
+      </ha-radio-group>
 
       <h5>Chart style:</h5>
-      <div class="radio-container">
-        <div class="switch-right">
-          <ha-radio
-            name="style"
-            value="style1"
-            @change="${this._handleStyleChange}"
-            .checked="${forecastConfig.style === 'style1'}"
-          ></ha-radio>
-          <label class="check-label">
-            Chart style 1
-          </label>
-        </div>
-
-        <div class="switch-right">
-          <ha-radio
-            name="style"
-            value="style2"
-            @change="${this._handleStyleChange}"
-            .checked="${forecastConfig.style === 'style2'}"
-          ></ha-radio>
-          <label class="check-label">
-            Chart style 2
-          </label>
-        </div>
-      </div>
+      <ha-radio-group
+        name="style"
+        .value="${forecastConfig.style}"
+        @change="${this._handleStyleChange}"
+        orientation="horizontal"
+      >
+        <ha-radio-option value="style1">Chart style 1</ha-radio-option>
+        <ha-radio-option value="style2">Chart style 2</ha-radio-option>
+      </ha-radio-group>
 
         <!-- Buttons to switch between pages -->
        <h4>Settings:</h4>
@@ -586,27 +556,16 @@ class WeatherChartCardEditor extends LitElement {
                 </label>
               </div>
               <div class="switch-right radio-container" style="${this._config.animated_icons ? 'display: flex;' : 'display: none;'}">
-                  <ha-radio
-                    name="icon_style"
-                    value="style1"
-                    @change="${this._handleIconStyleChange}"
-                    .checked="${this._config.icon_style === 'style1'}"
-                  ></ha-radio>
-                  <label class="check-label">
-                    Style 1
-                  </label>
-                </div>
-              <div class="switch-right radio-container" style="${this._config.animated_icons ? 'display: flex;' : 'display: none;'}">
-                  <ha-radio
-                    name="icon_style"
-                    value="style2"
-                    @change="${this._handleIconStyleChange}"
-                    .checked="${this._config.icon_style === 'style2'}"
-                  ></ha-radio>
-                  <label class="check-label">
-                    Style 2
-                  </label>
-                </div>
+                <ha-radio-group
+                  name="icon_style"
+                  .value="${this._config.icon_style}"
+                  @change="${this._handleIconStyleChange}"
+                  orientation="horizontal"
+                >
+                  <ha-radio-option value="style1">Style 1</ha-radio-option>
+                  <ha-radio-option value="style2">Style 2</ha-radio-option>
+                </ha-radio-group>
+              </div>
               </div>
        <div class="textfield-container">
          <ha-textfield
