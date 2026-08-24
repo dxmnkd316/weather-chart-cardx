@@ -198,7 +198,10 @@ class WeatherChartCardEditor extends LitElement {
   }
 
   render() {
-    if (this._config && this._config.entity !== this._entity) {
+    if (!this._config) {
+      return html``;
+    }
+    if (this._config.entity !== this._entity) {
       this._entity = this._config.entity;
     }
     const forecastConfig = this._config.forecast || {};

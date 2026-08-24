@@ -1062,7 +1062,10 @@ class WeatherChartCardEditor extends s {
   }
 
   render() {
-    if (this._config && this._config.entity !== this._entity) {
+    if (!this._config) {
+      return x``;
+    }
+    if (this._config.entity !== this._entity) {
       this._entity = this._config.entity;
     }
     const forecastConfig = this._config.forecast || {};
