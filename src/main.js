@@ -59,6 +59,7 @@ static getStubConfig(hass, unusedEntities, allEntities) {
       condition_icons: true,
       round_temp: false,
       show_dew_point_forecast: false,
+      show_all_labels: true,
       type: 'daily',
       number_of_forecasts: '0',
       disable_animation: false,
@@ -114,6 +115,7 @@ setConfig(config) {
       show_wind_forecast: true,
       round_temp: false,
       show_dew_point_forecast: false,
+      show_all_labels: true,
       type: 'daily',
       number_of_forecasts: '0',
       '12hourformat': false,
@@ -478,6 +480,7 @@ drawChart({ config, language, weather, forecastItems } = this) {
     var precipUnit = lengthUnit === 'km' ? this.ll('units')['mm'] : this.ll('units')['in'];
   }
   const data = this.computeForecastData();
+  const numeric = (arr) => arr.filter((v) => typeof v === 'number');
 
   var style = getComputedStyle(document.body);
   var backgroundColor = style.getPropertyValue('--card-background-color');
@@ -517,6 +520,13 @@ drawChart({ config, language, weather, forecastItems } = this) {
     if (data.minHrs.includes(index)) return 'blue';
     if (data.maxHrs.includes(index)) return 'red';
     return fallback;
+  };
+  const labelDisplay = (index) => {
+    if (config.forecast.show_all_labels === false) {
+      if (!isHourlyChart) return 'auto';
+      return (data.dailyLowIndex.includes(index) || data.dailyHighIndex.includes(index)) ? 'auto' : false;
+    }
+    return 'auto';
   };
 
   var datasets = [
@@ -574,8 +584,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
         textAlign: 'center',
         textBaseline: 'middle',
         align: 'top',
-        anchor: 'start',
-        offset: -10,
+        anchor: 'end',
+        offset: 10,
       },
     },
     {
@@ -594,13 +604,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
   if (config.forecast.style === 'style2') {
     datasets[0].datalabels = {
       display: function (context) {
-        return 'auto';
+        return labelDisplay(context.dataIndex);
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
       align: (context) => isHourlyChart && data.minHrs.includes(context.dataIndex) ? 'bottom' : isHourlyChart && data.maxHrs.includes(context.dataIndex) ? 'top' : 'top',
       anchor: 'center',
+      offset: 6,
       backgroundColor: 'transparent',
       borderColor: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? highlightColor(context.dataIndex, 'transparent') : 'transparent',
       borderRadius: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? 3 : 0,
@@ -613,13 +624,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
 
     datasets[1].datalabels = {
       display: function (context) {
-        return 'auto';
+        return labelDisplay(context.dataIndex);
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
       align: 'bottom',
       anchor: 'center',
+      offset: 6,
       backgroundColor: 'transparent',
       borderColor: 'transparent',
       color: chart_text_color || config.forecast.temperature2_color,
@@ -631,13 +643,14 @@ drawChart({ config, language, weather, forecastItems } = this) {
 
     datasets[3].datalabels = {
       display: function (context) {
-        return 'auto';
+        return labelDisplay(context.dataIndex);
       },
       formatter: function (value, context) {
         return context.dataset.data[context.dataIndex] + '°';
       },
       align: 'bottom',
       anchor: 'center',
+      offset: 6,
       backgroundColor: 'transparent',
       borderColor: 'transparent',
       color: config.forecast.chart_text_color,
@@ -669,7 +682,9 @@ drawChart({ config, language, weather, forecastItems } = this) {
             width: 0,
           },
           grid: {
+            display: true,
             drawTicks: false,
+            offset: false,
             color: dividerColor,
             lineWidth: data.dateTime.map((iso) => (isHourlyChart && new Date(iso).getHours() === 0) ? 5 : 1),
           },
@@ -718,8 +733,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
         TempAxis: {
           position: 'left',
           beginAtZero: false,
-          suggestedMin: Math.min(...data.tempHigh, ...data.tempLow, ...data.dewPoint) - 5,
-          suggestedMax: Math.max(...data.tempHigh, ...data.tempLow, ...data.dewPoint) + 3,
+          suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
+          suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
           grid: {
             display: false,
             drawTicks: false,
@@ -731,8 +746,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
         DPAxis: {
           position: 'left',
           beginAtZero: false,
-          suggestedMin: Math.min(...data.tempHigh, ...data.tempLow, ...data.dewPoint) - 5,
-          suggestedMax: Math.max(...data.tempHigh, ...data.tempLow, ...data.dewPoint) + 3,
+          suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
+          suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
           grid: {
             display: false,
             drawTicks: false,
@@ -758,6 +773,16 @@ drawChart({ config, language, weather, forecastItems } = this) {
           display: false,
         },
         datalabels: {
+          display: function (context) {
+            if (config.forecast.show_all_labels === false) {
+              if (!isHourlyChart) return 'auto';
+              return (data.dailyLowIndex.includes(context.dataIndex) || data.dailyHighIndex.includes(context.dataIndex)) ? 'auto' : false;
+            }
+            return 'auto';
+          },
+          align: (context) => context.datasetIndex === 1 ? 'bottom' : 'top',
+          anchor: 'center',
+          offset: 6,
           backgroundColor: backgroundColor,
           borderColor: context => context.dataset.backgroundColor,
           borderRadius: 0,
@@ -809,6 +834,8 @@ drawChart({ config, language, weather, forecastItems } = this) {
 computeDailyMinMaxIndices(dateTime, tempHigh) {
   const minHrs = [];
   const maxHrs = [];
+  const dailyLowIndex = [];
+  const dailyHighIndex = [];
   const dayKey = (iso) => {
     const d = new Date(iso);
     return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
@@ -821,18 +848,28 @@ computeDailyMinMaxIndices(dateTime, tempHigh) {
       const group = tempHigh.slice(groupStart, i);
       const min = Math.min(...group);
       const max = Math.max(...group);
+      let minFound = false;
+      let maxFound = false;
       for (let j = 0; j < group.length; j++) {
         if (group[j] === min) {
           minHrs.push(groupStart + j);
+          if (!minFound) {
+            dailyLowIndex.push(groupStart + j);
+            minFound = true;
+          }
         } else if (group[j] === max) {
           maxHrs.push(groupStart + j);
+          if (!maxFound) {
+            dailyHighIndex.push(groupStart + j);
+            maxFound = true;
+          }
         }
       }
       groupStart = i;
     }
   }
 
-  return { minHrs, maxHrs };
+  return { minHrs, maxHrs, dailyLowIndex, dailyHighIndex };
 }
 
 computeForecastData({ config, forecastItems } = this) {
@@ -855,17 +892,16 @@ computeForecastData({ config, forecastItems } = this) {
     }
     dateTime.push(d.datetime);
     tempHigh.push(d.temperature);
-    if (showDewpointForecast && typeof d.dew_point !== 'undefined') {
-      dewPoint.push(d.dew_point);
+    if (showDewpointForecast) {
+      dewPoint.push(typeof d.dew_point !== 'undefined' ? d.dew_point : null);
     }
-    if (typeof d.templow !== 'undefined') {
-      tempLow.push(d.templow);
-    }
+    tempLow.push(typeof d.templow !== 'undefined' ? d.templow : null);
 
     if (roundTemp) {
-      tempHigh[i] = Math.round(tempHigh[i]);
-      if (typeof d.templow !== 'undefined') {
-        tempLow[i] = Math.round(tempLow[i]);
+      const lastIndex = tempHigh.length - 1;
+      tempHigh[lastIndex] = Math.round(tempHigh[lastIndex]);
+      if (tempLow[lastIndex] !== null) {
+        tempLow[lastIndex] = Math.round(tempLow[lastIndex]);
       }
     }
     if (config.forecast.precipitation_type === 'probability') {
@@ -875,9 +911,9 @@ computeForecastData({ config, forecastItems } = this) {
     }
   }
 
-  const { minHrs, maxHrs } = config.forecast.type === 'hourly' && dateTime.length
+  const { minHrs, maxHrs, dailyLowIndex, dailyHighIndex } = config.forecast.type === 'hourly' && dateTime.length
     ? this.computeDailyMinMaxIndices(dateTime, tempHigh)
-    : { minHrs: [], maxHrs: [] };
+    : { minHrs: [], maxHrs: [], dailyLowIndex: [], dailyHighIndex: [] };
 
   return {
     forecast,
@@ -888,6 +924,8 @@ computeForecastData({ config, forecastItems } = this) {
     precip,
     minHrs,
     maxHrs,
+    dailyLowIndex,
+    dailyHighIndex,
   }
 }
 

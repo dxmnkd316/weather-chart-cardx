@@ -198,7 +198,10 @@ class WeatherChartCardEditor extends LitElement {
   }
 
   render() {
-    if (this._config && this._config.entity !== this._entity) {
+    if (!this._config) {
+      return html``;
+    }
+    if (this._config.entity !== this._entity) {
       this._entity = this._config.entity;
     }
     const forecastConfig = this._config.forecast || {};
@@ -687,6 +690,15 @@ class WeatherChartCardEditor extends LitElement {
             ></ha-switch>
             <label class="switch-label">
               Show Dew Point Forecast
+            </label>
+          </div>
+          <div class="switch-container">
+            <ha-switch
+              @change="${(e) => this._valueChanged(e, 'forecast.show_all_labels')}"
+              .checked="${forecastConfig.show_all_labels !== false}"
+            ></ha-switch>
+            <label class="switch-label">
+              Show Temperature Label On Every Point
             </label>
           </div>
           <div class="switch-container">
