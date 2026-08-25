@@ -1,10 +1,10 @@
-const cardinalDirectionsIcon = [
+export const cardinalDirectionsIcon = [
   'arrow-down', 'arrow-bottom-left', 'arrow-left',
   'arrow-top-left', 'arrow-up', 'arrow-top-right',
-  'arrow-right', 'arrow-bottom-right', 'arrow-down'
-];
+  'arrow-right', 'arrow-bottom-right', 'arrow-down',
+] as const;
 
-const weatherIcons = {
+export const weatherIcons = {
   'clear-night': 'hass:weather-night',
   'cloudy': 'hass:weather-cloudy',
   'exceptional': 'mdi:alert-circle-outline',
@@ -19,10 +19,12 @@ const weatherIcons = {
   'snowy-rainy': 'hass:weather-snowy-rainy',
   'sunny': 'hass:weather-sunny',
   'windy': 'hass:weather-windy',
-  'windy-variant': 'hass:weather-windy-variant'
-};
+  'windy-variant': 'hass:weather-windy-variant',
+} as const;
 
-const weatherIconsDay = {
+export type WeatherCondition = keyof typeof weatherIcons;
+
+export const weatherIconsDay: Record<WeatherCondition, string> = {
   'clear-night': 'clear-night',
   'cloudy': 'cloudy',
   'exceptional': 'exceptional',
@@ -40,22 +42,16 @@ const weatherIconsDay = {
   'windy-variant': 'wind',
 };
 
-const weatherIconsNight = {
+export const weatherIconsNight: Record<WeatherCondition, string> = {
   ...weatherIconsDay,
   'sunny': 'clear-night',
   'partlycloudy': 'partlycloudy-night',
 };
 
-const WeatherEntityFeature = {
+export const WeatherEntityFeature = {
   FORECAST_DAILY: 1,
   FORECAST_HOURLY: 2,
   FORECAST_TWICE_DAILY: 4,
-};
+} as const;
 
-export {
-  cardinalDirectionsIcon,
-  weatherIcons,
-  weatherIconsDay,
-  weatherIconsNight,
-  WeatherEntityFeature
-};
+export type WeatherEntityFeature = (typeof WeatherEntityFeature)[keyof typeof WeatherEntityFeature];
