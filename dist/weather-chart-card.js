@@ -789,7 +789,7 @@ const locale = {
 const cardinalDirectionsIcon = [
     'arrow-down', 'arrow-bottom-left', 'arrow-left',
     'arrow-top-left', 'arrow-up', 'arrow-top-right',
-    'arrow-right', 'arrow-bottom-right', 'arrow-down'
+    'arrow-right', 'arrow-bottom-right', 'arrow-down',
 ];
 const weatherIcons = {
     'clear-night': 'hass:weather-night',
@@ -806,7 +806,7 @@ const weatherIcons = {
     'snowy-rainy': 'hass:weather-snowy-rainy',
     'sunny': 'hass:weather-sunny',
     'windy': 'hass:weather-windy',
-    'windy-variant': 'hass:weather-windy-variant'
+    'windy-variant': 'hass:weather-windy-variant',
 };
 const weatherIconsDay = {
     'clear-night': 'clear-night',
