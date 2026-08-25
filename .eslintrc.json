@@ -8,5 +8,16 @@
     "ecmaFeatures": {
       "jsx": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "error"
+      }
+    }
+  ]
 }

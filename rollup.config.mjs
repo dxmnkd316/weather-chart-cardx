@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import serve from 'rollup-plugin-serve';
 import copy from 'rollup-plugin-copy';
+import typescript from '@rollup/plugin-typescript';
 
 const dev = process.env.ROLLUP_WATCH;
 
@@ -23,6 +24,7 @@ export default {
     sourcemap: dev ? true : false,
   },
   plugins: [
+    typescript(),
     resolve(),
     dev && serve(serveopts),
     copy({
