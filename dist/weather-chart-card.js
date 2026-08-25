@@ -1,1109 +1,1070 @@
 'use strict';
 
 const locale = {
-  cs: {
-    'tempHi': 'Teplota',
-    'tempLo': 'Teplota v noci',
-    'precip': 'Srážky',
-    'feelsLike': 'Pocitová teplota',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    cs: {
+        'tempHi': 'Teplota',
+        'tempLo': 'Teplota v noci',
+        'precip': 'Srážky',
+        'feelsLike': 'Pocitová teplota',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-JV', 'JV', 'J-JV',
+            'J', 'J-JZ', 'JZ', 'Z-JZ', 'Z', 'Z-SZ', 'SZ', 'S-SZ', 'S'
+        ],
+        'clear-night': 'Jasná noc',
+        'cloudy': 'Zataženo',
+        'fog': 'Mlha',
+        'hail': 'Kroupy',
+        'lightning': 'Bouřky',
+        'lightning-rainy': 'Bouřky, déšť',
+        'partlycloudy': 'Polojasno',
+        'pouring': 'Silný déšť',
+        'rainy': 'Déšť',
+        'snowy': 'Sníh',
+        'snowy-rainy': 'Sníh s deštěm',
+        'sunny': 'Jasno',
+        'windy': 'Větrno',
+        'windy-variant': 'Větrno'
     },
-    'cardinalDirections': [
-      'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-JV', 'JV', 'J-JV',
-      'J', 'J-JZ', 'JZ', 'Z-JZ', 'Z', 'Z-SZ', 'SZ', 'S-SZ', 'S'
-    ],
-    'clear-night': 'Jasná noc',
-    'cloudy': 'Zataženo',
-    'fog': 'Mlha',
-    'hail': 'Kroupy',
-    'lightning': 'Bouřky',
-    'lightning-rainy': 'Bouřky, déšť',
-    'partlycloudy': 'Polojasno',
-    'pouring': 'Silný déšť',
-    'rainy': 'Déšť',
-    'snowy': 'Sníh',
-    'snowy-rainy': 'Sníh s deštěm',
-    'sunny': 'Jasno',
-    'windy': 'Větrno',
-    'windy-variant': 'Větrno'
-  },
-  sk: {
-    'tempHi': 'Teplota',
-    'tempLo': 'Teplota v noci',
-    'precip': 'Zrážky',
-    'feelsLike': 'Pocitová teplota',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    sk: {
+        'tempHi': 'Teplota',
+        'tempLo': 'Teplota v noci',
+        'precip': 'Zrážky',
+        'feelsLike': 'Pocitová teplota',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-JV', 'JV', 'J-JV',
+            'J', 'J-JZ', 'JZ', 'Z-JZ', 'Z', 'Z-SZ', 'SZ', 'S-SZ', 'S'
+        ],
+        'clear-night': 'Jasná noc',
+        'cloudy': 'Oblačno',
+        'fog': 'Hmla',
+        'hail': 'Krúpy',
+        'lightning': 'Búrky',
+        'lightning-rainy': 'Búrky, dážď',
+        'partlycloudy': 'Polojasno',
+        'pouring': 'Silný dážď',
+        'rainy': 'Dážď',
+        'snowy': 'Sneh',
+        'snowy-rainy': 'Sneh s dažďom',
+        'sunny': 'Jasno',
+        'windy': 'Veterno',
+        'windy-variant': 'Veterno'
     },
-    'cardinalDirections': [
-      'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-JV', 'JV', 'J-JV',
-      'J', 'J-JZ', 'JZ', 'Z-JZ', 'Z', 'Z-SZ', 'SZ', 'S-SZ', 'S'
-    ],
-    'clear-night': 'Jasná noc',
-    'cloudy': 'Oblačno',
-    'fog': 'Hmla',
-    'hail': 'Krúpy',
-    'lightning': 'Búrky',
-    'lightning-rainy': 'Búrky, dážď',
-    'partlycloudy': 'Polojasno',
-    'pouring': 'Silný dážď',
-    'rainy': 'Dážď',
-    'snowy': 'Sneh',
-    'snowy-rainy': 'Sneh s dažďom',
-    'sunny': 'Jasno',
-    'windy': 'Veterno',
-    'windy-variant': 'Veterno'
-  },  
-  de: {
-    'tempHi': 'Temperatur',
-    'tempLo': 'Nachttemperatur',
-    'precip': 'Niederschlag',
-    'feelsLike': 'Gefühlt',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    de: {
+        'tempHi': 'Temperatur',
+        'tempLo': 'Nachttemperatur',
+        'precip': 'Niederschlag',
+        'feelsLike': 'Gefühlt',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NO', 'NO', 'O-NO', 'O', 'O-SO', 'SO', 'S-SO',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Sternenklar',
+        'cloudy': 'Bewölkt',
+        'fog': 'Nebel',
+        'hail': 'Hagel',
+        'lightning': 'Gewitter',
+        'lightning-rainy': 'Gewitter, Regen',
+        'partlycloudy': 'Teils bewölkt',
+        'pouring': 'Starkregen',
+        'rainy': 'Regen',
+        'snowy': 'Schnee',
+        'snowy-rainy': 'Schneeregen',
+        'sunny': 'Sonne',
+        'windy': 'Windig',
+        'windy-variant': 'Windig'
     },
-    'cardinalDirections': [
-      'N', 'N-NO', 'NO', 'O-NO', 'O', 'O-SO', 'SO', 'S-SO',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Sternenklar',
-    'cloudy': 'Bewölkt',
-    'fog': 'Nebel',
-    'hail': 'Hagel',
-    'lightning': 'Gewitter',
-    'lightning-rainy': 'Gewitter, Regen',
-    'partlycloudy': 'Teils bewölkt',
-    'pouring': 'Starkregen',
-    'rainy': 'Regen',
-    'snowy': 'Schnee',
-    'snowy-rainy': 'Schneeregen',
-    'sunny': 'Sonne',
-    'windy': 'Windig',
-    'windy-variant': 'Windig'
-  },
-  nl: {
-    'tempHi': 'Temperatuur',
-    'tempLo': 'Nachttemperatuur',
-    'precip': 'Neerslag',
-    'feelsLike': 'Voelt als',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    nl: {
+        'tempHi': 'Temperatuur',
+        'tempLo': 'Nachttemperatuur',
+        'precip': 'Neerslag',
+        'feelsLike': 'Voelt als',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NO', 'NO', 'O-NO', 'O', 'O-ZO', 'ZO', 'Z-ZO',
+            'Z', 'Z-ZW', 'ZW', 'W-ZW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Helder nacht',
+        'cloudy': 'Bewolkt',
+        'fog': 'Mist',
+        'hail': 'Hagel',
+        'lightning': 'Bliksem',
+        'lightning-rainy': 'Bliksem, Regen',
+        'partlycloudy': 'Gedeeltelijk bewolkt',
+        'pouring': 'Regen',
+        'rainy': 'Regenachtig',
+        'snowy': 'Sneeuw',
+        'snowy-rainy': 'Sneeuw, regen',
+        'sunny': 'Zonnig',
+        'windy': 'Winderig',
+        'windy-variant': 'Winderig'
     },
-    'cardinalDirections': [
-      'N', 'N-NO', 'NO', 'O-NO', 'O', 'O-ZO', 'ZO', 'Z-ZO',
-      'Z', 'Z-ZW', 'ZW', 'W-ZW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Helder nacht',
-    'cloudy': 'Bewolkt',
-    'fog': 'Mist',
-    'hail': 'Hagel',
-    'lightning': 'Bliksem',
-    'lightning-rainy': 'Bliksem, Regen',
-    'partlycloudy': 'Gedeeltelijk bewolkt',
-    'pouring': 'Regen',
-    'rainy': 'Regenachtig',
-    'snowy': 'Sneeuw',
-    'snowy-rainy': 'Sneeuw, regen',
-    'sunny': 'Zonnig',
-    'windy': 'Winderig',
-    'windy-variant': 'Winderig'
-  },
-  en: {
-    'tempHi': 'Temperature',
-    'tempLo': 'Temperature night',
-    'precip': 'Precipitations',
-    'dewpoint': 'Dew Point',
-    'feelsLike': 'Feels like',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    en: {
+        'tempHi': 'Temperature',
+        'tempLo': 'Temperature night',
+        'precip': 'Precipitations',
+        'dewpoint': 'Dew Point',
+        'feelsLike': 'Feels like',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Clear, night',
+        'cloudy': 'Cloudy',
+        'fog': 'Fog',
+        'hail': 'Hail',
+        'lightning': 'Lightning',
+        'lightning-rainy': 'Lightning, rainy',
+        'partlycloudy': 'Partly cloudy',
+        'pouring': 'Pouring',
+        'rainy': 'Rainy',
+        'snowy': 'Snowy',
+        'snowy-rainy': 'Snowy, rainy',
+        'sunny': 'Sunny',
+        'windy': 'Windy',
+        'windy-variant': 'Windy'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Clear, night',
-    'cloudy': 'Cloudy',
-    'fog': 'Fog',
-    'hail': 'Hail',
-    'lightning': 'Lightning',
-    'lightning-rainy': 'Lightning, rainy',
-    'partlycloudy': 'Partly cloudy',
-    'pouring': 'Pouring',
-    'rainy': 'Rainy',
-    'snowy': 'Snowy',
-    'snowy-rainy': 'Snowy, rainy',
-    'sunny': 'Sunny',
-    'windy': 'Windy',
-    'windy-variant': 'Windy'
-  },
-  es: {
-    'tempHi': 'Temperatura máxima',
-    'tempLo': 'Temperatura mínima',
-    'precip': 'Precipitación',
-    'feelsLike': 'Sensación térmica',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    es: {
+        'tempHi': 'Temperatura máxima',
+        'tempLo': 'Temperatura mínima',
+        'precip': 'Precipitación',
+        'feelsLike': 'Sensación térmica',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Despejado, noche',
+        'cloudy': 'Nublado',
+        'fog': 'Niebla',
+        'hail': 'Granizo',
+        'lightning': 'Truenos',
+        'lightning-rainy': 'Lluvia y truenos',
+        'partlycloudy': 'Nublado parcialmente',
+        'pouring': 'Lluvia fuerte',
+        'rainy': 'Lluvia',
+        'snowy': 'Nieve',
+        'snowy-rainy': 'Aguanieve',
+        'sunny': 'Soleado',
+        'windy': 'Viento',
+        'windy-variant': 'Viento variable'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Despejado, noche',
-    'cloudy': 'Nublado',
-    'fog': 'Niebla',
-    'hail': 'Granizo',
-    'lightning': 'Truenos',
-    'lightning-rainy': 'Lluvia y truenos',
-    'partlycloudy': 'Nublado parcialmente',
-    'pouring': 'Lluvia fuerte',
-    'rainy': 'Lluvia',
-    'snowy': 'Nieve',
-    'snowy-rainy': 'Aguanieve',
-    'sunny': 'Soleado',
-    'windy': 'Viento',
-    'windy-variant': 'Viento variable'
-  },
-  fi: {
-    'tempHi': 'Lämpötila ylin',
-    'tempLo': 'Lämpötila alin',
-    'precip': 'Sademäärä',
-    'feelsLike': 'Tuntuu kuin',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    fi: {
+        'tempHi': 'Lämpötila ylin',
+        'tempLo': 'Lämpötila alin',
+        'precip': 'Sademäärä',
+        'feelsLike': 'Tuntuu kuin',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Y\u00f6, selke\u00e4\u00e4',
+        'cloudy': 'Pilvist\u00e4',
+        'fog': 'Sumuista',
+        'hail': 'Raekuuroja',
+        'lightning': 'Ukkoskuuroja',
+        'lightning-rainy': 'Ukkosta, sateista',
+        'partlycloudy': 'Osittain pilvist\u00e4',
+        'pouring': 'Kaatosadetta',
+        'rainy': 'Sateista',
+        'snowy': 'Lumisadetta',
+        'snowy-rainy': 'R\u00e4nt\u00e4sadetta',
+        'sunny': 'Aurinkoista',
+        'windy': 'Tuulista',
+        'windy-variant': 'Tuulista'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Y\u00f6, selke\u00e4\u00e4',
-    'cloudy': 'Pilvist\u00e4',
-    'fog': 'Sumuista',
-    'hail': 'Raekuuroja',
-    'lightning': 'Ukkoskuuroja',
-    'lightning-rainy': 'Ukkosta, sateista',
-    'partlycloudy': 'Osittain pilvist\u00e4',
-    'pouring': 'Kaatosadetta',
-    'rainy': 'Sateista',
-    'snowy': 'Lumisadetta',
-    'snowy-rainy': 'R\u00e4nt\u00e4sadetta',
-    'sunny': 'Aurinkoista',
-    'windy': 'Tuulista',
-    'windy-variant': 'Tuulista'
-  },
-  hu: {
-    'tempHi': 'Max. hőmérséklet',
-    'tempLo': 'Min. hőmérséklet',
-    'precip': 'Csapadék',
-    'feelsLike': 'Hőérzet',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    hu: {
+        'tempHi': 'Max. hőmérséklet',
+        'tempLo': 'Min. hőmérséklet',
+        'precip': 'Csapadék',
+        'feelsLike': 'Hőérzet',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'É', 'É-ÉK', 'ÉK', 'K-ÉK', 'K', 'K-DK', 'DK', 'D-DK',
+            'D', 'D-DNY', 'DNY', 'NY-DNY', 'NY', 'NY-ÉNY', 'ÉNY', 'É-ÉNY', 'É'
+        ],
+        'clear-night': 'Tiszta, éjszaka',
+        'cloudy': 'Felhős',
+        'fog': 'Ködös',
+        'hail': 'Jégeső',
+        'lightning': 'Villám',
+        'lightning-rainy': 'Zivatar',
+        'partlycloudy': 'Részben felhős',
+        'pouring': 'Szakadó eső',
+        'rainy': 'Esős',
+        'snowy': 'Havas',
+        'snowy-rainy': 'Havas eső',
+        'sunny': 'Napos',
+        'windy': 'Szeles',
+        'windy-variant': 'Szeles'
     },
-    'cardinalDirections': [
-      'É', 'É-ÉK', 'ÉK', 'K-ÉK', 'K', 'K-DK', 'DK', 'D-DK',
-      'D', 'D-DNY', 'DNY', 'NY-DNY', 'NY', 'NY-ÉNY', 'ÉNY', 'É-ÉNY', 'É'
-    ],
-    'clear-night': 'Tiszta, éjszaka',
-    'cloudy': 'Felhős',
-    'fog': 'Ködös',
-    'hail': 'Jégeső',
-    'lightning': 'Villám',
-    'lightning-rainy': 'Zivatar',
-    'partlycloudy': 'Részben felhős',
-    'pouring': 'Szakadó eső',
-    'rainy': 'Esős',
-    'snowy': 'Havas',
-    'snowy-rainy': 'Havas eső',
-    'sunny': 'Napos',
-    'windy': 'Szeles',
-    'windy-variant': 'Szeles'
-  },
-  ru: {
-    'tempHi': 'Температура',
-    'tempLo': 'Температура ночью',
-    'precip': 'Осадки',
-    'feelsLike': 'Ощущается как',
-    'units': {
-      'km/h': 'км/ч',
-      'm/s': 'м/с',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'гПа',
-      'mmHg': 'мм рт.ст.',
-      'mm': 'мм',
-      'in': 'in'
+    ru: {
+        'tempHi': 'Температура',
+        'tempLo': 'Температура ночью',
+        'precip': 'Осадки',
+        'feelsLike': 'Ощущается как',
+        'units': {
+            'km/h': 'км/ч',
+            'm/s': 'м/с',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'гПа',
+            'mmHg': 'мм рт.ст.',
+            'mm': 'мм',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'С', 'С-СВ', 'СВ', 'В-СВ', 'В', 'В-ЮВ', 'ЮВ', 'Ю-ЮВ',
+            'Ю', 'Ю-ЮЗ', 'ЮЗ', 'З-ЮЗ', 'З', 'З-СЗ', 'СЗ', 'С-СЗ', 'С'
+        ],
+        'clear-night': 'Ясно',
+        'cloudy': 'Облачно',
+        'fog': 'Туман',
+        'hail': 'Град',
+        'lightning': 'Гроза',
+        'lightning-rainy': 'Дождь с грозой',
+        'partlycloudy': 'Переменная облачность',
+        'pouring': 'Ливень',
+        'rainy': 'Дождь',
+        'snowy': 'Снег',
+        'snowy-rainy': 'Снег с дождем',
+        'sunny': 'Ясно',
+        'windy': 'Ветрено',
+        'windy-variant': 'Ветрено'
     },
-    'cardinalDirections': [
-      'С', 'С-СВ', 'СВ', 'В-СВ', 'В', 'В-ЮВ', 'ЮВ', 'Ю-ЮВ',
-      'Ю', 'Ю-ЮЗ', 'ЮЗ', 'З-ЮЗ', 'З', 'З-СЗ', 'СЗ', 'С-СЗ', 'С'
-    ],
-    'clear-night': 'Ясно',
-    'cloudy': 'Облачно',
-    'fog': 'Туман',
-    'hail': 'Град',
-    'lightning': 'Гроза',
-    'lightning-rainy': 'Дождь с грозой',
-    'partlycloudy': 'Переменная облачность',
-    'pouring': 'Ливень',
-    'rainy': 'Дождь',
-    'snowy': 'Снег',
-    'snowy-rainy': 'Снег с дождем',
-    'sunny': 'Ясно',
-    'windy': 'Ветрено',
-    'windy-variant': 'Ветрено'
-  },
-  sv: {
-    'tempHi': 'Temperatur max',
-    'tempLo': 'Temperatur min',
-    'precip': 'Nederbörd',
-    'feelsLike': 'Känns som',
-    'units': {
-        'km/h': 'km/h',
-        'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-        'hPa': 'hPa',
-        'mmHg': 'mm Hg',
-        'mm': 'mm',
-        'in': 'in'
+    sv: {
+        'tempHi': 'Temperatur max',
+        'tempLo': 'Temperatur min',
+        'precip': 'Nederbörd',
+        'feelsLike': 'Känns som',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Klar natt',
+        'cloudy': 'Molnigt',
+        'fog': 'Dimma',
+        'hail': 'Hagel',
+        'lightning': 'Åska',
+        'lightning-rainy': 'Åska och regn',
+        'partlycloudy': 'Varierat molntäcke',
+        'pouring': 'Ösregn',
+        'rainy': 'Regnigt',
+        'snowy': 'Snöigt',
+        'snowy-rainy': 'Snöblandat regn',
+        'sunny': 'Soligt',
+        'windy': 'Blåsigt',
+        'windy-variant': 'Blåsigt'
     },
-    'cardinalDirections': [
-        'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-        'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Klar natt',
-    'cloudy': 'Molnigt',
-    'fog': 'Dimma',
-    'hail': 'Hagel',
-    'lightning': 'Åska',
-    'lightning-rainy': 'Åska och regn',
-    'partlycloudy': 'Varierat molntäcke',
-    'pouring': 'Ösregn',
-    'rainy': 'Regnigt',
-    'snowy': 'Snöigt',
-    'snowy-rainy': 'Snöblandat regn',
-    'sunny': 'Soligt',
-    'windy': 'Blåsigt',
-    'windy-variant': 'Blåsigt'
-  },
-  fr: {
-    'tempHi': 'Température max',
-    'tempLo': 'Température min',
-    'precip': 'Précipitations',
-    'feelsLike': 'Ressenti',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'po'
+    fr: {
+        'tempHi': 'Température max',
+        'tempLo': 'Température min',
+        'precip': 'Précipitations',
+        'feelsLike': 'Ressenti',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'po'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SO', 'SO', 'O-SO', 'O', 'O-NO', 'NO', 'N-NO', 'N'
+        ],
+        'clear-night': 'Nuit dégagée',
+        'cloudy': 'Nuageux',
+        'fog': 'Brouillard',
+        'hail': 'Grêle',
+        'lightning': 'Orage',
+        'lightning-rainy': 'Orage et Pluie',
+        'partlycloudy': 'Éclaircies',
+        'pouring': 'Fortes Pluies',
+        'rainy': 'Pluie',
+        'snowy': 'Neige',
+        'snowy-rainy': 'Neige et Pluie',
+        'sunny': 'Ensoleillé',
+        'windy': 'Venteux',
+        'windy-variant': 'Venteux'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SO', 'SO', 'O-SO', 'O', 'O-NO', 'NO', 'N-NO', 'N'
-    ],
-    'clear-night': 'Nuit dégagée',
-    'cloudy': 'Nuageux',
-    'fog': 'Brouillard',
-    'hail': 'Grêle',
-    'lightning': 'Orage',
-    'lightning-rainy': 'Orage et Pluie',
-    'partlycloudy': 'Éclaircies',
-    'pouring': 'Fortes Pluies',
-    'rainy': 'Pluie',
-    'snowy': 'Neige',
-    'snowy-rainy': 'Neige et Pluie',
-    'sunny': 'Ensoleillé',
-    'windy': 'Venteux',
-    'windy-variant': 'Venteux'
-  },
-  pl: {
-    'tempHi': 'Temperatura',
-    'tempLo': 'Temperatura w nocy',
-    'precip': 'Opady',
-    'feelsLike': 'Odczuwalna',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    pl: {
+        'tempHi': 'Temperatura',
+        'tempLo': 'Temperatura w nocy',
+        'precip': 'Opady',
+        'feelsLike': 'Odczuwalna',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Bezchmurna noc',
+        'cloudy': 'Pochmurnie',
+        'fog': 'Mgła',
+        'hail': 'Grad',
+        'lightning': 'Błyskawice',
+        'lightning-rainy': 'Burza z błyskawicami',
+        'partlycloudy': 'Częściowe zachmurzenie',
+        'pouring': 'Ulewa',
+        'rainy': 'Deszczowo',
+        'snowy': 'Śnieg',
+        'snowy-rainy': 'Śnieg z deszczem',
+        'sunny': 'Słonecznie',
+        'windy': 'Wietrznie',
+        'windy-variant': 'Zmienny wiatr'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Bezchmurna noc',
-    'cloudy': 'Pochmurnie',
-    'fog': 'Mgła',
-    'hail': 'Grad',
-    'lightning': 'Błyskawice',
-    'lightning-rainy': 'Burza z błyskawicami',
-    'partlycloudy': 'Częściowe zachmurzenie',
-    'pouring': 'Ulewa',
-    'rainy': 'Deszczowo',
-    'snowy': 'Śnieg',
-    'snowy-rainy': 'Śnieg z deszczem',
-    'sunny': 'Słonecznie',
-    'windy': 'Wietrznie',
-    'windy-variant': 'Zmienny wiatr'
-  },
-  nb: {
-    'tempHi': 'Maksimumstemperatur',
-    'tempLo': 'Minimumstemperatur',
-    'precip': 'Nedbør',
-    'feelsLike': 'Føles som',
-    'units': {
-      'km/h': 'km/t',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    nb: {
+        'tempHi': 'Maksimumstemperatur',
+        'tempLo': 'Minimumstemperatur',
+        'precip': 'Nedbør',
+        'feelsLike': 'Føles som',
+        'units': {
+            'km/h': 'km/t',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'Ø-NØ', 'Ø', 'Ø-SØ', 'SØ', 'S-SØ',
+            'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-NV', 'NV', 'N-NV', 'N'
+        ],
+        'clear-night': 'Klar natt',
+        'cloudy': 'Overskyet',
+        'fog': 'Tåke',
+        'hail': 'Hagl',
+        'lightning': 'Lyn',
+        'lightning-rainy': 'Lyn og regn',
+        'partlycloudy': 'Varierende skydekke',
+        'pouring': 'Styrtregn',
+        'rainy': 'Regn',
+        'snowy': 'Snø',
+        'snowy-rainy': 'Sludd',
+        'sunny': 'Sol',
+        'windy': 'Vind',
+        'windy-variant': 'Vind'
     },
-    'cardinalDirections': [
-        'N', 'N-NE', 'NE', 'Ø-NØ', 'Ø', 'Ø-SØ', 'SØ', 'S-SØ',
-        'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-NV', 'NV', 'N-NV', 'N'
-    ],
-    'clear-night': 'Klar natt',
-    'cloudy': 'Overskyet',
-    'fog': 'Tåke',
-    'hail': 'Hagl',
-    'lightning': 'Lyn',
-    'lightning-rainy': 'Lyn og regn',
-    'partlycloudy': 'Varierende skydekke',
-    'pouring': 'Styrtregn',
-    'rainy': 'Regn',
-    'snowy': 'Snø',
-    'snowy-rainy': 'Sludd',
-    'sunny': 'Sol',
-    'windy': 'Vind',
-    'windy-variant': 'Vind'
-  },
-  da: {
-    'tempHi': 'Temperatur',
-    'tempLo': 'Nattemperatur',
-    'precip': 'Nedbør',
-    'feelsLike': 'Føles som',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    da: {
+        'tempHi': 'Temperatur',
+        'tempLo': 'Nattemperatur',
+        'precip': 'Nedbør',
+        'feelsLike': 'Føles som',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NØ', 'NO', 'Ø-NØ', 'Ø', 'Ø-SØ', 'SØ', 'S-SØ',
+            'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-NV', 'NV', 'N-NV', 'N'
+        ],
+        'clear-night': 'Klart',
+        'cloudy': 'Overskyet',
+        'fog': 'Tåget',
+        'hail': 'Hagl',
+        'lightning': 'Lyn',
+        'lightning-rainy': 'Lyn, regnvejr',
+        'partlycloudy': 'Delvist overskyet',
+        'pouring': 'Styrtregn',
+        'rainy': 'Regn',
+        'snowy': 'Sne',
+        'snowy-rainy': 'Slud',
+        'sunny': 'Sol',
+        'windy': 'Blæsende',
+        'windy-variant': 'Blæsende'
     },
-    'cardinalDirections': [
-      'N', 'N-NØ', 'NO', 'Ø-NØ', 'Ø', 'Ø-SØ', 'SØ', 'S-SØ',
-      'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-NV', 'NV', 'N-NV', 'N'
-    ],
-    'clear-night': 'Klart',
-    'cloudy': 'Overskyet',
-    'fog': 'Tåget',
-    'hail': 'Hagl',
-    'lightning': 'Lyn',
-    'lightning-rainy': 'Lyn, regnvejr',
-    'partlycloudy': 'Delvist overskyet',
-    'pouring': 'Styrtregn',
-    'rainy': 'Regn',
-    'snowy': 'Sne',
-    'snowy-rainy': 'Slud',
-    'sunny': 'Sol',
-    'windy': 'Blæsende',
-    'windy-variant': 'Blæsende'
-  },
-  it: {
-    'tempHi': 'Temperatura massima',
-    'tempLo': 'Temperatura notte',
-    'precip': 'Precipitazioni',
-    'feelsLike': 'Percepito come',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    it: {
+        'tempHi': 'Temperatura massima',
+        'tempLo': 'Temperatura notte',
+        'precip': 'Precipitazioni',
+        'feelsLike': 'Percepito come',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Sereno, notte',
+        'cloudy': 'Nuvoloso',
+        'fog': 'Nebbia',
+        'hail': 'Grandine',
+        'lightning': 'Tuoni',
+        'lightning-rainy': 'Tuoni e pioggia',
+        'partlycloudy': 'Parzialmente nuvoloso',
+        'pouring': 'Forti piogge',
+        'rainy': 'Pioggia',
+        'snowy': 'Neve',
+        'snowy-rainy': 'Neve e pioggia',
+        'sunny': 'Soleggiato',
+        'windy': 'Ventoso',
+        'windy-variant': 'Ventoso'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Sereno, notte',
-    'cloudy': 'Nuvoloso',
-    'fog': 'Nebbia',
-    'hail': 'Grandine',
-    'lightning': 'Tuoni',
-    'lightning-rainy': 'Tuoni e pioggia',
-    'partlycloudy': 'Parzialmente nuvoloso',
-    'pouring': 'Forti piogge',
-    'rainy': 'Pioggia',
-    'snowy': 'Neve',
-    'snowy-rainy': 'Neve e pioggia',
-    'sunny': 'Soleggiato',
-    'windy': 'Ventoso',
-    'windy-variant': 'Ventoso'
-  },
-  pt: {
-    'tempHi': 'Temperatura máxima',
-    'tempLo': 'Temperatura noite',
-    'precip': 'Precipitação',
-    'feelsLike': 'Sensação Térmica',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    pt: {
+        'tempHi': 'Temperatura máxima',
+        'tempLo': 'Temperatura noite',
+        'precip': 'Precipitação',
+        'feelsLike': 'Sensação Térmica',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
+        ],
+        'clear-night': 'Noite limpa',
+        'cloudy': 'Nublado',
+        'fog': 'Nevoeiro',
+        'hail': 'Granizo',
+        'lightning': 'Relâmpago ',
+        'lightning-rainy': 'Chuva e relâmpagos',
+        'partlycloudy': 'Parcialmente nublado',
+        'pouring': 'Chuva forte',
+        'rainy': 'Chuva',
+        'snowy': 'Neve',
+        'snowy-rainy': 'Neve e chuva',
+        'sunny': 'Ensolarado',
+        'windy': 'Ventoso',
+        'windy-variant': 'Ventoso'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW', 'N'
-    ],
-    'clear-night': 'Noite limpa',
-    'cloudy': 'Nublado',
-    'fog': 'Nevoeiro',
-    'hail': 'Granizo',
-    'lightning': 'Relâmpago ',
-    'lightning-rainy': 'Chuva e relâmpagos',
-    'partlycloudy': 'Parcialmente nublado',
-    'pouring': 'Chuva forte',
-    'rainy': 'Chuva',
-    'snowy': 'Neve',
-    'snowy-rainy': 'Neve e chuva',
-    'sunny': 'Ensolarado',
-    'windy': 'Ventoso',
-    'windy-variant': 'Ventoso'
-  },
-  el: {
-    'tempHi': 'Μέγιστη θερμοκρασία',
-    'tempLo': 'Ελάχιστη θερμοκρασία νύχτας',
-    'precip': 'Υετός',
-    'feelsLike': 'Αίσθηση σαν',
-    'units': {
-      'km/h': 'χλμ/ώρα',
-      'm/s': 'μ/δ',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'χιλ. υδράργυρου',
-      'mm': 'χιλ.',
-      'in': 'ίντσες'
+    el: {
+        'tempHi': 'Μέγιστη θερμοκρασία',
+        'tempLo': 'Ελάχιστη θερμοκρασία νύχτας',
+        'precip': 'Υετός',
+        'feelsLike': 'Αίσθηση σαν',
+        'units': {
+            'km/h': 'χλμ/ώρα',
+            'm/s': 'μ/δ',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'χιλ. υδράργυρου',
+            'mm': 'χιλ.',
+            'in': 'ίντσες'
+        },
+        'cardinalDirections': [
+            'Β', 'Β-ΒΔ', 'ΒΔ', 'Δ-ΒΔ', 'Δ', 'Δ-ΝΔ', 'ΝΔ', 'Ν-ΝΔ',
+            'Ν', 'Ν-ΒΔ', 'ΒΔ', 'Β-ΒΔ', 'Β', 'Β-ΒΔ', 'ΒΔ', 'Β-ΒΔ', 'Β'
+        ],
+        'clear-night': 'Καθαρός ουρανός, νύχτα',
+        'cloudy': 'Συννεφιά',
+        'fog': 'Ομίχλη',
+        'hail': 'Χαλάζι',
+        'lightning': 'Κεραυνοί',
+        'lightning-rainy': 'Κεραυνοί και βροχή',
+        'partlycloudy': 'Μερικώς συννεφιασμένο',
+        'pouring': 'Πολύ δυνατή βροχή',
+        'rainy': 'Βροχερό',
+        'snowy': 'Χιονισμένο',
+        'snowy-rainy': 'Χιονόνερο',
+        'sunny': 'Ηλιόλουστο',
+        'windy': 'Ανεμώδης',
+        'windy-variant': 'Ανεμώδης'
     },
-    'cardinalDirections': [
-      'Β', 'Β-ΒΔ', 'ΒΔ', 'Δ-ΒΔ', 'Δ', 'Δ-ΝΔ', 'ΝΔ', 'Ν-ΝΔ',
-      'Ν', 'Ν-ΒΔ', 'ΒΔ', 'Β-ΒΔ', 'Β', 'Β-ΒΔ', 'ΒΔ', 'Β-ΒΔ', 'Β'
-    ],
-    'clear-night': 'Καθαρός ουρανός, νύχτα',
-    'cloudy': 'Συννεφιά',
-    'fog': 'Ομίχλη',
-    'hail': 'Χαλάζι',
-    'lightning': 'Κεραυνοί',
-    'lightning-rainy': 'Κεραυνοί και βροχή',
-    'partlycloudy': 'Μερικώς συννεφιασμένο',
-    'pouring': 'Πολύ δυνατή βροχή',
-    'rainy': 'Βροχερό',
-    'snowy': 'Χιονισμένο',
-    'snowy-rainy': 'Χιονόνερο',
-    'sunny': 'Ηλιόλουστο',
-    'windy': 'Ανεμώδης',
-    'windy-variant': 'Ανεμώδης'
-  },
-  bg: {
-    'tempHi': 'Максимална температура',
-    'tempLo': 'Минимална температура',
-    'precip': 'Валежи',
-    'feelsLike': 'Усеща се като',
-    'units': {
-      'km/h': 'км/ч',
-      'm/s': 'м/с',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mmHg',
-      'mm': 'мм',
-      'in': 'in'
+    bg: {
+        'tempHi': 'Максимална температура',
+        'tempLo': 'Минимална температура',
+        'precip': 'Валежи',
+        'feelsLike': 'Усеща се като',
+        'units': {
+            'km/h': 'км/ч',
+            'm/s': 'м/с',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mmHg',
+            'mm': 'мм',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'С', 'С-СИ', 'СИ', 'И-СИ', 'И', 'И-ЮИ', 'ЮИ', 'Ю-ЮИ',
+            'Ю', 'Ю-ЮЗ', 'ЮЗ', 'З-ЮЗ', 'З', 'З-СЗ', 'СЗ', 'С-СЗ', 'С'
+        ],
+        'clear-night': 'Ясно,нощ',
+        'cloudy': 'Облачно',
+        'fog': 'Мъгла',
+        'hail': 'Градушка',
+        'lightning': 'Гръмотевици',
+        'lightning-rainy': 'Гръмотевици с дъжд',
+        'partlycloudy': 'Разкъсана облачност',
+        'pouring': 'Обилни валежи',
+        'rainy': 'Дъжд',
+        'snowy': 'Сняг',
+        'snowy-rainy': 'Сняг с дъжд',
+        'sunny': 'Ясно',
+        'windy': 'Ветровито',
+        'windy-variant': 'Ветровито'
     },
-    'cardinalDirections': [
-      'С', 'С-СИ', 'СИ', 'И-СИ', 'И', 'И-ЮИ', 'ЮИ', 'Ю-ЮИ',
-      'Ю', 'Ю-ЮЗ', 'ЮЗ', 'З-ЮЗ', 'З', 'З-СЗ', 'СЗ', 'С-СЗ', 'С'
-    ],
-    'clear-night': 'Ясно,нощ',
-    'cloudy': 'Облачно',
-    'fog': 'Мъгла',
-    'hail': 'Градушка',
-    'lightning': 'Гръмотевици',
-    'lightning-rainy': 'Гръмотевици с дъжд',
-    'partlycloudy': 'Разкъсана облачност',
-    'pouring': 'Обилни валежи',
-    'rainy': 'Дъжд',
-    'snowy': 'Сняг',
-    'snowy-rainy': 'Сняг с дъжд',
-    'sunny': 'Ясно',
-    'windy': 'Ветровито',
-    'windy-variant': 'Ветровито'
-  },
-  lt: {
-    'tempHi': 'Dieną',
-    'tempLo': 'Naktį',
-    'precip': 'Krituliai',
-    'feelsLike': 'Jaučiama',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    lt: {
+        'tempHi': 'Dieną',
+        'tempLo': 'Naktį',
+        'precip': 'Krituliai',
+        'feelsLike': 'Jaučiama',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'Š', 'Š-ŠR', 'ŠR', 'R-ŠR', 'R', 'R-PR', 'PR', 'P-PR',
+            'P', 'P-PV', 'PV', 'V-PV', 'V', 'V-ŠV', 'ŠV', 'Š-ŠV', 'Š'
+        ],
+        'clear-night': 'Giedra naktis',
+        'cloudy': 'Debesuota',
+        'fog': 'Rūkas',
+        'hail': 'Kruša',
+        'lightning': 'Perkūnija',
+        'lightning-rainy': 'Perkūnija, lietus',
+        'partlycloudy': 'Apsiniaukę',
+        'pouring': 'Liūtis',
+        'rainy': 'Lietus',
+        'snowy': 'Sniegas',
+        'snowy-rainy': 'Šlapdriba',
+        'sunny': 'Saulėta',
+        'windy': 'Vėjuota',
+        'windy-variant': 'Vėjuota'
     },
-    'cardinalDirections': [
-      'Š', 'Š-ŠR', 'ŠR', 'R-ŠR', 'R', 'R-PR', 'PR', 'P-PR',
-      'P', 'P-PV', 'PV', 'V-PV', 'V', 'V-ŠV', 'ŠV', 'Š-ŠV', 'Š'
-    ],
-    'clear-night': 'Giedra naktis',
-    'cloudy': 'Debesuota',
-    'fog': 'Rūkas',
-    'hail': 'Kruša',
-    'lightning': 'Perkūnija',
-    'lightning-rainy': 'Perkūnija, lietus',
-    'partlycloudy': 'Apsiniaukę',
-    'pouring': 'Liūtis',
-    'rainy': 'Lietus',
-    'snowy': 'Sniegas',
-    'snowy-rainy': 'Šlapdriba',
-    'sunny': 'Saulėta',
-    'windy': 'Vėjuota',
-    'windy-variant': 'Vėjuota'
-  },
-  ca: {
-    'tempHi': 'Temperatura màxima',
-    'tempLo': 'Temperatura mínima',
-    'precip': 'Precipitació',
-    'feelsLike': 'Sensació tèrmica',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    ca: {
+        'tempHi': 'Temperatura màxima',
+        'tempLo': 'Temperatura mínima',
+        'precip': 'Precipitació',
+        'feelsLike': 'Sensació tèrmica',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SO', 'SO', 'O-SO', 'O', 'O-NO', 'NO', 'N-NO', 'N'
+        ],
+        'clear-night': 'Serè',
+        'cloudy': 'Ennuvolat',
+        'fog': 'Boira',
+        'hail': 'Calamarsa',
+        'lightning': 'Tempesta elèctrica',
+        'lightning-rainy': 'Tempesta',
+        'partlycloudy': 'Parcialment ennuvolat',
+        'pouring': 'Aiguat',
+        'rainy': 'Plujós',
+        'snowy': 'Neu',
+        'snowy-rainy': 'Aiguaneu',
+        'sunny': 'Assolellat',
+        'windy': 'Ventós',
+        'windy-variant': 'Ràfegues de vent'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SO', 'SO', 'O-SO', 'O', 'O-NO', 'NO', 'N-NO', 'N'
-    ],
-    'clear-night': 'Serè',
-    'cloudy': 'Ennuvolat',
-    'fog': 'Boira',
-    'hail': 'Calamarsa',
-    'lightning': 'Tempesta elèctrica',
-    'lightning-rainy': 'Tempesta',
-    'partlycloudy': 'Parcialment ennuvolat',
-    'pouring': 'Aiguat',
-    'rainy': 'Plujós',
-    'snowy': 'Neu',
-    'snowy-rainy': 'Aiguaneu',
-    'sunny': 'Assolellat',
-    'windy': 'Ventós',
-    'windy-variant': 'Ràfegues de vent'
-  },
-  ro: {
-    'tempHi': 'Temperatură',
-    'tempLo': 'Temperatură noaptea',
-    'precip': 'Precipitații',
-    'feelsLike': 'Se simte ca',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    ro: {
+        'tempHi': 'Temperatură',
+        'tempLo': 'Temperatură noaptea',
+        'precip': 'Precipitații',
+        'feelsLike': 'Se simte ca',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
+            'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-NV', 'NV', 'N-NV', 'N'
+        ],
+        'clear-night': 'Cer senin, noapte',
+        'cloudy': 'Noros',
+        'fog': 'Ceață',
+        'hail': 'Grindină',
+        'lightning': 'Fulger',
+        'lightning-rainy': 'Fulger, ploios',
+        'partlycloudy': 'Parțial noros',
+        'pouring': 'Plouă torențial',
+        'rainy': 'Ploios',
+        'snowy': 'Ninge',
+        'snowy-rainy': 'Ninge, ploios',
+        'sunny': 'Însorit',
+        'windy': 'Vânt',
+        'windy-variant': 'Vânt'
     },
-    'cardinalDirections': [
-      'N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE',
-      'S', 'S-SV', 'SV', 'V-SV', 'V', 'V-NV', 'NV', 'N-NV', 'N'
-    ],
-    'clear-night': 'Cer senin, noapte',
-    'cloudy': 'Noros',
-    'fog': 'Ceață',
-    'hail': 'Grindină',
-    'lightning': 'Fulger',
-    'lightning-rainy': 'Fulger, ploios',
-    'partlycloudy': 'Parțial noros',
-    'pouring': 'Plouă torențial',
-    'rainy': 'Ploios',
-    'snowy': 'Ninge',
-    'snowy-rainy': 'Ninge, ploios',
-    'sunny': 'Însorit',
-    'windy': 'Vânt',
-    'windy-variant': 'Vânt'
-  },
-  uk: {
-    'tempHi': 'Температура',
-    'tempLo': 'Температура вночі',
-    'precip': 'Опади',
-    'feelsLike': 'Відчувається як',
-    'units': {
-      'km/h': 'км/год',
-      'm/s': 'м/с',
-      'mph': 'миль/год',
-      'Bft': 'Bft',
-      'hPa': 'гПа',
-      'mmHg': 'мм рт. ст.',
-      'mm': 'мм',
-      'in': 'in'
+    uk: {
+        'tempHi': 'Температура',
+        'tempLo': 'Температура вночі',
+        'precip': 'Опади',
+        'feelsLike': 'Відчувається як',
+        'units': {
+            'km/h': 'км/год',
+            'm/s': 'м/с',
+            'mph': 'миль/год',
+            'Bft': 'Bft',
+            'hPa': 'гПа',
+            'mmHg': 'мм рт. ст.',
+            'mm': 'мм',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            'Пн', 'Пн-ПнСх', 'ПнСх', 'Сх-ПнСх', 'Сх', 'Сх-ПдСх', 'ПдСх', 'Пд-ПдСх',
+            'Пд', 'Пд-ПдЗх', 'ПдЗх', 'Зх-ПдЗх', 'Зх', 'Зх-ПнЗх', 'ПнЗх', 'Пн-ПнЗх', 'Пн'
+        ],
+        'clear-night': 'Ясно, ніч',
+        'cloudy': 'Хмарно',
+        'fog': 'Туман',
+        'hail': 'Град',
+        'lightning': 'Гроза',
+        'lightning-rainy': 'Гроза з дощем',
+        'partlycloudy': 'Мінлива хмарність',
+        'pouring': 'Злива',
+        'rainy': 'Дощ',
+        'snowy': 'Сніг',
+        'snowy-rainy': 'Мокрий сніг',
+        'sunny': 'Сонячно',
+        'windy': 'Вітряно',
+        'windy-variant': 'Вітряно'
     },
-    'cardinalDirections': [
-      'Пн', 'Пн-ПнСх', 'ПнСх', 'Сх-ПнСх', 'Сх', 'Сх-ПдСх', 'ПдСх', 'Пд-ПдСх',
-      'Пд', 'Пд-ПдЗх', 'ПдЗх', 'Зх-ПдЗх', 'Зх', 'Зх-ПнЗх', 'ПнЗх', 'Пн-ПнЗх', 'Пн'
-    ],
-    'clear-night': 'Ясно, ніч',
-    'cloudy': 'Хмарно',
-    'fog': 'Туман',
-    'hail': 'Град',
-    'lightning': 'Гроза',
-    'lightning-rainy': 'Гроза з дощем',
-    'partlycloudy': 'Мінлива хмарність',
-    'pouring': 'Злива',
-    'rainy': 'Дощ',
-    'snowy': 'Сніг',
-    'snowy-rainy': 'Мокрий сніг',
-    'sunny': 'Сонячно',
-    'windy': 'Вітряно',
-    'windy-variant': 'Вітряно'
-  },
-  ko: {
-    'tempHi': '최고 기온',
-    'tempLo': '최저 기온',
-    'precip': '강수',
-    'feelsLike': '체감',
-    'units': {
-      'km/h': 'km/h',
-      'm/s': 'm/s',
-      'mph': 'mph',
-      'Bft': 'Bft',
-      'hPa': 'hPa',
-      'mmHg': 'mm Hg',
-      'mm': 'mm',
-      'in': 'in'
+    ko: {
+        'tempHi': '최고 기온',
+        'tempLo': '최저 기온',
+        'precip': '강수',
+        'feelsLike': '체감',
+        'units': {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'Bft': 'Bft',
+            'hPa': 'hPa',
+            'mmHg': 'mm Hg',
+            'mm': 'mm',
+            'in': 'in'
+        },
+        'cardinalDirections': [
+            '북', '북북동', '북동', '동북동', '동', '동남동', '남동', '남남동',
+            '남', '남남서', '남서', '서남서', '서', '서북서', '북서', '북북서', '북'
+        ],
+        'clear-night': '맑음(밤)',
+        'cloudy': '흐림',
+        'fog': '안개',
+        'hail': '우박',
+        'lightning': '번개',
+        'lightning-rainy': '번개, 뇌우',
+        'partlycloudy': '조금 흐림',
+        'pouring': '폭우',
+        'rainy': '비',
+        'snowy': '눈',
+        'snowy-rainy': '진눈깨비',
+        'sunny': '맑음',
+        'windy': '바람',
+        'windy-variant': '강풍'
     },
-    'cardinalDirections': [
-      '북', '북북동', '북동', '동북동', '동', '동남동', '남동', '남남동',
-      '남', '남남서', '남서', '서남서', '서', '서북서', '북서', '북북서', '북'
-    ],
-    'clear-night': '맑음(밤)',
-    'cloudy': '흐림',
-    'fog': '안개',
-    'hail': '우박',
-    'lightning': '번개',
-    'lightning-rainy': '번개, 뇌우',
-    'partlycloudy': '조금 흐림',
-    'pouring': '폭우',
-    'rainy': '비',
-    'snowy': '눈',
-    'snowy-rainy': '진눈깨비',
-    'sunny': '맑음',
-    'windy': '바람',
-    'windy-variant': '강풍'
-  },
 };
 
 const cardinalDirectionsIcon = [
-  'arrow-down', 'arrow-bottom-left', 'arrow-left',
-  'arrow-top-left', 'arrow-up', 'arrow-top-right',
-  'arrow-right', 'arrow-bottom-right', 'arrow-down'
+    'arrow-down', 'arrow-bottom-left', 'arrow-left',
+    'arrow-top-left', 'arrow-up', 'arrow-top-right',
+    'arrow-right', 'arrow-bottom-right', 'arrow-down'
 ];
-
 const weatherIcons = {
-  'clear-night': 'hass:weather-night',
-  'cloudy': 'hass:weather-cloudy',
-  'exceptional': 'mdi:alert-circle-outline',
-  'fog': 'hass:weather-fog',
-  'hail': 'hass:weather-hail',
-  'lightning': 'hass:weather-lightning',
-  'lightning-rainy': 'hass:weather-lightning-rainy',
-  'partlycloudy': 'hass:weather-partly-cloudy',
-  'pouring': 'hass:weather-pouring',
-  'rainy': 'hass:weather-rainy',
-  'snowy': 'hass:weather-snowy',
-  'snowy-rainy': 'hass:weather-snowy-rainy',
-  'sunny': 'hass:weather-sunny',
-  'windy': 'hass:weather-windy',
-  'windy-variant': 'hass:weather-windy-variant'
+    'clear-night': 'hass:weather-night',
+    'cloudy': 'hass:weather-cloudy',
+    'exceptional': 'mdi:alert-circle-outline',
+    'fog': 'hass:weather-fog',
+    'hail': 'hass:weather-hail',
+    'lightning': 'hass:weather-lightning',
+    'lightning-rainy': 'hass:weather-lightning-rainy',
+    'partlycloudy': 'hass:weather-partly-cloudy',
+    'pouring': 'hass:weather-pouring',
+    'rainy': 'hass:weather-rainy',
+    'snowy': 'hass:weather-snowy',
+    'snowy-rainy': 'hass:weather-snowy-rainy',
+    'sunny': 'hass:weather-sunny',
+    'windy': 'hass:weather-windy',
+    'windy-variant': 'hass:weather-windy-variant'
 };
-
 const weatherIconsDay = {
-  'clear-night': 'clear-night',
-  'cloudy': 'cloudy',
-  'exceptional': 'exceptional',
-  'fog': 'fog',
-  'hail': 'hail',
-  'lightning': 'lightning',
-  'lightning-rainy': 'lightning-rain',
-  'partlycloudy': 'partlycloudy-day',
-  'pouring': 'pouring',
-  'rainy': 'rain',
-  'snowy': 'snow',
-  'snowy-rainy': 'sleet',
-  'sunny': 'clear-day',
-  'windy': 'wind',
-  'windy-variant': 'wind',
+    'clear-night': 'clear-night',
+    'cloudy': 'cloudy',
+    'exceptional': 'exceptional',
+    'fog': 'fog',
+    'hail': 'hail',
+    'lightning': 'lightning',
+    'lightning-rainy': 'lightning-rain',
+    'partlycloudy': 'partlycloudy-day',
+    'pouring': 'pouring',
+    'rainy': 'rain',
+    'snowy': 'snow',
+    'snowy-rainy': 'sleet',
+    'sunny': 'clear-day',
+    'windy': 'wind',
+    'windy-variant': 'wind',
 };
-
 const weatherIconsNight = {
-  ...weatherIconsDay,
-  'sunny': 'clear-night',
-  'partlycloudy': 'partlycloudy-night',
+    ...weatherIconsDay,
+    'sunny': 'clear-night',
+    'partlycloudy': 'partlycloudy-night',
 };
-
 const WeatherEntityFeature = {
-  FORECAST_DAILY: 1,
-  FORECAST_HOURLY: 2};
+    FORECAST_DAILY: 1,
+    FORECAST_HOURLY: 2};
 
 /**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$1=window,e$2=t$1.ShadowRoot&&(void 0===t$1.ShadyCSS||t$1.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s$3=Symbol(),n$4=new WeakMap;let o$3 = class o{constructor(t,e,n){if(this._$cssResult$=true,n!==s$3)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e;}get styleSheet(){let t=this.o;const s=this.t;if(e$2&&void 0===t){const e=void 0!==s&&1===s.length;e&&(t=n$4.get(s)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&n$4.set(s,t));}return t}toString(){return this.cssText}};const r$2=t=>new o$3("string"==typeof t?t:t+"",void 0,s$3),S$1=(s,n)=>{e$2?s.adoptedStyleSheets=n.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet)):n.forEach((e=>{const n=document.createElement("style"),o=t$1.litNonce;void 0!==o&&n.setAttribute("nonce",o),n.textContent=e.cssText,s.appendChild(n);}));},c$1=e$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return r$2(e)})(t):t;
+const t$1=globalThis,e$2=t$1.ShadowRoot&&(void 0===t$1.ShadyCSS||t$1.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s$2=Symbol(),o$3=new WeakMap;let n$2 = class n{constructor(t,e,o){if(this._$cssResult$=true,o!==s$2)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e;}get styleSheet(){let t=this.o;const s=this.t;if(e$2&&void 0===t){const e=void 0!==s&&1===s.length;e&&(t=o$3.get(s)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&o$3.set(s,t));}return t}toString(){return this.cssText}};const r$2=t=>new n$2("string"==typeof t?t:t+"",void 0,s$2),S$1=(s,o)=>{if(e$2)s.adoptedStyleSheets=o.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const e of o){const o=document.createElement("style"),n=t$1.litNonce;void 0!==n&&o.setAttribute("nonce",n),o.textContent=e.cssText,s.appendChild(o);}},c$2=e$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return r$2(e)})(t):t;
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var s$2;const e$1=window,r$1=e$1.trustedTypes,h$1=r$1?r$1.emptyScript:"",o$2=e$1.reactiveElementPolyfillSupport,n$3={toAttribute(t,i){switch(i){case Boolean:t=t?h$1:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t);}return t},fromAttribute(t,i){let s=t;switch(i){case Boolean:s=null!==t;break;case Number:s=null===t?null:Number(t);break;case Object:case Array:try{s=JSON.parse(t);}catch(t){s=null;}}return s}},a$1=(t,i)=>i!==t&&(i==i||t==t),l$2={attribute:true,type:String,converter:n$3,reflect:false,hasChanged:a$1},d$1="finalized";let u$1 = class u extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=false,this.hasUpdated=false,this._$El=null,this._$Eu();}static addInitializer(t){var i;this.finalize(),(null!==(i=this.h)&&void 0!==i?i:this.h=[]).push(t);}static get observedAttributes(){this.finalize();const t=[];return this.elementProperties.forEach(((i,s)=>{const e=this._$Ep(s,i);void 0!==e&&(this._$Ev.set(e,s),t.push(e));})),t}static createProperty(t,i=l$2){if(i.state&&(i.attribute=false),this.finalize(),this.elementProperties.set(t,i),!i.noAccessor&&!this.prototype.hasOwnProperty(t)){const s="symbol"==typeof t?Symbol():"__"+t,e=this.getPropertyDescriptor(t,s,i);void 0!==e&&Object.defineProperty(this.prototype,t,e);}}static getPropertyDescriptor(t,i,s){return {get(){return this[i]},set(e){const r=this[t];this[i]=e,this.requestUpdate(t,r,s);},configurable:true,enumerable:true}}static getPropertyOptions(t){return this.elementProperties.get(t)||l$2}static finalize(){if(this.hasOwnProperty(d$1))return  false;this[d$1]=true;const t=Object.getPrototypeOf(this);if(t.finalize(),void 0!==t.h&&(this.h=[...t.h]),this.elementProperties=new Map(t.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){const t=this.properties,i=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(const s of i)this.createProperty(s,t[s]);}return this.elementStyles=this.finalizeStyles(this.styles),true}static finalizeStyles(i){const s=[];if(Array.isArray(i)){const e=new Set(i.flat(1/0).reverse());for(const i of e)s.unshift(c$1(i));}else void 0!==i&&s.push(c$1(i));return s}static _$Ep(t,i){const s=i.attribute;return  false===s?void 0:"string"==typeof s?s:"string"==typeof t?t.toLowerCase():void 0}_$Eu(){var t;this._$E_=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$Eg(),this.requestUpdate(),null===(t=this.constructor.h)||void 0===t||t.forEach((t=>t(this)));}addController(t){var i,s;(null!==(i=this._$ES)&&void 0!==i?i:this._$ES=[]).push(t),void 0!==this.renderRoot&&this.isConnected&&(null===(s=t.hostConnected)||void 0===s||s.call(t));}removeController(t){var i;null===(i=this._$ES)||void 0===i||i.splice(this._$ES.indexOf(t)>>>0,1);}_$Eg(){this.constructor.elementProperties.forEach(((t,i)=>{this.hasOwnProperty(i)&&(this._$Ei.set(i,this[i]),delete this[i]);}));}createRenderRoot(){var t;const s=null!==(t=this.shadowRoot)&&void 0!==t?t:this.attachShadow(this.constructor.shadowRootOptions);return S$1(s,this.constructor.elementStyles),s}connectedCallback(){var t;void 0===this.renderRoot&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(true),null===(t=this._$ES)||void 0===t||t.forEach((t=>{var i;return null===(i=t.hostConnected)||void 0===i?void 0:i.call(t)}));}enableUpdating(t){}disconnectedCallback(){var t;null===(t=this._$ES)||void 0===t||t.forEach((t=>{var i;return null===(i=t.hostDisconnected)||void 0===i?void 0:i.call(t)}));}attributeChangedCallback(t,i,s){this._$AK(t,s);}_$EO(t,i,s=l$2){var e;const r=this.constructor._$Ep(t,s);if(void 0!==r&&true===s.reflect){const h=(void 0!==(null===(e=s.converter)||void 0===e?void 0:e.toAttribute)?s.converter:n$3).toAttribute(i,s.type);this._$El=t,null==h?this.removeAttribute(r):this.setAttribute(r,h),this._$El=null;}}_$AK(t,i){var s;const e=this.constructor,r=e._$Ev.get(t);if(void 0!==r&&this._$El!==r){const t=e.getPropertyOptions(r),h="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==(null===(s=t.converter)||void 0===s?void 0:s.fromAttribute)?t.converter:n$3;this._$El=r,this[r]=h.fromAttribute(i,t.type),this._$El=null;}}requestUpdate(t,i,s){let e=true;void 0!==t&&(((s=s||this.constructor.getPropertyOptions(t)).hasChanged||a$1)(this[t],i)?(this._$AL.has(t)||this._$AL.set(t,i),true===s.reflect&&this._$El!==t&&(void 0===this._$EC&&(this._$EC=new Map),this._$EC.set(t,s))):e=false),!this.isUpdatePending&&e&&(this._$E_=this._$Ej());}async _$Ej(){this.isUpdatePending=true;try{await this._$E_;}catch(t){Promise.reject(t);}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var t;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach(((t,i)=>this[i]=t)),this._$Ei=void 0);let i=false;const s=this._$AL;try{i=this.shouldUpdate(s),i?(this.willUpdate(s),null===(t=this._$ES)||void 0===t||t.forEach((t=>{var i;return null===(i=t.hostUpdate)||void 0===i?void 0:i.call(t)})),this.update(s)):this._$Ek();}catch(t){throw i=false,this._$Ek(),t}i&&this._$AE(s);}willUpdate(t){}_$AE(t){var i;null===(i=this._$ES)||void 0===i||i.forEach((t=>{var i;return null===(i=t.hostUpdated)||void 0===i?void 0:i.call(t)})),this.hasUpdated||(this.hasUpdated=true,this.firstUpdated(t)),this.updated(t);}_$Ek(){this._$AL=new Map,this.isUpdatePending=false;}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(t){return  true}update(t){ void 0!==this._$EC&&(this._$EC.forEach(((t,i)=>this._$EO(i,this[i],t))),this._$EC=void 0),this._$Ek();}updated(t){}firstUpdated(t){}};u$1[d$1]=true,u$1.elementProperties=new Map,u$1.elementStyles=[],u$1.shadowRootOptions={mode:"open"},null==o$2||o$2({ReactiveElement:u$1}),(null!==(s$2=e$1.reactiveElementVersions)&&void 0!==s$2?s$2:e$1.reactiveElementVersions=[]).push("1.6.3");
+ */const{is:i$2,defineProperty:e$1,getOwnPropertyDescriptor:h$1,getOwnPropertyNames:r$1,getOwnPropertySymbols:o$2,getPrototypeOf:n$1}=Object,a$1=globalThis,c$1=a$1.trustedTypes,l$1=c$1?c$1.emptyScript:"",p$1=a$1.reactiveElementPolyfillSupport,d$1=(t,s)=>t,u$1={toAttribute(t,s){switch(s){case Boolean:t=t?l$1:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t);}return t},fromAttribute(t,s){let i=t;switch(s){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t);}catch(t){i=null;}}return i}},f$1=(t,s)=>!i$2(t,s),b$1={attribute:true,type:String,converter:u$1,reflect:false,useDefault:false,hasChanged:f$1};Symbol.metadata??=Symbol("metadata"),a$1.litPropertyMetadata??=new WeakMap;let y$1 = class y extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t);}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,s=b$1){if(s.state&&(s.attribute=false),this._$Ei(),this.prototype.hasOwnProperty(t)&&((s=Object.create(s)).wrapped=true),this.elementProperties.set(t,s),!s.noAccessor){const i=Symbol(),h=this.getPropertyDescriptor(t,i,s);void 0!==h&&e$1(this.prototype,t,h);}}static getPropertyDescriptor(t,s,i){const{get:e,set:r}=h$1(this.prototype,t)??{get(){return this[s]},set(t){this[s]=t;}};return {get:e,set(s){const h=e?.call(this);r?.call(this,s),this.requestUpdate(t,h,i);},configurable:true,enumerable:true}}static getPropertyOptions(t){return this.elementProperties.get(t)??b$1}static _$Ei(){if(this.hasOwnProperty(d$1("elementProperties")))return;const t=n$1(this);t.finalize(),void 0!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties);}static finalize(){if(this.hasOwnProperty(d$1("finalized")))return;if(this.finalized=true,this._$Ei(),this.hasOwnProperty(d$1("properties"))){const t=this.properties,s=[...r$1(t),...o$2(t)];for(const i of s)this.createProperty(i,t[i]);}const t=this[Symbol.metadata];if(null!==t){const s=litPropertyMetadata.get(t);if(void 0!==s)for(const[t,i]of s)this.elementProperties.set(t,i);}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);void 0!==i&&this._$Eh.set(i,t);}this.elementStyles=this.finalizeStyles(this.styles);}static finalizeStyles(s){const i=[];if(Array.isArray(s)){const e=new Set(s.flat(1/0).reverse());for(const s of e)i.unshift(c$2(s));}else void 0!==s&&i.push(c$2(s));return i}static _$Eu(t,s){const i=s.attribute;return  false===i?void 0:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=false,this.hasUpdated=false,this._$Em=null,this._$Ev();}_$Ev(){this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(t=>t(this));}addController(t){(this._$EO??=new Set).add(t),void 0!==this.renderRoot&&this.isConnected&&t.hostConnected?.();}removeController(t){this._$EO?.delete(t);}_$E_(){const t=new Map,s=this.constructor.elementProperties;for(const i of s.keys())this.hasOwnProperty(i)&&(t.set(i,this[i]),delete this[i]);t.size>0&&(this._$Ep=t);}createRenderRoot(){const t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return S$1(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(true),this._$EO?.forEach(t=>t.hostConnected?.());}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach(t=>t.hostDisconnected?.());}attributeChangedCallback(t,s,i){this._$AK(t,i);}_$ET(t,s){const i=this.constructor.elementProperties.get(t),e=this.constructor._$Eu(t,i);if(void 0!==e&&true===i.reflect){const h=(void 0!==i.converter?.toAttribute?i.converter:u$1).toAttribute(s,i.type);this._$Em=t,null==h?this.removeAttribute(e):this.setAttribute(e,h),this._$Em=null;}}_$AK(t,s){const i=this.constructor,e=i._$Eh.get(t);if(void 0!==e&&this._$Em!==e){const t=i.getPropertyOptions(e),h="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==t.converter?.fromAttribute?t.converter:u$1;this._$Em=e;const r=h.fromAttribute(s,t.type);this[e]=r??this._$Ej?.get(e)??r,this._$Em=null;}}requestUpdate(t,s,i,e=false,h){if(void 0!==t){const r=this.constructor;if(false===e&&(h=this[t]),i??=r.getPropertyOptions(t),!((i.hasChanged??f$1)(h,s)||i.useDefault&&i.reflect&&h===this._$Ej?.get(t)&&!this.hasAttribute(r._$Eu(t,i))))return;this.C(t,s,i);} false===this.isUpdatePending&&(this._$ES=this._$EP());}C(t,s,{useDefault:i,reflect:e,wrapped:h},r){i&&!(this._$Ej??=new Map).has(t)&&(this._$Ej.set(t,r??s??this[t]),true!==h||void 0!==r)||(this._$AL.has(t)||(this.hasUpdated||i||(s=void 0),this._$AL.set(t,s)),true===e&&this._$Em!==t&&(this._$Eq??=new Set).add(t));}async _$EP(){this.isUpdatePending=true;try{await this._$ES;}catch(t){Promise.reject(t);}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(const[t,s]of this._$Ep)this[t]=s;this._$Ep=void 0;}const t=this.constructor.elementProperties;if(t.size>0)for(const[s,i]of t){const{wrapped:t}=i,e=this[s];true!==t||this._$AL.has(s)||void 0===e||this.C(s,void 0,i,e);}}let t=false;const s=this._$AL;try{t=this.shouldUpdate(s),t?(this.willUpdate(s),this._$EO?.forEach(t=>t.hostUpdate?.()),this.update(s)):this._$EM();}catch(s){throw t=false,this._$EM(),s}t&&this._$AE(s);}willUpdate(t){}_$AE(t){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=true,this.firstUpdated(t)),this.updated(t);}_$EM(){this._$AL=new Map,this.isUpdatePending=false;}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return  true}update(t){this._$Eq&&=this._$Eq.forEach(t=>this._$ET(t,this[t])),this._$EM();}updated(t){}firstUpdated(t){}};y$1.elementStyles=[],y$1.shadowRootOptions={mode:"open"},y$1[d$1("elementProperties")]=new Map,y$1[d$1("finalized")]=new Map,p$1?.({ReactiveElement:y$1}),(a$1.reactiveElementVersions??=[]).push("2.1.2");
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var t;const i=window,s$1=i.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{createHTML:t=>t}):void 0,o$1="$lit$",n$2=`lit$${(Math.random()+"").slice(9)}$`,l$1="?"+n$2,h=`<${l$1}>`,r=document,u=()=>r.createComment(""),d=t=>null===t||"object"!=typeof t&&"function"!=typeof t,c=Array.isArray,v=t=>c(t)||"function"==typeof(null==t?void 0:t[Symbol.iterator]),a="[ \t\n\f\r]",f=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,_=/-->/g,m=/>/g,p=RegExp(`>|${a}(?:([^\\s"'>=/]+)(${a}*=${a}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),g=/'/g,$=/"/g,y=/^(?:script|style|textarea|title)$/i,w=t=>(i,...s)=>({_$litType$:t,strings:i,values:s}),x=w(1),T=Symbol.for("lit-noChange"),A=Symbol.for("lit-nothing"),E=new WeakMap,C=r.createTreeWalker(r,129,null,false);function P(t,i){if(!Array.isArray(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==e?e.createHTML(i):i}const V=(t,i)=>{const s=t.length-1,e=[];let l,r=2===i?"<svg>":"",u=f;for(let i=0;i<s;i++){const s=t[i];let d,c,v=-1,a=0;for(;a<s.length&&(u.lastIndex=a,c=u.exec(s),null!==c);)a=u.lastIndex,u===f?"!--"===c[1]?u=_:void 0!==c[1]?u=m:void 0!==c[2]?(y.test(c[2])&&(l=RegExp("</"+c[2],"g")),u=p):void 0!==c[3]&&(u=p):u===p?">"===c[0]?(u=null!=l?l:f,v=-1):void 0===c[1]?v=-2:(v=u.lastIndex-c[2].length,d=c[1],u=void 0===c[3]?p:'"'===c[3]?$:g):u===$||u===g?u=p:u===_||u===m?u=f:(u=p,l=void 0);const w=u===p&&t[i+1].startsWith("/>")?" ":"";r+=u===f?s+h:v>=0?(e.push(d),s.slice(0,v)+o$1+s.slice(v)+n$2+w):s+n$2+(-2===v?(e.push(void 0),i):w);}return [P(t,r+(t[s]||"<?>")+(2===i?"</svg>":"")),e]};class N{constructor({strings:t,_$litType$:i},e){let h;this.parts=[];let r=0,d=0;const c=t.length-1,v=this.parts,[a,f]=V(t,i);if(this.el=N.createElement(a,e),C.currentNode=this.el.content,2===i){const t=this.el.content,i=t.firstChild;i.remove(),t.append(...i.childNodes);}for(;null!==(h=C.nextNode())&&v.length<c;){if(1===h.nodeType){if(h.hasAttributes()){const t=[];for(const i of h.getAttributeNames())if(i.endsWith(o$1)||i.startsWith(n$2)){const s=f[d++];if(t.push(i),void 0!==s){const t=h.getAttribute(s.toLowerCase()+o$1).split(n$2),i=/([.?@])?(.*)/.exec(s);v.push({type:1,index:r,name:i[2],strings:t,ctor:"."===i[1]?H:"?"===i[1]?L:"@"===i[1]?z:k});}else v.push({type:6,index:r});}for(const i of t)h.removeAttribute(i);}if(y.test(h.tagName)){const t=h.textContent.split(n$2),i=t.length-1;if(i>0){h.textContent=s$1?s$1.emptyScript:"";for(let s=0;s<i;s++)h.append(t[s],u()),C.nextNode(),v.push({type:2,index:++r});h.append(t[i],u());}}}else if(8===h.nodeType)if(h.data===l$1)v.push({type:2,index:r});else {let t=-1;for(;-1!==(t=h.data.indexOf(n$2,t+1));)v.push({type:7,index:r}),t+=n$2.length-1;}r++;}}static createElement(t,i){const s=r.createElement("template");return s.innerHTML=t,s}}function S(t,i,s=t,e){var o,n,l,h;if(i===T)return i;let r=void 0!==e?null===(o=s._$Co)||void 0===o?void 0:o[e]:s._$Cl;const u=d(i)?void 0:i._$litDirective$;return (null==r?void 0:r.constructor)!==u&&(null===(n=null==r?void 0:r._$AO)||void 0===n||n.call(r,false),void 0===u?r=void 0:(r=new u(t),r._$AT(t,s,e)),void 0!==e?(null!==(l=(h=s)._$Co)&&void 0!==l?l:h._$Co=[])[e]=r:s._$Cl=r),void 0!==r&&(i=S(t,r._$AS(t,i.values),r,e)),i}class M{constructor(t,i){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){var i;const{el:{content:s},parts:e}=this._$AD,o=(null!==(i=null==t?void 0:t.creationScope)&&void 0!==i?i:r).importNode(s,true);C.currentNode=o;let n=C.nextNode(),l=0,h=0,u=e[0];for(;void 0!==u;){if(l===u.index){let i;2===u.type?i=new R(n,n.nextSibling,this,t):1===u.type?i=new u.ctor(n,u.name,u.strings,this,t):6===u.type&&(i=new Z(n,this,t)),this._$AV.push(i),u=e[++h];}l!==(null==u?void 0:u.index)&&(n=C.nextNode(),l++);}return C.currentNode=r,o}v(t){let i=0;for(const s of this._$AV) void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class R{constructor(t,i,s,e){var o;this.type=2,this._$AH=A,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cp=null===(o=null==e?void 0:e.isConnected)||void 0===o||o;}get _$AU(){var t,i;return null!==(i=null===(t=this._$AM)||void 0===t?void 0:t._$AU)&&void 0!==i?i:this._$Cp}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===(null==t?void 0:t.nodeType)&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=S(this,t,i),d(t)?t===A||null==t||""===t?(this._$AH!==A&&this._$AR(),this._$AH=A):t!==this._$AH&&t!==T&&this._(t):void 0!==t._$litType$?this.g(t):void 0!==t.nodeType?this.$(t):v(t)?this.T(t):this._(t);}k(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}$(t){this._$AH!==t&&(this._$AR(),this._$AH=this.k(t));}_(t){this._$AH!==A&&d(this._$AH)?this._$AA.nextSibling.data=t:this.$(r.createTextNode(t)),this._$AH=t;}g(t){var i;const{values:s,_$litType$:e}=t,o="number"==typeof e?this._$AC(t):(void 0===e.el&&(e.el=N.createElement(P(e.h,e.h[0]),this.options)),e);if((null===(i=this._$AH)||void 0===i?void 0:i._$AD)===o)this._$AH.v(s);else {const t=new M(o,this),i=t.u(this.options);t.v(s),this.$(i),this._$AH=t;}}_$AC(t){let i=E.get(t.strings);return void 0===i&&E.set(t.strings,i=new N(t)),i}T(t){c(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const o of t)e===i.length?i.push(s=new R(this.k(u()),this.k(u()),this,this.options)):s=i[e],s._$AI(o),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,i){var s;for(null===(s=this._$AP)||void 0===s||s.call(this,false,true,i);t&&t!==this._$AB;){const i=t.nextSibling;t.remove(),t=i;}}setConnected(t){var i;void 0===this._$AM&&(this._$Cp=t,null===(i=this._$AP)||void 0===i||i.call(this,t));}}class k{constructor(t,i,s,e,o){this.type=1,this._$AH=A,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=o,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=A;}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,i=this,s,e){const o=this.strings;let n=false;if(void 0===o)t=S(this,t,i,0),n=!d(t)||t!==this._$AH&&t!==T,n&&(this._$AH=t);else {const e=t;let l,h;for(t=o[0],l=0;l<o.length-1;l++)h=S(this,e[s+l],i,l),h===T&&(h=this._$AH[l]),n||(n=!d(h)||h!==this._$AH[l]),h===A?t=A:t!==A&&(t+=(null!=h?h:"")+o[l+1]),this._$AH[l]=h;}n&&!e&&this.j(t);}j(t){t===A?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=t?t:"");}}class H extends k{constructor(){super(...arguments),this.type=3;}j(t){this.element[this.name]=t===A?void 0:t;}}const I=s$1?s$1.emptyScript:"";class L extends k{constructor(){super(...arguments),this.type=4;}j(t){t&&t!==A?this.element.setAttribute(this.name,I):this.element.removeAttribute(this.name);}}class z extends k{constructor(t,i,s,e,o){super(t,i,s,e,o),this.type=5;}_$AI(t,i=this){var s;if((t=null!==(s=S(this,t,i,0))&&void 0!==s?s:A)===T)return;const e=this._$AH,o=t===A&&e!==A||t.capture!==e.capture||t.once!==e.once||t.passive!==e.passive,n=t!==A&&(e===A||o);o&&this.element.removeEventListener(this.name,this,e),n&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){var i,s;"function"==typeof this._$AH?this._$AH.call(null!==(s=null===(i=this.options)||void 0===i?void 0:i.host)&&void 0!==s?s:this.element,t):this._$AH.handleEvent(t);}}class Z{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){S(this,t);}}const B=i.litHtmlPolyfillSupport;null==B||B(N,R),(null!==(t=i.litHtmlVersions)&&void 0!==t?t:i.litHtmlVersions=[]).push("2.8.0");const D=(t,i,s)=>{var e,o;const n=null!==(e=null==s?void 0:s.renderBefore)&&void 0!==e?e:i;let l=n._$litPart$;if(void 0===l){const t=null!==(o=null==s?void 0:s.renderBefore)&&void 0!==o?o:null;n._$litPart$=l=new R(i.insertBefore(u(),t),t,void 0,null!=s?s:{});}return l._$AI(t),l};
+const t=globalThis,i$1=t=>t,s$1=t.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{createHTML:t=>t}):void 0,h="$lit$",o$1=`lit$${Math.random().toFixed(9).slice(2)}$`,n="?"+o$1,r=`<${n}>`,l=document,c=()=>l.createComment(""),a=t=>null===t||"object"!=typeof t&&"function"!=typeof t,u=Array.isArray,d=t=>u(t)||"function"==typeof t?.[Symbol.iterator],f="[ \t\n\f\r]",v=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,_=/-->/g,m=/>/g,p=RegExp(`>|${f}(?:([^\\s"'>=/]+)(${f}*=${f}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),g=/'/g,$=/"/g,y=/^(?:script|style|textarea|title)$/i,x=t=>(i,...s)=>({_$litType$:t,strings:i,values:s}),b=x(1),E=Symbol.for("lit-noChange"),A=Symbol.for("lit-nothing"),C=new WeakMap,P=l.createTreeWalker(l,129);function V(t,i){if(!u(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==e?e.createHTML(i):i}const N=(t,i)=>{const s=t.length-1,e=[];let n,l=2===i?"<svg>":3===i?"<math>":"",c=v;for(let i=0;i<s;i++){const s=t[i];let a,u,d=-1,f=0;for(;f<s.length&&(c.lastIndex=f,u=c.exec(s),null!==u);)f=c.lastIndex,c===v?"!--"===u[1]?c=_:void 0!==u[1]?c=m:void 0!==u[2]?(y.test(u[2])&&(n=RegExp("</"+u[2],"g")),c=p):void 0!==u[3]&&(c=p):c===p?">"===u[0]?(c=n??v,d=-1):void 0===u[1]?d=-2:(d=c.lastIndex-u[2].length,a=u[1],c=void 0===u[3]?p:'"'===u[3]?$:g):c===$||c===g?c=p:c===_||c===m?c=v:(c=p,n=void 0);const x=c===p&&t[i+1].startsWith("/>")?" ":"";l+=c===v?s+r:d>=0?(e.push(a),s.slice(0,d)+h+s.slice(d)+o$1+x):s+o$1+(-2===d?i:x);}return [V(t,l+(t[s]||"<?>")+(2===i?"</svg>":3===i?"</math>":"")),e]};class S{constructor({strings:t,_$litType$:i},e){let r;this.parts=[];let l=0,a=0;const u=t.length-1,d=this.parts,[f,v]=N(t,i);if(this.el=S.createElement(f,e),P.currentNode=this.el.content,2===i||3===i){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes);}for(;null!==(r=P.nextNode())&&d.length<u;){if(1===r.nodeType){if(r.hasAttributes())for(const t of r.getAttributeNames())if(t.endsWith(h)){const i=v[a++],s=r.getAttribute(t).split(o$1),e=/([.?@])?(.*)/.exec(i);d.push({type:1,index:l,name:e[2],strings:s,ctor:"."===e[1]?I:"?"===e[1]?L:"@"===e[1]?z:H}),r.removeAttribute(t);}else t.startsWith(o$1)&&(d.push({type:6,index:l}),r.removeAttribute(t));if(y.test(r.tagName)){const t=r.textContent.split(o$1),i=t.length-1;if(i>0){r.textContent=s$1?s$1.emptyScript:"";for(let s=0;s<i;s++)r.append(t[s],c()),P.nextNode(),d.push({type:2,index:++l});r.append(t[i],c());}}}else if(8===r.nodeType)if(r.data===n)d.push({type:2,index:l});else {let t=-1;for(;-1!==(t=r.data.indexOf(o$1,t+1));)d.push({type:7,index:l}),t+=o$1.length-1;}l++;}}static createElement(t,i){const s=l.createElement("template");return s.innerHTML=t,s}}function M(t,i,s=t,e){if(i===E)return i;let h=void 0!==e?s._$Co?.[e]:s._$Cl;const o=a(i)?void 0:i._$litDirective$;return h?.constructor!==o&&(h?._$AO?.(false),void 0===o?h=void 0:(h=new o(t),h._$AT(t,s,e)),void 0!==e?(s._$Co??=[])[e]=h:s._$Cl=h),void 0!==h&&(i=M(t,h._$AS(t,i.values),h,e)),i}class R{constructor(t,i){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:i},parts:s}=this._$AD,e=(t?.creationScope??l).importNode(i,true);P.currentNode=e;let h=P.nextNode(),o=0,n=0,r=s[0];for(;void 0!==r;){if(o===r.index){let i;2===r.type?i=new k(h,h.nextSibling,this,t):1===r.type?i=new r.ctor(h,r.name,r.strings,this,t):6===r.type&&(i=new Z(h,this,t)),this._$AV.push(i),r=s[++n];}o!==r?.index&&(h=P.nextNode(),o++);}return P.currentNode=l,e}p(t){let i=0;for(const s of this._$AV) void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class k{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,i,s,e){this.type=2,this._$AH=A,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cv=e?.isConnected??true;}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===t?.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=M(this,t,i),a(t)?t===A||null==t||""===t?(this._$AH!==A&&this._$AR(),this._$AH=A):t!==this._$AH&&t!==E&&this._(t):void 0!==t._$litType$?this.$(t):void 0!==t.nodeType?this.T(t):d(t)?this.k(t):this._(t);}O(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.O(t));}_(t){this._$AH!==A&&a(this._$AH)?this._$AA.nextSibling.data=t:this.T(l.createTextNode(t)),this._$AH=t;}$(t){const{values:i,_$litType$:s}=t,e="number"==typeof s?this._$AC(t):(void 0===s.el&&(s.el=S.createElement(V(s.h,s.h[0]),this.options)),s);if(this._$AH?._$AD===e)this._$AH.p(i);else {const t=new R(e,this),s=t.u(this.options);t.p(i),this.T(s),this._$AH=t;}}_$AC(t){let i=C.get(t.strings);return void 0===i&&C.set(t.strings,i=new S(t)),i}k(t){u(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const h of t)e===i.length?i.push(s=new k(this.O(c()),this.O(c()),this,this.options)):s=i[e],s._$AI(h),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,s){for(this._$AP?.(false,true,s);t!==this._$AB;){const s=i$1(t).nextSibling;i$1(t).remove(),t=s;}}setConnected(t){ void 0===this._$AM&&(this._$Cv=t,this._$AP?.(t));}}class H{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,i,s,e,h){this.type=1,this._$AH=A,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=h,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=A;}_$AI(t,i=this,s,e){const h=this.strings;let o=false;if(void 0===h)t=M(this,t,i,0),o=!a(t)||t!==this._$AH&&t!==E,o&&(this._$AH=t);else {const e=t;let n,r;for(t=h[0],n=0;n<h.length-1;n++)r=M(this,e[s+n],i,n),r===E&&(r=this._$AH[n]),o||=!a(r)||r!==this._$AH[n],r===A?t=A:t!==A&&(t+=(r??"")+h[n+1]),this._$AH[n]=r;}o&&!e&&this.j(t);}j(t){t===A?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"");}}class I extends H{constructor(){super(...arguments),this.type=3;}j(t){this.element[this.name]=t===A?void 0:t;}}class L extends H{constructor(){super(...arguments),this.type=4;}j(t){this.element.toggleAttribute(this.name,!!t&&t!==A);}}class z extends H{constructor(t,i,s,e,h){super(t,i,s,e,h),this.type=5;}_$AI(t,i=this){if((t=M(this,t,i,0)??A)===E)return;const s=this._$AH,e=t===A&&s!==A||t.capture!==s.capture||t.once!==s.once||t.passive!==s.passive,h=t!==A&&(s===A||e);e&&this.element.removeEventListener(this.name,this,s),h&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){"function"==typeof this._$AH?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t);}}class Z{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){M(this,t);}}const B=t.litHtmlPolyfillSupport;B?.(S,k),(t.litHtmlVersions??=[]).push("3.3.3");const D=(t,i,s)=>{const e=s?.renderBefore??i;let h=e._$litPart$;if(void 0===h){const t=s?.renderBefore??null;e._$litPart$=h=new k(i.insertBefore(c(),t),t,void 0,s??{});}return h._$AI(t),h};
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var l,o;class s extends u$1{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0;}createRenderRoot(){var t,e;const i=super.createRenderRoot();return null!==(t=(e=this.renderOptions).renderBefore)&&void 0!==t||(e.renderBefore=i.firstChild),i}update(t){const i=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=D(i,this.renderRoot,this.renderOptions);}connectedCallback(){var t;super.connectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(true);}disconnectedCallback(){var t;super.disconnectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(false);}render(){return T}}s.finalized=true,s._$litElement$=true,null===(l=globalThis.litElementHydrateSupport)||void 0===l||l.call(globalThis,{LitElement:s});const n$1=globalThis.litElementPolyfillSupport;null==n$1||n$1({LitElement:s});(null!==(o=globalThis.litElementVersions)&&void 0!==o?o:globalThis.litElementVersions=[]).push("3.3.3");
+ */const s=globalThis;class i extends y$1{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0;}createRenderRoot(){const t=super.createRenderRoot();return this.renderOptions.renderBefore??=t.firstChild,t}update(t){const r=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=D(r,this.renderRoot,this.renderOptions);}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(true);}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(false);}render(){return E}}i._$litElement$=true,i["finalized"]=true,s.litElementHydrateSupport?.({LitElement:i});const o=s.litElementPolyfillSupport;o?.({LitElement:i});(s.litElementVersions??=[]).push("4.2.2");
 
 const FORECAST_TYPE_SELECTOR = {
-  select: {
-    mode: 'list',
-    options: [
-      { value: 'daily', label: 'Daily forecast' },
-      { value: 'hourly', label: 'Hourly forecast' },
-    ],
-  },
+    select: {
+        mode: 'list',
+        options: [
+            { value: 'daily', label: 'Daily forecast' },
+            { value: 'hourly', label: 'Hourly forecast' },
+        ],
+    },
 };
-
 const CHART_STYLE_SELECTOR = {
-  select: {
-    mode: 'list',
-    options: [
-      { value: 'style1', label: 'Chart style 1' },
-      { value: 'style2', label: 'Chart style 2' },
-    ],
-  },
+    select: {
+        mode: 'list',
+        options: [
+            { value: 'style1', label: 'Chart style 1' },
+            { value: 'style2', label: 'Chart style 2' },
+        ],
+    },
 };
-
 const ICON_STYLE_SELECTOR = {
-  select: {
-    mode: 'list',
-    options: [
-      { value: 'style1', label: 'Style 1' },
-      { value: 'style2', label: 'Style 2' },
-    ],
-  },
+    select: {
+        mode: 'list',
+        options: [
+            { value: 'style1', label: 'Style 1' },
+            { value: 'style2', label: 'Style 2' },
+        ],
+    },
 };
-
 const ALT_SCHEMA = [
-  { name: "temp", title: "Alternative temperature sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "feels_like", title: "Alternative feels like temperature sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "description", title: "Alternative weather description sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "press", title: "Alternative pressure sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "humid", title: "Alternative humidity sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "uv", title: "Alternative UV index sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "winddir", title: "Alternative wind bearing sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "windspeed", title: "Alternative wind speed sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "dew_point", title: "Alternative dew pointsensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "wind_gust_speed", title: "Alternative wind gust speed sensor", selector: { entity: { domain: 'sensor' } } },
-  { name: "visibility", title: "Alternative visibility sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "temp", title: "Alternative temperature sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "feels_like", title: "Alternative feels like temperature sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "description", title: "Alternative weather description sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "press", title: "Alternative pressure sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "humid", title: "Alternative humidity sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "uv", title: "Alternative UV index sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "winddir", title: "Alternative wind bearing sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "windspeed", title: "Alternative wind speed sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "dew_point", title: "Alternative dew pointsensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "wind_gust_speed", title: "Alternative wind gust speed sensor", selector: { entity: { domain: 'sensor' } } },
+    { name: "visibility", title: "Alternative visibility sensor", selector: { entity: { domain: 'sensor' } } },
 ];
-
-class WeatherChartCardEditor extends s {
-  static get properties() {
-    return {
-      _config: { type: Object },
-      currentPage: { type: String },
-      entities: { type: Array },
-      hass: { type: Object },
-      _entity: { type: String },
-    };
-  }
-
-  constructor() {
-    super();
-    this.currentPage = 'card';
-    this._entity = '';
-    this.entities = [];
-    this._formValueChanged = this._formValueChanged.bind(this);
-  }
-
-  setConfig(config) {
-    if (!config) {
-      throw new Error("Invalid configuration");
+class WeatherChartCardEditor extends i {
+    static get properties() {
+        return {
+            _config: { type: Object },
+            currentPage: { type: String },
+            entities: { type: Array },
+            hass: { type: Object },
+            _entity: { type: String },
+        };
     }
-    this._config = config;
-    this._entity = config.entity || '';
-    this.hasApparentTemperature = (
-      this.hass &&
-      this.hass.states[config.entity] &&
-      this.hass.states[config.entity].attributes &&
-      this.hass.states[config.entity].attributes.apparent_temperature !== undefined
-    ) || config.feels_like !== undefined;
-    this.hasDewpoint = (
-      this.hass &&
-      this.hass.states[config.entity] &&
-      this.hass.states[config.entity].attributes &&
-      this.hass.states[config.entity].attributes.dew_point !== undefined
-    ) || config.dew_point !== undefined;
-    this.hasWindgustspeed = (
-      this.hass &&
-      this.hass.states[config.entity] &&
-      this.hass.states[config.entity].attributes &&
-      this.hass.states[config.entity].attributes.wind_gust_speed !== undefined
-    ) || config.wind_gust_speed !== undefined;
-    this.hasVisibility = (
-      this.hass &&
-      this.hass.states[config.entity] &&
-      this.hass.states[config.entity].attributes &&
-      this.hass.states[config.entity].attributes.visibility !== undefined
-    ) || config.visibility !== undefined;
-    this.hasDescription = (
-      this.hass &&
-      this.hass.states[config.entity] &&
-      this.hass.states[config.entity].attributes &&
-      this.hass.states[config.entity].attributes.description !== undefined
-    ) || config.description !== undefined;
-    this.fetchEntities();	  
-    this.requestUpdate();
-  }
-
-  get config() {
-    return this._config;
-  }
-
-  updated(changedProperties) {
-    if (changedProperties.has('hass')) {
-      this.fetchEntities();
+    constructor() {
+        super();
+        this.currentPage = 'card';
+        this._entity = '';
+        this.entities = [];
+        this._formValueChanged = this._formValueChanged.bind(this);
     }
-    if (changedProperties.has('_config') && this._config && this._config.entity) {
-      this._entity = this._config.entity;
+    setConfig(config) {
+        if (!config) {
+            throw new Error("Invalid configuration");
+        }
+        this._config = config;
+        this._entity = config.entity || '';
+        this.hasApparentTemperature = (this.hass &&
+            this.hass.states[config.entity] &&
+            this.hass.states[config.entity].attributes &&
+            this.hass.states[config.entity].attributes.apparent_temperature !== undefined) || config.feels_like !== undefined;
+        this.hasDewpoint = (this.hass &&
+            this.hass.states[config.entity] &&
+            this.hass.states[config.entity].attributes &&
+            this.hass.states[config.entity].attributes.dew_point !== undefined) || config.dew_point !== undefined;
+        this.hasWindgustspeed = (this.hass &&
+            this.hass.states[config.entity] &&
+            this.hass.states[config.entity].attributes &&
+            this.hass.states[config.entity].attributes.wind_gust_speed !== undefined) || config.wind_gust_speed !== undefined;
+        this.hasVisibility = (this.hass &&
+            this.hass.states[config.entity] &&
+            this.hass.states[config.entity].attributes &&
+            this.hass.states[config.entity].attributes.visibility !== undefined) || config.visibility !== undefined;
+        this.hasDescription = (this.hass &&
+            this.hass.states[config.entity] &&
+            this.hass.states[config.entity].attributes &&
+            this.hass.states[config.entity].attributes.description !== undefined) || config.description !== undefined;
+        this.fetchEntities();
+        this.requestUpdate();
     }
-  }
-
-  fetchEntities() {
-    if (this.hass) {
-      this.entities = Object.keys(this.hass.states).filter((e) => e.startsWith('weather.'));
-      this.requestUpdate();
+    get config() {
+        return this._config;
     }
-  }
-
-  _EntityChanged(event, key) {
-    if (!this._config) {
-      return;
+    updated(changedProperties) {
+        if (changedProperties.has('hass')) {
+            this.fetchEntities();
+        }
+        if (changedProperties.has('_config') && this._config && this._config.entity) {
+            this._entity = this._config.entity;
+        }
     }
-    const newConfig = { ...this._config };
-    newConfig.entity = event.target.value;
-    this._entity = event.target.value;
-    this.configChanged(newConfig);
-  }
-
-  configChanged(newConfig) {
-    const event = new Event("config-changed", {
-      bubbles: true,
-      composed: true,
-    });
-    event.detail = { config: newConfig };
-    this.dispatchEvent(event);
-  }
-
-  _valueChanged(event, key) {
-    if (!this._config) {
-      return;
+    fetchEntities() {
+        if (this.hass) {
+            this.entities = Object.keys(this.hass.states).filter((e) => e.startsWith('weather.'));
+            this.requestUpdate();
+        }
     }
-
-    let newConfig = { ...this._config };
-
-    if (key.includes('.')) {
-      const parts = key.split('.');
-      let currentLevel = newConfig;
-
-      for (let i = 0; i < parts.length - 1; i++) {
-        const part = parts[i];
-
-        currentLevel[part] = { ...currentLevel[part] };
-
-        currentLevel = currentLevel[part];
-      }
-
-      const finalKey = parts[parts.length - 1];
-      if (event.target.checked !== undefined) {
-        currentLevel[finalKey] = event.target.checked;
-      } else {
-        currentLevel[finalKey] = event.target.value;
-      }
-    } else {
-      if (event.target.checked !== undefined) {
-        newConfig[key] = event.target.checked;
-      } else {
-        newConfig[key] = event.target.value;
-      }
+    _EntityChanged(event, key) {
+        if (!this._config) {
+            return;
+        }
+        const newConfig = { ...this._config };
+        newConfig.entity = event.target.value;
+        this._entity = event.target.value;
+        this.configChanged(newConfig);
     }
-
-    this.configChanged(newConfig);
-    this.requestUpdate();
-  }
-
-  _handleStyleChange(event) {
-    if (!this._config) {
-      return;
+    configChanged(newConfig) {
+        const event = new Event("config-changed", {
+            bubbles: true,
+            composed: true,
+        });
+        event.detail = { config: newConfig };
+        this.dispatchEvent(event);
     }
-    const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.forecast.style = event.detail.value;
-    this.configChanged(newConfig);
-    this.requestUpdate();
-  }
-
-  _handleTypeChange(event) {
-    if (!this._config) {
-      return;
+    _valueChanged(event, key) {
+        if (!this._config) {
+            return;
+        }
+        let newConfig = { ...this._config };
+        if (key.includes('.')) {
+            const parts = key.split('.');
+            let currentLevel = newConfig;
+            for (let i = 0; i < parts.length - 1; i++) {
+                const part = parts[i];
+                currentLevel[part] = { ...currentLevel[part] };
+                currentLevel = currentLevel[part];
+            }
+            const finalKey = parts[parts.length - 1];
+            if (event.target.checked !== undefined) {
+                currentLevel[finalKey] = event.target.checked;
+            }
+            else {
+                currentLevel[finalKey] = event.target.value;
+            }
+        }
+        else {
+            if (event.target.checked !== undefined) {
+                newConfig[key] = event.target.checked;
+            }
+            else {
+                newConfig[key] = event.target.value;
+            }
+        }
+        this.configChanged(newConfig);
+        this.requestUpdate();
     }
-    const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.forecast.type = event.detail.value;
-    this.configChanged(newConfig);
-    this.requestUpdate();
-  }
-
-  _handleIconStyleChange(event) {
-    if (!this._config) {
-      return;
+    _handleStyleChange(event) {
+        if (!this._config) {
+            return;
+        }
+        const newConfig = JSON.parse(JSON.stringify(this._config));
+        newConfig.forecast.style = event.detail.value;
+        this.configChanged(newConfig);
+        this.requestUpdate();
     }
-    const newConfig = JSON.parse(JSON.stringify(this._config));
-    newConfig.icon_style = event.detail.value;
-    this.configChanged(newConfig);
-    this.requestUpdate();
-  }
-
-  _handlePrecipitationTypeChange(e) {
-    const newValue = e.target.value;
-    this.config.forecast.precipitation_type = newValue;
-  }
-
-  _formValueChanged(event) {
-    if (event.target.tagName.toLowerCase() === 'ha-form') {
-      const newConfig = event.detail.value;
-      this.configChanged(newConfig);
-      this.requestUpdate();
+    _handleTypeChange(event) {
+        if (!this._config) {
+            return;
+        }
+        const newConfig = JSON.parse(JSON.stringify(this._config));
+        newConfig.forecast.type = event.detail.value;
+        this.configChanged(newConfig);
+        this.requestUpdate();
     }
-  }
-
-  showPage(pageName) {
-    this.currentPage = pageName;
-    this.requestUpdate();
-  }
-
-  render() {
-    if (!this._config) {
-      return x``;
+    _handleIconStyleChange(event) {
+        if (!this._config) {
+            return;
+        }
+        const newConfig = JSON.parse(JSON.stringify(this._config));
+        newConfig.icon_style = event.detail.value;
+        this.configChanged(newConfig);
+        this.requestUpdate();
     }
-    if (this._config.entity !== this._entity) {
-      this._entity = this._config.entity;
+    _handlePrecipitationTypeChange(e) {
+        const newValue = e.target.value;
+        this.config.forecast.precipitation_type = newValue;
     }
-    const forecastConfig = this._config.forecast || {};
-    const unitsConfig = this._config.units || {};
-    this._config.show_time !== false;
-
-
-    return x`
+    _formValueChanged(event) {
+        if (event.target.tagName.toLowerCase() === 'ha-form') {
+            const newConfig = event.detail.value;
+            this.configChanged(newConfig);
+            this.requestUpdate();
+        }
+    }
+    showPage(pageName) {
+        this.currentPage = pageName;
+        this.requestUpdate();
+    }
+    render() {
+        if (!this._config) {
+            return b ``;
+        }
+        if (this._config.entity !== this._entity) {
+            this._entity = this._config.entity;
+        }
+        const forecastConfig = this._config.forecast || {};
+        const unitsConfig = this._config.units || {};
+        this._config.show_time !== false;
+        return b `
       <style>
         .switch-label {
           padding-left: 14px;
@@ -1181,7 +1142,7 @@ class WeatherChartCardEditor extends s {
   @change=${(e) => this._EntityChanged(e, 'entity')}
   @closed=${(ev) => ev.stopPropagation()}
 >
-  ${this.entities.map((entity) => x`<ha-list-item .value=${entity}>${entity}</ha-list-item>`)}
+  ${this.entities.map((entity) => b `<ha-list-item .value=${entity}>${entity}</ha-list-item>`)}
 </ha-select>
       <ha-textfield
         label="Title"
@@ -1228,7 +1189,7 @@ class WeatherChartCardEditor extends s {
             </label>
           </div>
       <div class="switch-container">
-        ${this.hasApparentTemperature ? x`
+        ${this.hasApparentTemperature ? b `
           <ha-switch
             @change="${(e) => this._valueChanged(e, 'show_feels_like')}"
             .checked="${this._config.show_feels_like !== false}"
@@ -1239,7 +1200,7 @@ class WeatherChartCardEditor extends s {
         ` : ''}
       </div>
       <div class="switch-container">
-        ${this.hasDescription ? x`
+        ${this.hasDescription ? b `
           <ha-switch
             @change="${(e) => this._valueChanged(e, 'show_description')}"
             .checked="${this._config.show_description !== false}"
@@ -1322,7 +1283,7 @@ class WeatherChartCardEditor extends s {
             </label>
 	  </div>
       <div class="switch-container">
-        ${this.hasDewpoint ? x`
+        ${this.hasDewpoint ? b `
           <ha-switch
             @change="${(e) => this._valueChanged(e, 'show_dew_point')}"
             .checked="${this._config.show_dew_point !== false}"
@@ -1333,7 +1294,7 @@ class WeatherChartCardEditor extends s {
         ` : ''}
       </div>
       <div class="switch-container">
-        ${this.hasWindgustspeed ? x`
+        ${this.hasWindgustspeed ? b `
           <ha-switch
             @change="${(e) => this._valueChanged(e, 'show_wind_gust_speed')}"
             .checked="${this._config.show_wind_gust_speed !== false}"
@@ -1344,7 +1305,7 @@ class WeatherChartCardEditor extends s {
         ` : ''}
       </div>
       <div class="switch-container">
-        ${this.hasVisibility ? x`
+        ${this.hasVisibility ? b `
           <ha-switch
             @change="${(e) => this._valueChanged(e, 'show_visibility')}"
             .checked="${this._config.show_visibility !== false}"
@@ -1664,15 +1625,9 @@ class WeatherChartCardEditor extends s {
           ></ha-form>
         </div>
     `;
-  }
+    }
 }
 customElements.define("weather-chart-card-editor", WeatherChartCardEditor);
-
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */var n;null!=(null===(n=window.HTMLSlotElement)||void 0===n?void 0:n.prototype.assignedElements)?(o,n)=>o.assignedElements(n):(o,n)=>o.assignedNodes(n).filter((o=>o.nodeType===Node.ELEMENT_NODE));
 
 /*!
  * @kurkle/color v0.3.4
@@ -17961,951 +17916,884 @@ var plugin = {
 };
 
 Chart.register(...registerables, plugin);
-
-class WeatherChartCard extends s {
-
-static getConfigElement() {
-  return document.createElement("weather-chart-card-editor");
-}
-
-static getStubConfig(hass, unusedEntities, allEntities) {
-  let entity = unusedEntities.find((eid) => eid.split(".")[0] === "weather");
-  if (!entity) {
-    entity = allEntities.find((eid) => eid.split(".")[0] === "weather");
-  }
-  return {
-    entity,
-    show_main: true,
-    show_temperature: true,
-    show_current_condition: true,
-    show_attributes: true,
-    show_time: false,
-    show_time_seconds: false,
-    show_day: false,
-    show_date: false,
-    show_humidity: true,
-    show_pressure: true,
-    show_wind_direction: true,
-    show_wind_speed: true,
-    show_sun: true,
-    show_feels_like: false,
-    show_dew_point: false,
-    show_wind_gust_speed: false,
-    show_visibility: false,
-    show_last_changed: false,
-    use_12hour_format: false,
-    icons_size: 25,
-    animated_icons: false,
-    icon_style: 'style1',
-    autoscroll: false,
-    forecast: {
-      precipitation_type: 'rainfall',
-      show_probability: false,
-      labels_font_size: '11',
-      precip_bar_size: '100',
-      style: 'style1',
-      show_wind_forecast: true,
-      condition_icons: true,
-      round_temp: false,
-      show_dew_point_forecast: false,
-      show_all_labels: true,
-      type: 'daily',
-      number_of_forecasts: '0',
-      disable_animation: false,
-    },
-  };
-}
-
-  static get properties() {
-    return {
-      _hass: {},
-      config: {},
-      language: {},
-      sun: {type: Object},
-      weather: {type: Object},
-      temperature: {type: Object},
-      humidity: {type: Object},
-      pressure: {type: Object},
-      windSpeed: {type: Object},
-      windDirection: {type: Number},
-      forecastChart: {type: Object},
-      forecastItems: {type: Number},
-      forecasts: { type: Array }
-    };
-  }
-
-setConfig(config) {
-  const cardConfig = {
-    icons_size: 25,
-    animated_icons: false,
-    icon_style: 'style1',
-    current_temp_size: 28,
-    time_size: 26,
-    day_date_size: 15,
-    show_feels_like: false,
-    show_dew_point: false,
-    show_wind_gust_speed: false,
-    show_visibility: false,
-    show_last_changed: false,
-    show_description: false,
-    ...config,
-    forecast: {
-      precipitation_type: 'rainfall',
-      show_probability: false,
-      labels_font_size: 11,
-      chart_height: 180,
-      precip_bar_size: 100,
-      style: 'style1',
-      temperature1_color: 'rgba(189, 189, 189, 1.0)',
-      temperature2_color: 'rgba(68, 115, 158, 1.0)',
-      precipitation_color: 'rgba(132, 209, 253, 1.0)',
-      dewpoint_color: 'blue',
-      condition_icons: true,
-      show_wind_forecast: true,
-      round_temp: false,
-      show_dew_point_forecast: false,
-      show_all_labels: true,
-      type: 'daily',
-      number_of_forecasts: '0',
-      '12hourformat': false,
-      ...config.forecast,
-    },
-    units: {
-      pressure: 'hPa',
-      ...config.units,
+class WeatherChartCard extends i {
+    static getConfigElement() {
+        return document.createElement("weather-chart-card-editor");
     }
-  };
-
-  cardConfig.units.speed = config.speed ? config.speed : cardConfig.units.speed;
-
-  this.baseIconPath = cardConfig.icon_style === 'style2' ?
-    'https://cdn.jsdelivr.net/gh/mlamberts78/weather-chart-card/dist/icons2/':
-    'https://cdn.jsdelivr.net/gh/mlamberts78/weather-chart-card/dist/icons/' ;
-
-  this.config = cardConfig;
-  if (!config.entity) {
-    throw new Error('Please, define entity in the card config');
-  }
-}
-
-set hass(hass) {
-  this._hass = hass;
-  this.language = this.config.locale || hass.selectedLanguage || hass.language;
-  this.sun = 'sun.sun' in hass.states ? hass.states['sun.sun'] : null;
-  this.unitSpeed = this.config.units.speed ? this.config.units.speed : this.weather && this.weather.attributes.wind_speed_unit;
-  this.unitPressure = this.config.units.pressure ? this.config.units.pressure : this.weather && this.weather.attributes.pressure_unit;
-  this.unitVisibility = this.config.units.visibility ? this.config.units.visibility : this.weather && this.weather.attributes.visibility_unit;
-  this.weather = this.config.entity in hass.states
-    ? hass.states[this.config.entity]
-    : null;
-
-  if (this.weather) {
-    this.temperature = this.config.temp ? hass.states[this.config.temp].state : this.weather.attributes.temperature;
-    this.humidity = this.config.humid ? hass.states[this.config.humid].state : this.weather.attributes.humidity;
-    this.pressure = this.config.press ? hass.states[this.config.press].state : this.weather.attributes.pressure;
-    this.uv_index = this.config.uv ? hass.states[this.config.uv].state : this.weather.attributes.uv_index;
-    this.windSpeed = this.config.windspeed ? hass.states[this.config.windspeed].state : this.weather.attributes.wind_speed;
-    this.dew_point = this.config.dew_point ? hass.states[this.config.dew_point].state : this.weather.attributes.dew_point;
-    this.wind_gust_speed = this.config.wind_gust_speed ? hass.states[this.config.wind_gust_speed].state : this.weather.attributes.wind_gust_speed;
-    this.visibility = this.config.visibility ? hass.states[this.config.visibility].state : this.weather.attributes.visibility;
-
-    if (this.config.winddir && hass.states[this.config.winddir] && hass.states[this.config.winddir].state !== undefined) {
-      this.windDirection = parseFloat(hass.states[this.config.winddir].state);
-    } else {
-      this.windDirection = this.weather.attributes.wind_bearing;
-    }
-
-    this.feels_like = this.config.feels_like && hass.states[this.config.feels_like] ? hass.states[this.config.feels_like].state : this.weather.attributes.apparent_temperature;
-    this.description = this.config.description && hass.states[this.config.description] ? hass.states[this.config.description].state : this.weather.attributes.description;
-  }
-
-  if (this.weather && !this.forecastSubscriber) {
-    this.subscribeForecastEvents();
-  }
-}
-
-subscribeForecastEvents() {
-  const forecastType = this.config.forecast.type || 'daily';
-  const isHourly = forecastType === 'hourly';
-
-  const feature = isHourly ? WeatherEntityFeature.FORECAST_HOURLY : WeatherEntityFeature.FORECAST_DAILY;
-  if (!this.supportsFeature(feature)) {
-    console.error(`Weather entity "${this.config.entity}" does not support ${isHourly ? 'hourly' : 'daily'} forecasts.`);
-    return;
-  }
-
-  const callback = (event) => {
-    this.forecasts = event.forecast;
-    this.requestUpdate();
-    this.drawChart();
-  };
-
-  this.forecastSubscriber = this._hass.connection.subscribeMessage(callback, {
-    type: "weather/subscribe_forecast",
-    forecast_type: isHourly ? 'hourly' : 'daily',
-    entity_id: this.config.entity,
-  });
-}
-
-  supportsFeature(feature) {
-    return (this.weather.attributes.supported_features & feature) !== 0;
-  }
-
-  constructor() {
-    super();
-    this.resizeObserver = null;
-    this.resizeInitialized = false;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    if (!this.resizeInitialized) {
-      this.delayedAttachResizeObserver();
-    }
-  }
-
-  delayedAttachResizeObserver() {
-    setTimeout(() => {
-      this.attachResizeObserver();
-      this.resizeInitialized = true;
-    }, 0);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.detachResizeObserver();
-    if (this.forecastSubscriber) {
-      this.forecastSubscriber.then((unsub) => unsub());
-    }
-  }
-
-  attachResizeObserver() {
-    this.resizeObserver = new ResizeObserver(() => {
-      this.measureCard();
-    });
-    const card = this.shadowRoot.querySelector('ha-card');
-    if (card) {
-      this.resizeObserver.observe(card);
-    }
-  }
-
-  detachResizeObserver() {
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-      this.resizeObserver = null;
-    }
-  }
-
-measureCard() {
-  const card = this.shadowRoot.querySelector('ha-card');
-  let fontSize = this.config.forecast.labels_font_size;
-  const numberOfForecasts = this.config.forecast.number_of_forecasts || 0;
-
-  if (!card) {
-    return;
-  }
-
-  this.forecastItems = numberOfForecasts > 0 ? numberOfForecasts : Math.round(card.offsetWidth / (fontSize * 6));
-  this.drawChart();
-}
-
-ll(str) {
-  const selectedLocale = this.config.locale || this.language || 'en';
-
-  if (locale[selectedLocale] === undefined) {
-    return locale.en[str];
-  }
-
-  return locale[selectedLocale][str];
-}
-
-  getCardSize() {
-    return 4;
-  }
-
-  getUnit(unit) {
-    return this._hass.config.unit_system[unit] || '';
-  }
-
-  getWeatherIcon(condition, sun) {
-    if (this.config.animated_icons === true) {
-      const iconName = sun === 'below_horizon' ? weatherIconsNight[condition] : weatherIconsDay[condition];
-      return `${this.baseIconPath}${iconName}.svg`;
-    } else if (this.config.icons) {
-      const iconName = sun === 'below_horizon' ? weatherIconsNight[condition] : weatherIconsDay[condition];
-      return `${this.config.icons}${iconName}.svg`;
-    }
-    return weatherIcons[condition];
-  }
-
-getWindDirIcon(deg) {
-  if (typeof deg === 'number') {
-    return cardinalDirectionsIcon[parseInt((deg + 22.5) / 45.0)];
-  } else {
-    var i = 9;
-    switch (deg) {
-      case "N":
-        i = 0;
-        break;
-      case "NNE":
-      case "NE":
-        i = 1;
-        break;
-      case "ENE":
-      case "E":
-        i = 2;
-        break;
-      case "ESE":
-      case "SE":
-        i = 3;
-        break;
-      case "SSE":
-      case "S":
-        i = 4;
-        break;
-      case "SSW":
-      case "SW":
-        i = 5;
-        break;
-      case "WSW":
-      case "W":
-        i = 6;
-        break;
-      case "NW":
-      case "NNW":
-        i = 7;
-        break;
-      case "WNW":
-        i = 8;
-        break;
-      default:
-        i = 9;
-        break;
-    }
-    return cardinalDirectionsIcon[i];
-  }
-}
-
-getWindDir(deg) {
-  if (typeof deg === 'number') {
-    return this.ll('cardinalDirections')[parseInt((deg + 11.25) / 22.5)];
-  } else {
-    return deg;
-  }
-}
-
-calculateBeaufortScale(windSpeed) {
-  const unitConversion = {
-    'km/h': 1,
-    'm/s': 3.6,
-    'mph': 1.60934,
-  };
-
-  if (!this.weather || !this.weather.attributes.wind_speed_unit) {
-    console.error('calculateBeaufortScale: wind_speed_unit not available in weather attributes.');
-    return undefined;
-  }
-
-  const wind_speed_unit = this.weather.attributes.wind_speed_unit;
-  const conversionFactor = unitConversion[wind_speed_unit];
-
-  if (typeof conversionFactor !== 'number') {
-    console.error(`calculateBeaufortScale: unknown wind_speed_unit "${wind_speed_unit}".`);
-    return undefined;
-  }
-
-  const windSpeedInKmPerHour = windSpeed * conversionFactor;
-
-  if (windSpeedInKmPerHour < 1) return 0;
-  else if (windSpeedInKmPerHour < 6) return 1;
-  else if (windSpeedInKmPerHour < 12) return 2;
-  else if (windSpeedInKmPerHour < 20) return 3;
-  else if (windSpeedInKmPerHour < 29) return 4;
-  else if (windSpeedInKmPerHour < 39) return 5;
-  else if (windSpeedInKmPerHour < 50) return 6;
-  else if (windSpeedInKmPerHour < 62) return 7;
-  else if (windSpeedInKmPerHour < 75) return 8;
-  else if (windSpeedInKmPerHour < 89) return 9;
-  else if (windSpeedInKmPerHour < 103) return 10;
-  else if (windSpeedInKmPerHour < 118) return 11;
-  else return 12;
-}
-
-async firstUpdated(changedProperties) {
-  super.firstUpdated(changedProperties);
-  this.measureCard();
-  await new Promise(resolve => setTimeout(resolve, 0));
-  this.drawChart();
-
-  if (this.config.autoscroll) {
-    this.autoscroll();
-  }
-}
-
-
-async updated(changedProperties) {
-  await this.updateComplete;
-
-  if (changedProperties.has('config')) {
-    const oldConfig = changedProperties.get('config');
-
-    const entityChanged = oldConfig && this.config.entity !== oldConfig.entity;
-    const forecastTypeChanged = oldConfig && this.config.forecast.type !== oldConfig.forecast.type;
-    const autoscrollChanged = oldConfig && this.config.autoscroll !== oldConfig.autoscroll;
-
-    if (entityChanged || forecastTypeChanged) {
-      if (this.forecastSubscriber && typeof this.forecastSubscriber === 'function') {
-        this.forecastSubscriber();
-      }
-
-      this.subscribeForecastEvents();
-    }
-
-    if (this.forecasts && this.forecasts.length) {
-      this.drawChart();
-    }
-
-    if (autoscrollChanged) {
-      if (!this.config.autoscroll) {
-        this.autoscroll();
-      } else {
-        this.cancelAutoscroll();
-      }
-    }
-  }
-
-  if (changedProperties.has('weather')) {
-    this.updateChart();
-  }
-}
-
-autoscroll() {
-  if (this.autoscrollTimeout) {
-    // Autscroll already set, nothing to do
-    return;
-  }
-
-  const updateChartOncePerHour = () => {
-    const now = new Date();
-    const nextHour = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        now.getHours()+1,
-    );
-    this.autoscrollTimeout = setTimeout(() => {
-      this.autoscrollTimeout = null;
-      this.updateChart();
-      drawChartOncePerHour();
-    }, nextHour - now);
-  };
-
-  updateChartOncePerHour();
-}
-
-cancelAutoscroll() {
-  if (this.autoscrollTimeout) {
-    clearTimeout(this.autoscrollTimeout);
-  }
-}
-
-drawChart({ config, language, weather, forecastItems } = this) {
-  if (!this.forecasts || !this.forecasts.length) {
-    return [];
-  }
-
-  const chartCanvas = this.renderRoot && this.renderRoot.querySelector('#forecastChart');
-  if (!chartCanvas) {
-    console.error('Canvas element not found:', this.renderRoot);
-    return;
-  }
-
-  if (this.forecastChart) {
-    this.forecastChart.destroy();
-  }
-  var tempUnit = this._hass.config.unit_system.temperature;
-  var precipitationUnit = this.weather.attributes.precipitation_unit;
-  if (config.forecast.precipitation_type === 'probability') {
-    var precipUnit = '%';
-  } else {
-    var precipUnit = precipitationUnit === 'mm' ? this.ll('units')['mm'] : this.ll('units')['in'];
-  }
-  const data = this.computeForecastData();
-  const numeric = (arr) => arr.filter((v) => typeof v === 'number');
-
-  var style = getComputedStyle(document.body);
-  var backgroundColor = style.getPropertyValue('--card-background-color');
-  var textColor = style.getPropertyValue('--primary-text-color');
-  var dividerColor = style.getPropertyValue('--divider-color');
-  const canvas = this.renderRoot.querySelector('#forecastChart');
-  if (!canvas) {
-    requestAnimationFrame(() => this.drawChart());
-    return;
-  }
-
-  const ctx = canvas.getContext('2d');
-
-  let precipMax;
-
-  if (config.forecast.precipitation_type === 'probability') {
-    precipMax = 100;
-  } else {
-    if (config.forecast.type === 'hourly') {
-      precipMax = precipitationUnit === 'mm' ? 4 : 1;
-    } else {
-      precipMax = precipitationUnit === 'mm' ? 20 : 1;
-    }
-  }
-
-  Chart.defaults.color = textColor;
-  Chart.defaults.scale.grid.color = dividerColor;
-  Chart.defaults.elements.line.fill = false;
-  Chart.defaults.elements.line.tension = 0.3;
-  Chart.defaults.elements.line.borderWidth = 1.5;
-  Chart.defaults.elements.point.radius = 1;
-  Chart.defaults.elements.point.hitRadius = 10;
-
-  const isHourlyChart = config.forecast.type === 'hourly';
-  const highlightColor = (index, fallback) => {
-    if (!isHourlyChart) return fallback;
-    if (data.minHrs.includes(index)) return 'blue';
-    if (data.maxHrs.includes(index)) return 'red';
-    return fallback;
-  };
-  const labelDisplay = (index) => {
-    if (config.forecast.show_all_labels === false) {
-      if (!isHourlyChart) return 'auto';
-      return (data.dailyLowIndex.includes(index) || data.dailyHighIndex.includes(index)) ? 'auto' : false;
-    }
-    return 'auto';
-  };
-
-  var datasets = [
-    {
-      label: this.ll('tempHi'),
-      type: 'line',
-      data: data.tempHigh,
-      yAxisID: 'TempAxis',
-      borderColor: data.tempHigh.map((_, index) => highlightColor(index, config.forecast.temperature1_color)),
-      backgroundColor: data.tempHigh.map((_, index) => highlightColor(index, config.forecast.temperature1_color)),
-      pointRadius: data.tempHigh.map((_, index) => (isHourlyChart && (data.minHrs.includes(index) || data.maxHrs.includes(index))) ? 5 : Chart.defaults.elements.point.radius),
-    },
-    {
-      label: this.ll('tempLo'),
-      type: 'line',
-      data: data.tempLow,
-      yAxisID: 'TempAxis',
-      borderColor: config.forecast.temperature2_color,
-      backgroundColor: config.forecast.temperature2_color,
-    },
-    {
-      label: this.ll('precip'),
-      type: 'bar',
-      data: data.precip,
-      yAxisID: 'PrecipAxis',
-      borderColor: config.forecast.precipitation_color,
-      backgroundColor: config.forecast.precipitation_color,
-      barPercentage: config.forecast.precip_bar_size / 100,
-      categoryPercentage: 1.0,
-      datalabels: {
-        display: function (context) {
-          return context.dataset.data[context.dataIndex] > 0 ? 'auto' : false;
-        },
-      formatter: function (value, context) {
-        const precipitationType = config.forecast.precipitation_type;
-
-        const rainfall = context.dataset.data[context.dataIndex];
-        const probability = data.forecast[context.dataIndex].precipitation_probability;
-
-        let formattedValue;
-        if (precipitationType === 'rainfall') {
-          if (probability !== undefined && probability !== null && config.forecast.show_probability) {
-	    formattedValue = `${rainfall > 9 ? Math.round(rainfall) : rainfall.toFixed(1)} ${precipUnit}\n${Math.round(probability)}%`;
-          } else {
-            formattedValue = `${rainfall > 9 ? Math.round(rainfall) : rainfall.toFixed(1)} ${precipUnit}`;
-          }
-        } else {
-          formattedValue = `${rainfall > 9 ? Math.round(rainfall) : rainfall.toFixed(1)} ${precipUnit}`;
+    static getStubConfig(hass, unusedEntities, allEntities) {
+        let entity = unusedEntities.find((eid) => eid.split(".")[0] === "weather");
+        if (!entity) {
+            entity = allEntities.find((eid) => eid.split(".")[0] === "weather");
         }
-
-        formattedValue = formattedValue.replace('\n', '\n\n');
-
-        return formattedValue;
-      },
-        textAlign: 'center',
-        textBaseline: 'middle',
-        align: 'top',
-        anchor: 'end',
-        offset: 10,
-      },
-    },
-    {
-      label: this.ll('dewpoint'),
-      type: 'line',
-      data: data.dewPoint,
-      yAxisID: 'DPAxis',
-      borderColor: config.forecast.dewpoint_color,
-      backgroundColor: config.forecast.dewpoint_color,
-      pointRadius: 1,
-    },
-  ];
-
-  const chart_text_color = (config.forecast.chart_text_color === 'auto') ? textColor : config.forecast.chart_text_color;
-
-  if (config.forecast.style === 'style2') {
-    datasets[0].datalabels = {
-      display: function (context) {
-        return labelDisplay(context.dataIndex);
-      },
-      formatter: function (value, context) {
-        return context.dataset.data[context.dataIndex] + '°';
-      },
-      align: (context) => isHourlyChart && data.minHrs.includes(context.dataIndex) ? 'bottom' : isHourlyChart && data.maxHrs.includes(context.dataIndex) ? 'top' : 'top',
-      anchor: 'center',
-      offset: 6,
-      backgroundColor: 'transparent',
-      borderColor: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? highlightColor(context.dataIndex, 'transparent') : 'transparent',
-      borderRadius: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? 3 : 0,
-      color: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? config.forecast.temperature1_color : (chart_text_color || config.forecast.temperature1_color),
-      font: {
-        size: parseInt(config.forecast.labels_font_size) + 1,
-        lineHeight: 0.7,
-      },
-    };
-
-    datasets[1].datalabels = {
-      display: function (context) {
-        return labelDisplay(context.dataIndex);
-      },
-      formatter: function (value, context) {
-        return context.dataset.data[context.dataIndex] + '°';
-      },
-      align: 'bottom',
-      anchor: 'center',
-      offset: 6,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
-      color: chart_text_color || config.forecast.temperature2_color,
-      font: {
-        size: parseInt(config.forecast.labels_font_size) + 1,
-        lineHeight: 0.7,
-      },
-    };
-
-    datasets[3].datalabels = {
-      display: function (context) {
-        return labelDisplay(context.dataIndex);
-      },
-      formatter: function (value, context) {
-        return context.dataset.data[context.dataIndex] + '°';
-      },
-      align: 'bottom',
-      anchor: 'center',
-      offset: 6,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
-      color: config.forecast.chart_text_color,
-      font: {
-        size: parseInt(config.forecast.labels_font_size) + 1,
-        lineHeight: 0.7,
-      },
-    };
-  }
-
-  this.forecastChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: data.dateTime,
-      datasets: datasets,
-    },
-    options: {
-      maintainAspectRatio: false,
-      animation: config.forecast.disable_animation === true ? { duration: 0 } : {},
-      layout: {
-        padding: {
-          bottom: 10,
-        },
-      },
-      scales: {
-        x: {
-          position: 'top',
-          border: {
-            width: 0,
-          },
-          grid: {
-            display: true,
-            drawTicks: false,
-            offset: false,
-            color: dividerColor,
-            lineWidth: data.dateTime.map((iso) => (isHourlyChart && new Date(iso).getHours() === 0) ? 5 : 1),
-          },
-          ticks: {
-              maxRotation: 0,
-              color: config.forecast.chart_datetime_color || textColor,
-              padding: config.forecast.precipitation_type === 'rainfall' && config.forecast.show_probability && config.forecast.type !== 'hourly' ? 4 : 10,
-              major: {
-                  enabled: true,
-                  fontStyle: 'bold',
-              },
-              callback: function (value, index, values) {
-                  var datetime = this.getLabelForValue(value);
-                  var dateObj = new Date(datetime);
-
-                  var timeFormatOptions = {
-                      hour12: config.use_12hour_format,
-                      hour: 'numeric',
-                      ...(config.use_12hour_format ? {} : { minute: 'numeric' }),
-                  };
-
-                  var time = dateObj.toLocaleTimeString(language, timeFormatOptions);
-
-                  if (dateObj.getHours() === 0 && dateObj.getMinutes() === 0 && config.forecast.type === 'hourly') {
-                      var dateFormatOptions = {
-                          day: 'numeric',
-                          month: 'short',
-                      };
-                      var date = dateObj.toLocaleDateString(language, dateFormatOptions);
-                      time = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
-                      values[index].major = true;
-                      return [date, time];
-                  }
-
-                  if (config.forecast.type !== 'hourly') {
-                      var weekday = dateObj.toLocaleString(language, { weekday: 'short' }).toUpperCase();
-                      return weekday;
-                  }
-
-                  time = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
-                  return time;
-              },
-          },
-          reverse: document.dir === 'rtl' ? true : false,
-        },
-        TempAxis: {
-          position: 'left',
-          beginAtZero: false,
-          suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
-          suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
-          grid: {
-            display: false,
-            drawTicks: false,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-        DPAxis: {
-          position: 'left',
-          beginAtZero: false,
-          suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
-          suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
-          grid: {
-            display: false,
-            drawTicks: false,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-        PrecipAxis: {
-          position: 'right',
-          suggestedMax: precipMax,
-          grid: {
-            display: false,
-            drawTicks: false,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        datalabels: {
-          display: function (context) {
+        return {
+            entity,
+            show_main: true,
+            show_temperature: true,
+            show_current_condition: true,
+            show_attributes: true,
+            show_time: false,
+            show_time_seconds: false,
+            show_day: false,
+            show_date: false,
+            show_humidity: true,
+            show_pressure: true,
+            show_wind_direction: true,
+            show_wind_speed: true,
+            show_sun: true,
+            show_feels_like: false,
+            show_dew_point: false,
+            show_wind_gust_speed: false,
+            show_visibility: false,
+            show_last_changed: false,
+            use_12hour_format: false,
+            icons_size: 25,
+            animated_icons: false,
+            icon_style: 'style1',
+            autoscroll: false,
+            forecast: {
+                precipitation_type: 'rainfall',
+                show_probability: false,
+                labels_font_size: '11',
+                precip_bar_size: '100',
+                style: 'style1',
+                show_wind_forecast: true,
+                condition_icons: true,
+                round_temp: false,
+                show_dew_point_forecast: false,
+                show_all_labels: true,
+                type: 'daily',
+                number_of_forecasts: '0',
+                disable_animation: false,
+            },
+        };
+    }
+    static get properties() {
+        return {
+            _hass: {},
+            config: {},
+            language: {},
+            sun: { type: Object },
+            weather: { type: Object },
+            temperature: { type: Object },
+            humidity: { type: Object },
+            pressure: { type: Object },
+            windSpeed: { type: Object },
+            windDirection: { type: Number },
+            forecastChart: { type: Object },
+            forecastItems: { type: Number },
+            forecasts: { type: Array }
+        };
+    }
+    setConfig(config) {
+        const cardConfig = {
+            icons_size: 25,
+            animated_icons: false,
+            icon_style: 'style1',
+            current_temp_size: 28,
+            time_size: 26,
+            day_date_size: 15,
+            show_feels_like: false,
+            show_dew_point: false,
+            show_wind_gust_speed: false,
+            show_visibility: false,
+            show_last_changed: false,
+            show_description: false,
+            ...config,
+            forecast: {
+                precipitation_type: 'rainfall',
+                show_probability: false,
+                labels_font_size: 11,
+                chart_height: 180,
+                precip_bar_size: 100,
+                style: 'style1',
+                temperature1_color: 'rgba(189, 189, 189, 1.0)',
+                temperature2_color: 'rgba(68, 115, 158, 1.0)',
+                precipitation_color: 'rgba(132, 209, 253, 1.0)',
+                dewpoint_color: 'blue',
+                condition_icons: true,
+                show_wind_forecast: true,
+                round_temp: false,
+                show_dew_point_forecast: false,
+                show_all_labels: true,
+                type: 'daily',
+                number_of_forecasts: '0',
+                '12hourformat': false,
+                ...config.forecast,
+            },
+            units: {
+                pressure: 'hPa',
+                ...config.units,
+            }
+        };
+        cardConfig.units.speed = config.speed ? config.speed : cardConfig.units.speed;
+        this.baseIconPath = cardConfig.icon_style === 'style2' ?
+            'https://cdn.jsdelivr.net/gh/mlamberts78/weather-chart-card/dist/icons2/' :
+            'https://cdn.jsdelivr.net/gh/mlamberts78/weather-chart-card/dist/icons/';
+        this.config = cardConfig;
+        if (!config.entity) {
+            throw new Error('Please, define entity in the card config');
+        }
+    }
+    set hass(hass) {
+        this._hass = hass;
+        this.language = this.config.locale || hass.selectedLanguage || hass.language;
+        this.sun = 'sun.sun' in hass.states ? hass.states['sun.sun'] : null;
+        this.unitSpeed = this.config.units.speed ? this.config.units.speed : this.weather && this.weather.attributes.wind_speed_unit;
+        this.unitPressure = this.config.units.pressure ? this.config.units.pressure : this.weather && this.weather.attributes.pressure_unit;
+        this.unitVisibility = this.config.units.visibility ? this.config.units.visibility : this.weather && this.weather.attributes.visibility_unit;
+        this.weather = this.config.entity in hass.states
+            ? hass.states[this.config.entity]
+            : null;
+        if (this.weather) {
+            this.temperature = this.config.temp ? hass.states[this.config.temp].state : this.weather.attributes.temperature;
+            this.humidity = this.config.humid ? hass.states[this.config.humid].state : this.weather.attributes.humidity;
+            this.pressure = this.config.press ? hass.states[this.config.press].state : this.weather.attributes.pressure;
+            this.uv_index = this.config.uv ? hass.states[this.config.uv].state : this.weather.attributes.uv_index;
+            this.windSpeed = this.config.windspeed ? hass.states[this.config.windspeed].state : this.weather.attributes.wind_speed;
+            this.dew_point = this.config.dew_point ? hass.states[this.config.dew_point].state : this.weather.attributes.dew_point;
+            this.wind_gust_speed = this.config.wind_gust_speed ? hass.states[this.config.wind_gust_speed].state : this.weather.attributes.wind_gust_speed;
+            this.visibility = this.config.visibility ? hass.states[this.config.visibility].state : this.weather.attributes.visibility;
+            if (this.config.winddir && hass.states[this.config.winddir] && hass.states[this.config.winddir].state !== undefined) {
+                this.windDirection = parseFloat(hass.states[this.config.winddir].state);
+            }
+            else {
+                this.windDirection = this.weather.attributes.wind_bearing;
+            }
+            this.feels_like = this.config.feels_like && hass.states[this.config.feels_like] ? hass.states[this.config.feels_like].state : this.weather.attributes.apparent_temperature;
+            this.description = this.config.description && hass.states[this.config.description] ? hass.states[this.config.description].state : this.weather.attributes.description;
+        }
+        if (this.weather && !this.forecastSubscriber) {
+            this.subscribeForecastEvents();
+        }
+    }
+    subscribeForecastEvents() {
+        const forecastType = this.config.forecast.type || 'daily';
+        const isHourly = forecastType === 'hourly';
+        const feature = isHourly ? WeatherEntityFeature.FORECAST_HOURLY : WeatherEntityFeature.FORECAST_DAILY;
+        if (!this.supportsFeature(feature)) {
+            console.error(`Weather entity "${this.config.entity}" does not support ${isHourly ? 'hourly' : 'daily'} forecasts.`);
+            return;
+        }
+        const callback = (event) => {
+            this.forecasts = event.forecast;
+            this.requestUpdate();
+            this.drawChart();
+        };
+        this.forecastSubscriber = this._hass.connection.subscribeMessage(callback, {
+            type: "weather/subscribe_forecast",
+            forecast_type: isHourly ? 'hourly' : 'daily',
+            entity_id: this.config.entity,
+        });
+    }
+    supportsFeature(feature) {
+        return (this.weather.attributes.supported_features & feature) !== 0;
+    }
+    constructor() {
+        super();
+        this.resizeObserver = null;
+        this.resizeInitialized = false;
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        if (!this.resizeInitialized) {
+            this.delayedAttachResizeObserver();
+        }
+    }
+    delayedAttachResizeObserver() {
+        setTimeout(() => {
+            this.attachResizeObserver();
+            this.resizeInitialized = true;
+        }, 0);
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.detachResizeObserver();
+        if (this.forecastSubscriber) {
+            this.forecastSubscriber.then((unsub) => unsub());
+        }
+    }
+    attachResizeObserver() {
+        this.resizeObserver = new ResizeObserver(() => {
+            this.measureCard();
+        });
+        const card = this.shadowRoot.querySelector('ha-card');
+        if (card) {
+            this.resizeObserver.observe(card);
+        }
+    }
+    detachResizeObserver() {
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+            this.resizeObserver = null;
+        }
+    }
+    measureCard() {
+        const card = this.shadowRoot.querySelector('ha-card');
+        let fontSize = this.config.forecast.labels_font_size;
+        const numberOfForecasts = this.config.forecast.number_of_forecasts || 0;
+        if (!card) {
+            return;
+        }
+        this.forecastItems = numberOfForecasts > 0 ? numberOfForecasts : Math.round(card.offsetWidth / (fontSize * 6));
+        this.drawChart();
+    }
+    ll(str) {
+        const selectedLocale = this.config.locale || this.language || 'en';
+        if (locale[selectedLocale] === undefined) {
+            return locale.en[str];
+        }
+        return locale[selectedLocale][str];
+    }
+    getCardSize() {
+        return 4;
+    }
+    getUnit(unit) {
+        return this._hass.config.unit_system[unit] || '';
+    }
+    getWeatherIcon(condition, sun) {
+        if (this.config.animated_icons === true) {
+            const iconName = sun === 'below_horizon' ? weatherIconsNight[condition] : weatherIconsDay[condition];
+            return `${this.baseIconPath}${iconName}.svg`;
+        }
+        else if (this.config.icons) {
+            const iconName = sun === 'below_horizon' ? weatherIconsNight[condition] : weatherIconsDay[condition];
+            return `${this.config.icons}${iconName}.svg`;
+        }
+        return weatherIcons[condition];
+    }
+    getWindDirIcon(deg) {
+        if (typeof deg === 'number') {
+            return cardinalDirectionsIcon[parseInt((deg + 22.5) / 45.0)];
+        }
+        else {
+            var i = 9;
+            switch (deg) {
+                case "N":
+                    i = 0;
+                    break;
+                case "NNE":
+                case "NE":
+                    i = 1;
+                    break;
+                case "ENE":
+                case "E":
+                    i = 2;
+                    break;
+                case "ESE":
+                case "SE":
+                    i = 3;
+                    break;
+                case "SSE":
+                case "S":
+                    i = 4;
+                    break;
+                case "SSW":
+                case "SW":
+                    i = 5;
+                    break;
+                case "WSW":
+                case "W":
+                    i = 6;
+                    break;
+                case "NW":
+                case "NNW":
+                    i = 7;
+                    break;
+                case "WNW":
+                    i = 8;
+                    break;
+                default:
+                    i = 9;
+                    break;
+            }
+            return cardinalDirectionsIcon[i];
+        }
+    }
+    getWindDir(deg) {
+        if (typeof deg === 'number') {
+            return this.ll('cardinalDirections')[parseInt((deg + 11.25) / 22.5)];
+        }
+        else {
+            return deg;
+        }
+    }
+    calculateBeaufortScale(windSpeed) {
+        const unitConversion = {
+            'km/h': 1,
+            'm/s': 3.6,
+            'mph': 1.60934,
+        };
+        if (!this.weather || !this.weather.attributes.wind_speed_unit) {
+            console.error('calculateBeaufortScale: wind_speed_unit not available in weather attributes.');
+            return undefined;
+        }
+        const wind_speed_unit = this.weather.attributes.wind_speed_unit;
+        const conversionFactor = unitConversion[wind_speed_unit];
+        if (typeof conversionFactor !== 'number') {
+            console.error(`calculateBeaufortScale: unknown wind_speed_unit "${wind_speed_unit}".`);
+            return undefined;
+        }
+        const windSpeedInKmPerHour = windSpeed * conversionFactor;
+        if (windSpeedInKmPerHour < 1)
+            return 0;
+        else if (windSpeedInKmPerHour < 6)
+            return 1;
+        else if (windSpeedInKmPerHour < 12)
+            return 2;
+        else if (windSpeedInKmPerHour < 20)
+            return 3;
+        else if (windSpeedInKmPerHour < 29)
+            return 4;
+        else if (windSpeedInKmPerHour < 39)
+            return 5;
+        else if (windSpeedInKmPerHour < 50)
+            return 6;
+        else if (windSpeedInKmPerHour < 62)
+            return 7;
+        else if (windSpeedInKmPerHour < 75)
+            return 8;
+        else if (windSpeedInKmPerHour < 89)
+            return 9;
+        else if (windSpeedInKmPerHour < 103)
+            return 10;
+        else if (windSpeedInKmPerHour < 118)
+            return 11;
+        else
+            return 12;
+    }
+    async firstUpdated(changedProperties) {
+        super.firstUpdated(changedProperties);
+        this.measureCard();
+        await new Promise(resolve => setTimeout(resolve, 0));
+        this.drawChart();
+        if (this.config.autoscroll) {
+            this.autoscroll();
+        }
+    }
+    async updated(changedProperties) {
+        await this.updateComplete;
+        if (changedProperties.has('config')) {
+            const oldConfig = changedProperties.get('config');
+            const entityChanged = oldConfig && this.config.entity !== oldConfig.entity;
+            const forecastTypeChanged = oldConfig && this.config.forecast.type !== oldConfig.forecast.type;
+            const autoscrollChanged = oldConfig && this.config.autoscroll !== oldConfig.autoscroll;
+            if (entityChanged || forecastTypeChanged) {
+                if (this.forecastSubscriber && typeof this.forecastSubscriber === 'function') {
+                    this.forecastSubscriber();
+                }
+                this.subscribeForecastEvents();
+            }
+            if (this.forecasts && this.forecasts.length) {
+                this.drawChart();
+            }
+            if (autoscrollChanged) {
+                if (!this.config.autoscroll) {
+                    this.autoscroll();
+                }
+                else {
+                    this.cancelAutoscroll();
+                }
+            }
+        }
+        if (changedProperties.has('weather')) {
+            this.updateChart();
+        }
+    }
+    autoscroll() {
+        if (this.autoscrollTimeout) {
+            // Autscroll already set, nothing to do
+            return;
+        }
+        const updateChartOncePerHour = () => {
+            const now = new Date();
+            const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
+            this.autoscrollTimeout = setTimeout(() => {
+                this.autoscrollTimeout = null;
+                this.updateChart();
+                drawChartOncePerHour();
+            }, nextHour - now);
+        };
+        updateChartOncePerHour();
+    }
+    cancelAutoscroll() {
+        if (this.autoscrollTimeout) {
+            clearTimeout(this.autoscrollTimeout);
+        }
+    }
+    drawChart({ config, language, weather, forecastItems } = this) {
+        if (!this.forecasts || !this.forecasts.length) {
+            return [];
+        }
+        const chartCanvas = this.renderRoot && this.renderRoot.querySelector('#forecastChart');
+        if (!chartCanvas) {
+            console.error('Canvas element not found:', this.renderRoot);
+            return;
+        }
+        if (this.forecastChart) {
+            this.forecastChart.destroy();
+        }
+        var tempUnit = this._hass.config.unit_system.temperature;
+        var precipitationUnit = this.weather.attributes.precipitation_unit;
+        if (config.forecast.precipitation_type === 'probability') {
+            var precipUnit = '%';
+        }
+        else {
+            var precipUnit = precipitationUnit === 'mm' ? this.ll('units')['mm'] : this.ll('units')['in'];
+        }
+        const data = this.computeForecastData();
+        const numeric = (arr) => arr.filter((v) => typeof v === 'number');
+        var style = getComputedStyle(document.body);
+        var backgroundColor = style.getPropertyValue('--card-background-color');
+        var textColor = style.getPropertyValue('--primary-text-color');
+        var dividerColor = style.getPropertyValue('--divider-color');
+        const canvas = this.renderRoot.querySelector('#forecastChart');
+        if (!canvas) {
+            requestAnimationFrame(() => this.drawChart());
+            return;
+        }
+        const ctx = canvas.getContext('2d');
+        let precipMax;
+        if (config.forecast.precipitation_type === 'probability') {
+            precipMax = 100;
+        }
+        else {
+            if (config.forecast.type === 'hourly') {
+                precipMax = precipitationUnit === 'mm' ? 4 : 1;
+            }
+            else {
+                precipMax = precipitationUnit === 'mm' ? 20 : 1;
+            }
+        }
+        Chart.defaults.color = textColor;
+        Chart.defaults.scale.grid.color = dividerColor;
+        Chart.defaults.elements.line.fill = false;
+        Chart.defaults.elements.line.tension = 0.3;
+        Chart.defaults.elements.line.borderWidth = 1.5;
+        Chart.defaults.elements.point.radius = 1;
+        Chart.defaults.elements.point.hitRadius = 10;
+        const isHourlyChart = config.forecast.type === 'hourly';
+        const highlightColor = (index, fallback) => {
+            if (!isHourlyChart)
+                return fallback;
+            if (data.minHrs.includes(index))
+                return 'blue';
+            if (data.maxHrs.includes(index))
+                return 'red';
+            return fallback;
+        };
+        const labelDisplay = (index) => {
             if (config.forecast.show_all_labels === false) {
-              if (!isHourlyChart) return 'auto';
-              return (data.dailyLowIndex.includes(context.dataIndex) || data.dailyHighIndex.includes(context.dataIndex)) ? 'auto' : false;
+                if (!isHourlyChart)
+                    return 'auto';
+                return (data.dailyLowIndex.includes(index) || data.dailyHighIndex.includes(index)) ? 'auto' : false;
             }
             return 'auto';
-          },
-          align: (context) => context.datasetIndex === 1 ? 'bottom' : 'top',
-          anchor: 'center',
-          offset: 6,
-          backgroundColor: backgroundColor,
-          borderColor: context => context.dataset.backgroundColor,
-          borderRadius: 0,
-          borderWidth: 1.5,
-          padding: config.forecast.precipitation_type === 'rainfall' && config.forecast.show_probability && config.forecast.type !== 'hourly' ? 3 : 4,
-          color: chart_text_color || textColor,
-          font: {
-            size: config.forecast.labels_font_size,
-            lineHeight: 0.7,
-          },
-          formatter: function (value, context) {
-            return context.dataset.data[context.dataIndex] + '°';
-          },
-        },
-        tooltip: {
-          caretSize: 0,
-          caretPadding: 15,
-          callbacks: {
-            title: function (TooltipItem) {
-              var datetime = TooltipItem[0].label;
-              return new Date(datetime).toLocaleDateString(language, {
-                month: 'short',
-                day: 'numeric',
-                weekday: 'short',
-                hour: 'numeric',
-                minute: 'numeric',
-                hour12: config.use_12hour_format,
-              });
+        };
+        var datasets = [
+            {
+                label: this.ll('tempHi'),
+                type: 'line',
+                data: data.tempHigh,
+                yAxisID: 'TempAxis',
+                borderColor: data.tempHigh.map((_, index) => highlightColor(index, config.forecast.temperature1_color)),
+                backgroundColor: data.tempHigh.map((_, index) => highlightColor(index, config.forecast.temperature1_color)),
+                pointRadius: data.tempHigh.map((_, index) => (isHourlyChart && (data.minHrs.includes(index) || data.maxHrs.includes(index))) ? 5 : Chart.defaults.elements.point.radius),
             },
-    label: function (context) {
-      var label = context.dataset.label;
-      var value = context.formattedValue;
-      var probability = data.forecast[context.dataIndex].precipitation_probability;
-      var unit = context.datasetIndex === 2 ? precipUnit : tempUnit;
-
-      if (config.forecast.precipitation_type === 'rainfall' && context.datasetIndex === 2 && config.forecast.show_probability && probability !== undefined && probability !== null) {
-        return label + ': ' + value + ' ' + precipUnit + ' / ' + Math.round(probability) + '%';
-      } else {
-        return label + ': ' + value + ' ' + unit;
-      }
+            {
+                label: this.ll('tempLo'),
+                type: 'line',
+                data: data.tempLow,
+                yAxisID: 'TempAxis',
+                borderColor: config.forecast.temperature2_color,
+                backgroundColor: config.forecast.temperature2_color,
             },
-          },
-        },
-      },
-    },
-  });
-}
-
-computeDailyMinMaxIndices(dateTime, tempHigh) {
-  const minHrs = [];
-  const maxHrs = [];
-  const dailyLowIndex = [];
-  const dailyHighIndex = [];
-  const dayKey = (iso) => {
-    const d = new Date(iso);
-    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
-  };
-
-  let groupStart = 0;
-  for (let i = 1; i <= dateTime.length; i++) {
-    const atBoundary = i === dateTime.length || dayKey(dateTime[i]) !== dayKey(dateTime[groupStart]);
-    if (atBoundary) {
-      const group = tempHigh.slice(groupStart, i);
-      const min = Math.min(...group);
-      const max = Math.max(...group);
-      let minFound = false;
-      let maxFound = false;
-      for (let j = 0; j < group.length; j++) {
-        if (group[j] === min) {
-          minHrs.push(groupStart + j);
-          if (!minFound) {
-            dailyLowIndex.push(groupStart + j);
-            minFound = true;
-          }
-        } else if (group[j] === max) {
-          maxHrs.push(groupStart + j);
-          if (!maxFound) {
-            dailyHighIndex.push(groupStart + j);
-            maxFound = true;
-          }
+            {
+                label: this.ll('precip'),
+                type: 'bar',
+                data: data.precip,
+                yAxisID: 'PrecipAxis',
+                borderColor: config.forecast.precipitation_color,
+                backgroundColor: config.forecast.precipitation_color,
+                barPercentage: config.forecast.precip_bar_size / 100,
+                categoryPercentage: 1.0,
+                datalabels: {
+                    display: function (context) {
+                        return context.dataset.data[context.dataIndex] > 0 ? 'auto' : false;
+                    },
+                    formatter: function (value, context) {
+                        const precipitationType = config.forecast.precipitation_type;
+                        const rainfall = context.dataset.data[context.dataIndex];
+                        const probability = data.forecast[context.dataIndex].precipitation_probability;
+                        let formattedValue;
+                        if (precipitationType === 'rainfall') {
+                            if (probability !== undefined && probability !== null && config.forecast.show_probability) {
+                                formattedValue = `${rainfall > 9 ? Math.round(rainfall) : rainfall.toFixed(1)} ${precipUnit}\n${Math.round(probability)}%`;
+                            }
+                            else {
+                                formattedValue = `${rainfall > 9 ? Math.round(rainfall) : rainfall.toFixed(1)} ${precipUnit}`;
+                            }
+                        }
+                        else {
+                            formattedValue = `${rainfall > 9 ? Math.round(rainfall) : rainfall.toFixed(1)} ${precipUnit}`;
+                        }
+                        formattedValue = formattedValue.replace('\n', '\n\n');
+                        return formattedValue;
+                    },
+                    textAlign: 'center',
+                    textBaseline: 'middle',
+                    align: 'top',
+                    anchor: 'end',
+                    offset: 10,
+                },
+            },
+            {
+                label: this.ll('dewpoint'),
+                type: 'line',
+                data: data.dewPoint,
+                yAxisID: 'DPAxis',
+                borderColor: config.forecast.dewpoint_color,
+                backgroundColor: config.forecast.dewpoint_color,
+                pointRadius: 1,
+            },
+        ];
+        const chart_text_color = (config.forecast.chart_text_color === 'auto') ? textColor : config.forecast.chart_text_color;
+        if (config.forecast.style === 'style2') {
+            datasets[0].datalabels = {
+                display: function (context) {
+                    return labelDisplay(context.dataIndex);
+                },
+                formatter: function (value, context) {
+                    return context.dataset.data[context.dataIndex] + '°';
+                },
+                align: (context) => isHourlyChart && data.minHrs.includes(context.dataIndex) ? 'bottom' : isHourlyChart && data.maxHrs.includes(context.dataIndex) ? 'top' : 'top',
+                anchor: 'center',
+                offset: 6,
+                backgroundColor: 'transparent',
+                borderColor: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? highlightColor(context.dataIndex, 'transparent') : 'transparent',
+                borderRadius: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? 3 : 0,
+                color: (context) => isHourlyChart && (data.minHrs.includes(context.dataIndex) || data.maxHrs.includes(context.dataIndex)) ? config.forecast.temperature1_color : (chart_text_color || config.forecast.temperature1_color),
+                font: {
+                    size: parseInt(config.forecast.labels_font_size) + 1,
+                    lineHeight: 0.7,
+                },
+            };
+            datasets[1].datalabels = {
+                display: function (context) {
+                    return labelDisplay(context.dataIndex);
+                },
+                formatter: function (value, context) {
+                    return context.dataset.data[context.dataIndex] + '°';
+                },
+                align: 'bottom',
+                anchor: 'center',
+                offset: 6,
+                backgroundColor: 'transparent',
+                borderColor: 'transparent',
+                color: chart_text_color || config.forecast.temperature2_color,
+                font: {
+                    size: parseInt(config.forecast.labels_font_size) + 1,
+                    lineHeight: 0.7,
+                },
+            };
+            datasets[3].datalabels = {
+                display: function (context) {
+                    return labelDisplay(context.dataIndex);
+                },
+                formatter: function (value, context) {
+                    return context.dataset.data[context.dataIndex] + '°';
+                },
+                align: 'bottom',
+                anchor: 'center',
+                offset: 6,
+                backgroundColor: 'transparent',
+                borderColor: 'transparent',
+                color: config.forecast.chart_text_color,
+                font: {
+                    size: parseInt(config.forecast.labels_font_size) + 1,
+                    lineHeight: 0.7,
+                },
+            };
         }
-      }
-      groupStart = i;
+        this.forecastChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.dateTime,
+                datasets: datasets,
+            },
+            options: {
+                maintainAspectRatio: false,
+                animation: config.forecast.disable_animation === true ? { duration: 0 } : {},
+                layout: {
+                    padding: {
+                        bottom: 10,
+                    },
+                },
+                scales: {
+                    x: {
+                        position: 'top',
+                        border: {
+                            width: 0,
+                        },
+                        grid: {
+                            display: true,
+                            drawTicks: false,
+                            offset: false,
+                            color: dividerColor,
+                            lineWidth: data.dateTime.map((iso) => (isHourlyChart && new Date(iso).getHours() === 0) ? 5 : 1),
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            color: config.forecast.chart_datetime_color || textColor,
+                            padding: config.forecast.precipitation_type === 'rainfall' && config.forecast.show_probability && config.forecast.type !== 'hourly' ? 4 : 10,
+                            major: {
+                                enabled: true,
+                                fontStyle: 'bold',
+                            },
+                            callback: function (value, index, values) {
+                                var datetime = this.getLabelForValue(value);
+                                var dateObj = new Date(datetime);
+                                var timeFormatOptions = {
+                                    hour12: config.use_12hour_format,
+                                    hour: 'numeric',
+                                    ...(config.use_12hour_format ? {} : { minute: 'numeric' }),
+                                };
+                                var time = dateObj.toLocaleTimeString(language, timeFormatOptions);
+                                if (dateObj.getHours() === 0 && dateObj.getMinutes() === 0 && config.forecast.type === 'hourly') {
+                                    var dateFormatOptions = {
+                                        day: 'numeric',
+                                        month: 'short',
+                                    };
+                                    var date = dateObj.toLocaleDateString(language, dateFormatOptions);
+                                    time = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
+                                    values[index].major = true;
+                                    return [date, time];
+                                }
+                                if (config.forecast.type !== 'hourly') {
+                                    var weekday = dateObj.toLocaleString(language, { weekday: 'short' }).toUpperCase();
+                                    return weekday;
+                                }
+                                time = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
+                                return time;
+                            },
+                        },
+                        reverse: document.dir === 'rtl' ? true : false,
+                    },
+                    TempAxis: {
+                        position: 'left',
+                        beginAtZero: false,
+                        suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
+                        suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
+                        grid: {
+                            display: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            display: false,
+                        },
+                    },
+                    DPAxis: {
+                        position: 'left',
+                        beginAtZero: false,
+                        suggestedMin: Math.min(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) - 5,
+                        suggestedMax: Math.max(...numeric(data.tempHigh), ...numeric(data.tempLow), ...numeric(data.dewPoint)) + 3,
+                        grid: {
+                            display: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            display: false,
+                        },
+                    },
+                    PrecipAxis: {
+                        position: 'right',
+                        suggestedMax: precipMax,
+                        grid: {
+                            display: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            display: false,
+                        },
+                    },
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    datalabels: {
+                        display: function (context) {
+                            if (config.forecast.show_all_labels === false) {
+                                if (!isHourlyChart)
+                                    return 'auto';
+                                return (data.dailyLowIndex.includes(context.dataIndex) || data.dailyHighIndex.includes(context.dataIndex)) ? 'auto' : false;
+                            }
+                            return 'auto';
+                        },
+                        align: (context) => context.datasetIndex === 1 ? 'bottom' : 'top',
+                        anchor: 'center',
+                        offset: 6,
+                        backgroundColor: backgroundColor,
+                        borderColor: context => context.dataset.backgroundColor,
+                        borderRadius: 0,
+                        borderWidth: 1.5,
+                        padding: config.forecast.precipitation_type === 'rainfall' && config.forecast.show_probability && config.forecast.type !== 'hourly' ? 3 : 4,
+                        color: chart_text_color || textColor,
+                        font: {
+                            size: config.forecast.labels_font_size,
+                            lineHeight: 0.7,
+                        },
+                        formatter: function (value, context) {
+                            return context.dataset.data[context.dataIndex] + '°';
+                        },
+                    },
+                    tooltip: {
+                        caretSize: 0,
+                        caretPadding: 15,
+                        callbacks: {
+                            title: function (TooltipItem) {
+                                var datetime = TooltipItem[0].label;
+                                return new Date(datetime).toLocaleDateString(language, {
+                                    month: 'short',
+                                    day: 'numeric',
+                                    weekday: 'short',
+                                    hour: 'numeric',
+                                    minute: 'numeric',
+                                    hour12: config.use_12hour_format,
+                                });
+                            },
+                            label: function (context) {
+                                var label = context.dataset.label;
+                                var value = context.formattedValue;
+                                var probability = data.forecast[context.dataIndex].precipitation_probability;
+                                var unit = context.datasetIndex === 2 ? precipUnit : tempUnit;
+                                if (config.forecast.precipitation_type === 'rainfall' && context.datasetIndex === 2 && config.forecast.show_probability && probability !== undefined && probability !== null) {
+                                    return label + ': ' + value + ' ' + precipUnit + ' / ' + Math.round(probability) + '%';
+                                }
+                                else {
+                                    return label + ': ' + value + ' ' + unit;
+                                }
+                            },
+                        },
+                    },
+                },
+            },
+        });
     }
-  }
-
-  return { minHrs, maxHrs, dailyLowIndex, dailyHighIndex };
-}
-
-computeForecastData({ config, forecastItems } = this) {
-  var forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
-  var roundTemp = config.forecast.round_temp == true;
-  var showDewpointForecast = config.forecast.show_dew_point_forecast == true;
-  var dateTime = [];
-  var tempHigh = [];
-  var tempLow = [];
-  var dewPoint = [];
-  var precip = [];
-
-  for (var i = 0; i < forecast.length; i++) {
-    var d = forecast[i];
-    if (config.autoscroll) {
-      const cutoff = (config.forecast.type === 'hourly' ? 1 : 24) * 60 * 60 * 1000;
-      if (new Date() - new Date(d.datetime) > cutoff) {
-        continue;
-      }
+    computeDailyMinMaxIndices(dateTime, tempHigh) {
+        const minHrs = [];
+        const maxHrs = [];
+        const dailyLowIndex = [];
+        const dailyHighIndex = [];
+        const dayKey = (iso) => {
+            const d = new Date(iso);
+            return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+        };
+        let groupStart = 0;
+        for (let i = 1; i <= dateTime.length; i++) {
+            const atBoundary = i === dateTime.length || dayKey(dateTime[i]) !== dayKey(dateTime[groupStart]);
+            if (atBoundary) {
+                const group = tempHigh.slice(groupStart, i);
+                const min = Math.min(...group);
+                const max = Math.max(...group);
+                let minFound = false;
+                let maxFound = false;
+                for (let j = 0; j < group.length; j++) {
+                    if (group[j] === min) {
+                        minHrs.push(groupStart + j);
+                        if (!minFound) {
+                            dailyLowIndex.push(groupStart + j);
+                            minFound = true;
+                        }
+                    }
+                    else if (group[j] === max) {
+                        maxHrs.push(groupStart + j);
+                        if (!maxFound) {
+                            dailyHighIndex.push(groupStart + j);
+                            maxFound = true;
+                        }
+                    }
+                }
+                groupStart = i;
+            }
+        }
+        return { minHrs, maxHrs, dailyLowIndex, dailyHighIndex };
     }
-    dateTime.push(d.datetime);
-    tempHigh.push(d.temperature);
-    if (showDewpointForecast) {
-      dewPoint.push(typeof d.dew_point !== 'undefined' ? d.dew_point : null);
+    computeForecastData({ config, forecastItems } = this) {
+        var forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
+        var roundTemp = config.forecast.round_temp == true;
+        var showDewpointForecast = config.forecast.show_dew_point_forecast == true;
+        var dateTime = [];
+        var tempHigh = [];
+        var tempLow = [];
+        var dewPoint = [];
+        var precip = [];
+        for (var i = 0; i < forecast.length; i++) {
+            var d = forecast[i];
+            if (config.autoscroll) {
+                const cutoff = (config.forecast.type === 'hourly' ? 1 : 24) * 60 * 60 * 1000;
+                if (new Date() - new Date(d.datetime) > cutoff) {
+                    continue;
+                }
+            }
+            dateTime.push(d.datetime);
+            tempHigh.push(d.temperature);
+            if (showDewpointForecast) {
+                dewPoint.push(typeof d.dew_point !== 'undefined' ? d.dew_point : null);
+            }
+            tempLow.push(typeof d.templow !== 'undefined' ? d.templow : null);
+            if (roundTemp) {
+                const lastIndex = tempHigh.length - 1;
+                tempHigh[lastIndex] = Math.round(tempHigh[lastIndex]);
+                if (tempLow[lastIndex] !== null) {
+                    tempLow[lastIndex] = Math.round(tempLow[lastIndex]);
+                }
+            }
+            if (config.forecast.precipitation_type === 'probability') {
+                precip.push(d.precipitation_probability);
+            }
+            else {
+                precip.push(d.precipitation);
+            }
+        }
+        const { minHrs, maxHrs, dailyLowIndex, dailyHighIndex } = config.forecast.type === 'hourly' && dateTime.length
+            ? this.computeDailyMinMaxIndices(dateTime, tempHigh)
+            : { minHrs: [], maxHrs: [], dailyLowIndex: [], dailyHighIndex: [] };
+        return {
+            forecast,
+            dateTime,
+            tempHigh,
+            tempLow,
+            dewPoint,
+            precip,
+            minHrs,
+            maxHrs,
+            dailyLowIndex,
+            dailyHighIndex,
+        };
     }
-    tempLow.push(typeof d.templow !== 'undefined' ? d.templow : null);
-
-    if (roundTemp) {
-      const lastIndex = tempHigh.length - 1;
-      tempHigh[lastIndex] = Math.round(tempHigh[lastIndex]);
-      if (tempLow[lastIndex] !== null) {
-        tempLow[lastIndex] = Math.round(tempLow[lastIndex]);
-      }
+    updateChart({ forecasts, forecastChart } = this) {
+        if (!forecasts || !forecasts.length) {
+            return [];
+        }
+        const data = this.computeForecastData();
+        if (forecastChart) {
+            forecastChart.data.labels = data.dateTime;
+            forecastChart.data.datasets[0].data = data.tempHigh;
+            forecastChart.data.datasets[1].data = data.tempLow;
+            forecastChart.data.datasets[2].data = data.precip;
+            forecastChart.data.datasets[3].data = data.dewPoint;
+            forecastChart.update();
+        }
     }
-    if (config.forecast.precipitation_type === 'probability') {
-      precip.push(d.precipitation_probability);
-    } else {
-      precip.push(d.precipitation);
-    }
-  }
-
-  const { minHrs, maxHrs, dailyLowIndex, dailyHighIndex } = config.forecast.type === 'hourly' && dateTime.length
-    ? this.computeDailyMinMaxIndices(dateTime, tempHigh)
-    : { minHrs: [], maxHrs: [], dailyLowIndex: [], dailyHighIndex: [] };
-
-  return {
-    forecast,
-    dateTime,
-    tempHigh,
-    tempLow,
-    dewPoint,
-    precip,
-    minHrs,
-    maxHrs,
-    dailyLowIndex,
-    dailyHighIndex,
-  }
-}
-
-updateChart({ forecasts, forecastChart } = this) {
-  if (!forecasts || !forecasts.length) {
-    return [];
-  }
-
-  const data = this.computeForecastData();
-
-  if (forecastChart) {
-    forecastChart.data.labels = data.dateTime;
-    forecastChart.data.datasets[0].data = data.tempHigh;
-    forecastChart.data.datasets[1].data = data.tempLow;
-    forecastChart.data.datasets[2].data = data.precip;
-    forecastChart.data.datasets[3].data = data.dewPoint;
-    forecastChart.update();
-  }
-}
-
-  render({config, _hass, weather} = this) {
-    if (!config || !_hass) {
-      return x``;
-    }
-    if (!weather || !weather.attributes) {
-      return x`
+    render({ config, _hass, weather } = this) {
+        if (!config || !_hass) {
+            return b ``;
+        }
+        if (!weather || !weather.attributes) {
+            return b `
         <style>
           .card {
-            padding-top: ${config.title? '0px' : '16px'};
+            padding-top: ${config.title ? '0px' : '16px'};
             padding-right: 16px;
             padding-bottom: 16px;
             padding-left: 16px;
@@ -18917,8 +18805,8 @@ updateChart({ forecasts, forecastChart } = this) {
           </div>
         </ha-card>
       `;
-    }
-    return x`
+        }
+        return b `
       <style>
         ha-icon {
           color: var(--paper-item-icon-color);
@@ -19066,222 +18954,219 @@ updateChart({ forecasts, forecastChart } = this) {
         </div>
       </ha-card>
     `;
-  }
-
-renderMain({ config, sun, weather, temperature, feels_like, description } = this) {
-  if (config.show_main === false)
-    return x``;
-
-  const use12HourFormat = config.use_12hour_format;
-  const showTime = config.show_time;
-  const showDay = config.show_day;
-  const showDate = config.show_date;
-  const showFeelsLike = config.show_feels_like;
-  const showDescription = config.show_description;
-  const showCurrentCondition = config.show_current_condition !== false;
-  const showTemperature = config.show_temperature !== false;
-  const showSeconds = config.show_time_seconds === true;
-
-  let roundedTemperature = parseFloat(temperature);
-  if (!isNaN(roundedTemperature) && roundedTemperature % 1 !== 0) {
-    roundedTemperature = Math.round(roundedTemperature * 10) / 10;
-  }
-
-  let roundedFeelsLike = parseFloat(feels_like);
-  if (!isNaN(roundedFeelsLike) && roundedFeelsLike % 1 !== 0) {
-    roundedFeelsLike = Math.round(roundedFeelsLike * 10) / 10;
-  }
-
-  const iconHtml = config.animated_icons || config.icons
-    ? x`<img src="${this.getWeatherIcon(weather.state, sun.state)}" alt="">`
-    : x`<ha-icon icon="${this.getWeatherIcon(weather.state, sun.state)}"></ha-icon>`;
-
-  const updateClock = () => {
-    const currentDate = new Date();
-    const timeOptions = {
-      hour12: use12HourFormat,
-      hour: 'numeric',
-      minute: 'numeric',
-      second: showSeconds ? 'numeric' : undefined
-    };
-    const currentTime = currentDate.toLocaleTimeString(this.language, timeOptions);
-    const currentDayOfWeek = currentDate.toLocaleString(this.language, { weekday: 'long' }).toUpperCase();
-    const currentDateFormatted = currentDate.toLocaleDateString(this.language, { month: 'long', day: 'numeric' });
-
-    const mainDiv = this.shadowRoot.querySelector('.main');
-    if (mainDiv) {
-      const clockElement = mainDiv.querySelector('#digital-clock');
-      if (clockElement) {
-        clockElement.textContent = currentTime;
-      }
-      if (showDay) {
-        const dayElement = mainDiv.querySelector('.date-text.day');
-        if (dayElement) {
-          dayElement.textContent = currentDayOfWeek;
-        }
-      }
-      if (showDate) {
-        const dateElement = mainDiv.querySelector('.date-text.date');
-        if (dateElement) {
-          dateElement.textContent = currentDateFormatted;
-        }
-      }
     }
-  };
-
-  updateClock();
-
-  if (showTime) {
-    setInterval(updateClock, 1000);
-  }
-
-  return x`
+    renderMain({ config, sun, weather, temperature, feels_like, description } = this) {
+        if (config.show_main === false)
+            return b ``;
+        const use12HourFormat = config.use_12hour_format;
+        const showTime = config.show_time;
+        const showDay = config.show_day;
+        const showDate = config.show_date;
+        const showFeelsLike = config.show_feels_like;
+        const showDescription = config.show_description;
+        const showCurrentCondition = config.show_current_condition !== false;
+        const showTemperature = config.show_temperature !== false;
+        const showSeconds = config.show_time_seconds === true;
+        let roundedTemperature = parseFloat(temperature);
+        if (!isNaN(roundedTemperature) && roundedTemperature % 1 !== 0) {
+            roundedTemperature = Math.round(roundedTemperature * 10) / 10;
+        }
+        let roundedFeelsLike = parseFloat(feels_like);
+        if (!isNaN(roundedFeelsLike) && roundedFeelsLike % 1 !== 0) {
+            roundedFeelsLike = Math.round(roundedFeelsLike * 10) / 10;
+        }
+        const iconHtml = config.animated_icons || config.icons
+            ? b `<img src="${this.getWeatherIcon(weather.state, sun.state)}" alt="">`
+            : b `<ha-icon icon="${this.getWeatherIcon(weather.state, sun.state)}"></ha-icon>`;
+        const updateClock = () => {
+            const currentDate = new Date();
+            const timeOptions = {
+                hour12: use12HourFormat,
+                hour: 'numeric',
+                minute: 'numeric',
+                second: showSeconds ? 'numeric' : undefined
+            };
+            const currentTime = currentDate.toLocaleTimeString(this.language, timeOptions);
+            const currentDayOfWeek = currentDate.toLocaleString(this.language, { weekday: 'long' }).toUpperCase();
+            const currentDateFormatted = currentDate.toLocaleDateString(this.language, { month: 'long', day: 'numeric' });
+            const mainDiv = this.shadowRoot.querySelector('.main');
+            if (mainDiv) {
+                const clockElement = mainDiv.querySelector('#digital-clock');
+                if (clockElement) {
+                    clockElement.textContent = currentTime;
+                }
+                if (showDay) {
+                    const dayElement = mainDiv.querySelector('.date-text.day');
+                    if (dayElement) {
+                        dayElement.textContent = currentDayOfWeek;
+                    }
+                }
+                if (showDate) {
+                    const dateElement = mainDiv.querySelector('.date-text.date');
+                    if (dateElement) {
+                        dateElement.textContent = currentDateFormatted;
+                    }
+                }
+            }
+        };
+        updateClock();
+        if (showTime) {
+            setInterval(updateClock, 1000);
+        }
+        return b `
     <div class="main">
       ${iconHtml}
       <div>
         <div>
-          ${showTemperature ? x`${roundedTemperature}<span>${this.getUnit('temperature')}</span>` : ''}
-          ${showFeelsLike && roundedFeelsLike ? x`
+          ${showTemperature ? b `${roundedTemperature}<span>${this.getUnit('temperature')}</span>` : ''}
+          ${showFeelsLike && roundedFeelsLike ? b `
             <div class="feels-like">
               ${this.ll('feelsLike')}
               ${roundedFeelsLike}${this.getUnit('temperature')}
             </div>
           ` : ''}
-          ${showCurrentCondition ? x`
+          ${showCurrentCondition ? b `
             <div class="current-condition">
               <span>${this.ll(weather.state)}</span>
             </div>
           ` : ''}
-          ${showDescription ? x`
+          ${showDescription ? b `
             <div class="description">
               ${description}
             </div>
           ` : ''}
         </div>
-        ${showTime ? x`
+        ${showTime ? b `
           <div class="current-time">
             <div id="digital-clock"></div>
-            ${showDay ? x`<div class="date-text day"></div>` : ''}
-            ${showDay && showDate ? x` ` : ''}
-            ${showDate ? x`<div class="date-text date"></div>` : ''}
+            ${showDay ? b `<div class="date-text day"></div>` : ''}
+            ${showDay && showDate ? b ` ` : ''}
+            ${showDate ? b `<div class="date-text date"></div>` : ''}
           </div>
         ` : ''}
       </div>
     </div>
   `;
-}
-
-renderAttributes({ config, humidity, pressure, windSpeed, windDirection, sun, language, uv_index, dew_point, wind_gust_speed, visibility } = this) {
-  let dWindSpeed = windSpeed;
-  let dPressure = pressure;
-
-  if (this.unitSpeed !== this.weather.attributes.wind_speed_unit) {
-    if (this.unitSpeed === 'm/s') {
-      if (this.weather.attributes.wind_speed_unit === 'km/h') {
-        dWindSpeed = Math.round(windSpeed * 1000 / 3600);
-      } else if (this.weather.attributes.wind_speed_unit === 'mph') {
-        dWindSpeed = Math.round(windSpeed * 0.44704);
-      }
-    } else if (this.unitSpeed === 'km/h') {
-      if (this.weather.attributes.wind_speed_unit === 'm/s') {
-        dWindSpeed = Math.round(windSpeed * 3.6);
-      } else if (this.weather.attributes.wind_speed_unit === 'mph') {
-        dWindSpeed = Math.round(windSpeed * 1.60934);
-      }
-    } else if (this.unitSpeed === 'mph') {
-      if (this.weather.attributes.wind_speed_unit === 'm/s') {
-        dWindSpeed = Math.round(windSpeed / 0.44704);
-      } else if (this.weather.attributes.wind_speed_unit === 'km/h') {
-        dWindSpeed = Math.round(windSpeed / 1.60934);
-      }
-    } else if (this.unitSpeed === 'Bft') {
-      dWindSpeed = this.calculateBeaufortScale(windSpeed);
     }
-  } else {
-    dWindSpeed = Math.round(dWindSpeed);
-  }
-
-  if (this.unitPressure !== this.weather.attributes.pressure_unit) {
-    if (this.unitPressure === 'mmHg') {
-      if (this.weather.attributes.pressure_unit === 'hPa') {
-        dPressure = Math.round(pressure * 0.75006);
-      } else if (this.weather.attributes.pressure_unit === 'inHg') {
-        dPressure = Math.round(pressure * 25.4);
-      }
-    } else if (this.unitPressure === 'hPa') {
-      if (this.weather.attributes.pressure_unit === 'mmHg') {
-        dPressure = Math.round(pressure / 0.75006);
-      } else if (this.weather.attributes.pressure_unit === 'inHg') {
-        dPressure = Math.round(pressure * 33.8639);
-      }
-    } else if (this.unitPressure === 'inHg') {
-      if (this.weather.attributes.pressure_unit === 'mmHg') {
-        dPressure = pressure / 25.4;
-      } else if (this.weather.attributes.pressure_unit === 'hPa') {
-        dPressure = pressure / 33.8639;
-      }
-      dPressure = dPressure.toFixed(2);
-    }
-  } else {
-    if (this.unitPressure === 'hPa' || this.unitPressure === 'mmHg') {
-      dPressure = Math.round(dPressure);
-    }
-  }
-
-  if (config.show_attributes == false)
-    return x``;
-
-  const showHumidity = config.show_humidity !== false;
-  const showPressure = config.show_pressure !== false;
-  const showWindDirection = config.show_wind_direction !== false;
-  const showWindSpeed = config.show_wind_speed !== false;
-  const showSun = config.show_sun !== false;
-  const showDewpoint = config.show_dew_point == true;
-  const showWindgustspeed = config.show_wind_gust_speed == true;
-  const showVisibility = config.show_visibility == true;
-
-return x`
+    renderAttributes({ config, humidity, pressure, windSpeed, windDirection, sun, language, uv_index, dew_point, wind_gust_speed, visibility } = this) {
+        let dWindSpeed = windSpeed;
+        let dPressure = pressure;
+        if (this.unitSpeed !== this.weather.attributes.wind_speed_unit) {
+            if (this.unitSpeed === 'm/s') {
+                if (this.weather.attributes.wind_speed_unit === 'km/h') {
+                    dWindSpeed = Math.round(windSpeed * 1000 / 3600);
+                }
+                else if (this.weather.attributes.wind_speed_unit === 'mph') {
+                    dWindSpeed = Math.round(windSpeed * 0.44704);
+                }
+            }
+            else if (this.unitSpeed === 'km/h') {
+                if (this.weather.attributes.wind_speed_unit === 'm/s') {
+                    dWindSpeed = Math.round(windSpeed * 3.6);
+                }
+                else if (this.weather.attributes.wind_speed_unit === 'mph') {
+                    dWindSpeed = Math.round(windSpeed * 1.60934);
+                }
+            }
+            else if (this.unitSpeed === 'mph') {
+                if (this.weather.attributes.wind_speed_unit === 'm/s') {
+                    dWindSpeed = Math.round(windSpeed / 0.44704);
+                }
+                else if (this.weather.attributes.wind_speed_unit === 'km/h') {
+                    dWindSpeed = Math.round(windSpeed / 1.60934);
+                }
+            }
+            else if (this.unitSpeed === 'Bft') {
+                dWindSpeed = this.calculateBeaufortScale(windSpeed);
+            }
+        }
+        else {
+            dWindSpeed = Math.round(dWindSpeed);
+        }
+        if (this.unitPressure !== this.weather.attributes.pressure_unit) {
+            if (this.unitPressure === 'mmHg') {
+                if (this.weather.attributes.pressure_unit === 'hPa') {
+                    dPressure = Math.round(pressure * 0.75006);
+                }
+                else if (this.weather.attributes.pressure_unit === 'inHg') {
+                    dPressure = Math.round(pressure * 25.4);
+                }
+            }
+            else if (this.unitPressure === 'hPa') {
+                if (this.weather.attributes.pressure_unit === 'mmHg') {
+                    dPressure = Math.round(pressure / 0.75006);
+                }
+                else if (this.weather.attributes.pressure_unit === 'inHg') {
+                    dPressure = Math.round(pressure * 33.8639);
+                }
+            }
+            else if (this.unitPressure === 'inHg') {
+                if (this.weather.attributes.pressure_unit === 'mmHg') {
+                    dPressure = pressure / 25.4;
+                }
+                else if (this.weather.attributes.pressure_unit === 'hPa') {
+                    dPressure = pressure / 33.8639;
+                }
+                dPressure = dPressure.toFixed(2);
+            }
+        }
+        else {
+            if (this.unitPressure === 'hPa' || this.unitPressure === 'mmHg') {
+                dPressure = Math.round(dPressure);
+            }
+        }
+        if (config.show_attributes == false)
+            return b ``;
+        const showHumidity = config.show_humidity !== false;
+        const showPressure = config.show_pressure !== false;
+        const showWindDirection = config.show_wind_direction !== false;
+        const showWindSpeed = config.show_wind_speed !== false;
+        const showSun = config.show_sun !== false;
+        const showDewpoint = config.show_dew_point == true;
+        const showWindgustspeed = config.show_wind_gust_speed == true;
+        const showVisibility = config.show_visibility == true;
+        return b `
     <div class="attributes">
-      ${((showHumidity && humidity !== undefined) || (showPressure && dPressure !== undefined) || (showDewpoint && dew_point !== undefined) || (showVisibility && visibility !== undefined)) ? x`
+      ${((showHumidity && humidity !== undefined) || (showPressure && dPressure !== undefined) || (showDewpoint && dew_point !== undefined) || (showVisibility && visibility !== undefined)) ? b `
         <div>
-          ${showHumidity && humidity !== undefined ? x`
+          ${showHumidity && humidity !== undefined ? b `
             <ha-icon icon="hass:water-percent"></ha-icon> ${humidity} %<br>
           ` : ''}
-          ${showPressure && dPressure !== undefined ? x`
+          ${showPressure && dPressure !== undefined ? b `
             <ha-icon icon="hass:gauge"></ha-icon> ${dPressure} ${this.ll('units')[this.unitPressure]} <br>
           ` : ''}
-          ${showDewpoint && dew_point !== undefined ? x`
+          ${showDewpoint && dew_point !== undefined ? b `
             <ha-icon icon="hass:thermometer-water"></ha-icon> ${dew_point} ${this.weather.attributes.temperature_unit} <br>
           ` : ''}
-          ${showVisibility && visibility !== undefined ? x`
+          ${showVisibility && visibility !== undefined ? b `
             <ha-icon icon="hass:eye"></ha-icon> ${visibility} ${this.weather.attributes.visibility_unit}
           ` : ''}
         </div>
       ` : ''}
-      ${((showSun && sun !== undefined) || (typeof uv_index !== 'undefined' && uv_index !== undefined)) ? x`
+      ${((showSun && sun !== undefined) || (typeof uv_index !== 'undefined' && uv_index !== undefined)) ? b `
         <div>
-          ${typeof uv_index !== 'undefined' && uv_index !== undefined ? x`
+          ${typeof uv_index !== 'undefined' && uv_index !== undefined ? b `
             <div>
               <ha-icon icon="hass:white-balance-sunny"></ha-icon> UV: ${Math.round(uv_index * 10) / 10}
             </div>
           ` : ''}
-          ${showSun && sun !== undefined ? x`
+          ${showSun && sun !== undefined ? b `
             <div>
               ${this.renderSun({ sun, language })}
             </div>
           ` : ''}
         </div>
       ` : ''}
-      ${((showWindDirection && windDirection !== undefined) || (showWindSpeed && dWindSpeed !== undefined)) ? x`
+      ${((showWindDirection && windDirection !== undefined) || (showWindSpeed && dWindSpeed !== undefined)) ? b `
         <div>
-          ${showWindDirection && windDirection !== undefined ? x`
+          ${showWindDirection && windDirection !== undefined ? b `
             <ha-icon icon="hass:${this.getWindDirIcon(windDirection)}"></ha-icon> ${this.getWindDir(windDirection)} <br>
           ` : ''}
-          ${showWindSpeed && dWindSpeed !== undefined ? x`
+          ${showWindSpeed && dWindSpeed !== undefined ? b `
             <ha-icon icon="hass:weather-windy"></ha-icon>
             ${dWindSpeed} ${this.ll('units')[this.unitSpeed]} <br>
           ` : ''}
-          ${showWindgustspeed && wind_gust_speed !== undefined ? x`
+          ${showWindgustspeed && wind_gust_speed !== undefined ? b `
             <ha-icon icon="hass:weather-windy-variant"></ha-icon>
             ${wind_gust_speed} ${this.ll('units')[this.unitSpeed]}
           ` : ''}
@@ -19289,133 +19174,121 @@ return x`
       ` : ''}
     </div>
 `;
-}
-
-renderSun({ sun, language, config } = this) {
-  if (sun == undefined) {
-    return x``;
-  }
-
-const use12HourFormat = this.config.use_12hour_format;
-const timeOptions = {
-    hour12: use12HourFormat,
-    hour: 'numeric',
-    minute: 'numeric'
-};
-
-  return x`
+    }
+    renderSun({ sun, language, config } = this) {
+        if (sun == undefined) {
+            return b ``;
+        }
+        const use12HourFormat = this.config.use_12hour_format;
+        const timeOptions = {
+            hour12: use12HourFormat,
+            hour: 'numeric',
+            minute: 'numeric'
+        };
+        return b `
     <ha-icon icon="mdi:weather-sunset-up"></ha-icon>
       ${new Date(sun.attributes.next_rising).toLocaleTimeString(language, timeOptions)}<br>
     <ha-icon icon="mdi:weather-sunset-down"></ha-icon>
       ${new Date(sun.attributes.next_setting).toLocaleTimeString(language, timeOptions)}
   `;
-}
-
-renderForecastConditionIcons({ config, forecastItems, sun } = this) {
-  const forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
-
-  if (config.forecast.condition_icons === false) {
-    return x``;
-  }
-
-  return x`
+    }
+    renderForecastConditionIcons({ config, forecastItems, sun } = this) {
+        const forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
+        if (config.forecast.condition_icons === false) {
+            return b ``;
+        }
+        return b `
     <div class="conditions" @click="${(e) => this.showMoreInfo(config.entity)}">
       ${forecast.map((item) => {
-        const forecastTime = new Date(item.datetime);
-        const sunriseTime = new Date(sun.attributes.next_rising);
-        const sunsetTime = new Date(sun.attributes.next_setting);
-
-        // Adjust sunrise and sunset times to match the date of forecastTime
-        const adjustedSunriseTime = new Date(forecastTime);
-        adjustedSunriseTime.setHours(sunriseTime.getHours());
-        adjustedSunriseTime.setMinutes(sunriseTime.getMinutes());
-        adjustedSunriseTime.setSeconds(sunriseTime.getSeconds());
-
-        const adjustedSunsetTime = new Date(forecastTime);
-        adjustedSunsetTime.setHours(sunsetTime.getHours());
-        adjustedSunsetTime.setMinutes(sunsetTime.getMinutes());
-        adjustedSunsetTime.setSeconds(sunsetTime.getSeconds());
-
-        let isDayTime;
-
-        if (config.forecast.type === 'daily') {
-          // For daily forecast, assume it's day time
-          isDayTime = true;
-        } else {
-          // For other forecast types, determine based on sunrise and sunset times
-          isDayTime = forecastTime >= adjustedSunriseTime && forecastTime <= adjustedSunsetTime;
-        }
-
-        const weatherIcons = isDayTime ? weatherIconsDay : weatherIconsNight;
-        const condition = item.condition;
-
-        let iconHtml;
-
-        if (config.animated_icons || config.icons) {
-          const iconSrc = config.animated_icons ?
-            `${this.baseIconPath}${weatherIcons[condition]}.svg` :
-            `${this.config.icons}${weatherIcons[condition]}.svg`;
-          iconHtml = x`<img class="icon" src="${iconSrc}" alt="">`;
-        } else {
-          iconHtml = x`<ha-icon icon="${this.getWeatherIcon(condition, sun.state)}"></ha-icon>`;
-        }
-
-        return x`
+            const forecastTime = new Date(item.datetime);
+            const sunriseTime = new Date(sun.attributes.next_rising);
+            const sunsetTime = new Date(sun.attributes.next_setting);
+            // Adjust sunrise and sunset times to match the date of forecastTime
+            const adjustedSunriseTime = new Date(forecastTime);
+            adjustedSunriseTime.setHours(sunriseTime.getHours());
+            adjustedSunriseTime.setMinutes(sunriseTime.getMinutes());
+            adjustedSunriseTime.setSeconds(sunriseTime.getSeconds());
+            const adjustedSunsetTime = new Date(forecastTime);
+            adjustedSunsetTime.setHours(sunsetTime.getHours());
+            adjustedSunsetTime.setMinutes(sunsetTime.getMinutes());
+            adjustedSunsetTime.setSeconds(sunsetTime.getSeconds());
+            let isDayTime;
+            if (config.forecast.type === 'daily') {
+                // For daily forecast, assume it's day time
+                isDayTime = true;
+            }
+            else {
+                // For other forecast types, determine based on sunrise and sunset times
+                isDayTime = forecastTime >= adjustedSunriseTime && forecastTime <= adjustedSunsetTime;
+            }
+            const weatherIcons = isDayTime ? weatherIconsDay : weatherIconsNight;
+            const condition = item.condition;
+            let iconHtml;
+            if (config.animated_icons || config.icons) {
+                const iconSrc = config.animated_icons ?
+                    `${this.baseIconPath}${weatherIcons[condition]}.svg` :
+                    `${this.config.icons}${weatherIcons[condition]}.svg`;
+                iconHtml = b `<img class="icon" src="${iconSrc}" alt="">`;
+            }
+            else {
+                iconHtml = b `<ha-icon icon="${this.getWeatherIcon(condition, sun.state)}"></ha-icon>`;
+            }
+            return b `
           <div class="forecast-item">
             ${iconHtml}
           </div>
         `;
-      })}
+        })}
     </div>
   `;
-}
-
-renderWind({ config, weather, windSpeed, windDirection, forecastItems } = this) {
-  const showWindForecast = config.forecast.show_wind_forecast !== false;
-
-  if (!showWindForecast) {
-    return x``;
-  }
-
-  const forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
-
-  return x`
+    }
+    renderWind({ config, weather, windSpeed, windDirection, forecastItems } = this) {
+        const showWindForecast = config.forecast.show_wind_forecast !== false;
+        if (!showWindForecast) {
+            return b ``;
+        }
+        const forecast = this.forecasts ? this.forecasts.slice(0, forecastItems) : [];
+        return b `
     <div class="wind-details">
-      ${showWindForecast ? x`
+      ${showWindForecast ? b `
         ${forecast.map((item) => {
-          let dWindSpeed = item.wind_speed;
-
-          if (this.unitSpeed !== this.weather.attributes.wind_speed_unit) {
-            if (this.unitSpeed === 'm/s') {
-              if (this.weather.attributes.wind_speed_unit === 'km/h') {
-                dWindSpeed = Math.round(item.wind_speed * 1000 / 3600);
-              } else if (this.weather.attributes.wind_speed_unit === 'mph') {
-                dWindSpeed = Math.round(item.wind_speed * 0.44704);
-              }
-            } else if (this.unitSpeed === 'km/h') {
-              if (this.weather.attributes.wind_speed_unit === 'm/s') {
-                dWindSpeed = Math.round(item.wind_speed * 3.6);
-              } else if (this.weather.attributes.wind_speed_unit === 'mph') {
-                dWindSpeed = Math.round(item.wind_speed * 1.60934);
-              }
-            } else if (this.unitSpeed === 'mph') {
-              if (this.weather.attributes.wind_speed_unit === 'm/s') {
-                dWindSpeed = Math.round(item.wind_speed / 0.44704);
-              } else if (this.weather.attributes.wind_speed_unit === 'km/h') {
-                dWindSpeed = Math.round(item.wind_speed / 1.60934);
-              }
-            } else if (this.unitSpeed === 'Bft') {
-              dWindSpeed = this.calculateBeaufortScale(item.wind_speed);
+            let dWindSpeed = item.wind_speed;
+            if (this.unitSpeed !== this.weather.attributes.wind_speed_unit) {
+                if (this.unitSpeed === 'm/s') {
+                    if (this.weather.attributes.wind_speed_unit === 'km/h') {
+                        dWindSpeed = Math.round(item.wind_speed * 1000 / 3600);
+                    }
+                    else if (this.weather.attributes.wind_speed_unit === 'mph') {
+                        dWindSpeed = Math.round(item.wind_speed * 0.44704);
+                    }
+                }
+                else if (this.unitSpeed === 'km/h') {
+                    if (this.weather.attributes.wind_speed_unit === 'm/s') {
+                        dWindSpeed = Math.round(item.wind_speed * 3.6);
+                    }
+                    else if (this.weather.attributes.wind_speed_unit === 'mph') {
+                        dWindSpeed = Math.round(item.wind_speed * 1.60934);
+                    }
+                }
+                else if (this.unitSpeed === 'mph') {
+                    if (this.weather.attributes.wind_speed_unit === 'm/s') {
+                        dWindSpeed = Math.round(item.wind_speed / 0.44704);
+                    }
+                    else if (this.weather.attributes.wind_speed_unit === 'km/h') {
+                        dWindSpeed = Math.round(item.wind_speed / 1.60934);
+                    }
+                }
+                else if (this.unitSpeed === 'Bft') {
+                    dWindSpeed = this.calculateBeaufortScale(item.wind_speed);
+                }
             }
-          } else {
-            dWindSpeed = Math.round(dWindSpeed);
-          }
-
-          if (dWindSpeed === undefined) {
-            return x``;
-          }
-
-          return x`
+            else {
+                dWindSpeed = Math.round(dWindSpeed);
+            }
+            if (dWindSpeed === undefined) {
+                return b ``;
+            }
+            return b `
             <div class="wind-detail">
               <ha-icon class="wind-icon" icon="hass:${this.getWindDirIcon(item.wind_bearing)}"></ha-icon>
               <span class="wind-speed">${dWindSpeed}</span>
@@ -19426,70 +19299,58 @@ renderWind({ config, weather, windSpeed, windDirection, forecastItems } = this) 
       ` : ''}
     </div>
   `;
-}
-
-renderLastUpdated() {
-  const lastUpdatedString = this.weather.last_changed;
-  const lastUpdatedTimestamp = new Date(lastUpdatedString).getTime();
-  const currentTimestamp = Date.now();
-  const timeDifference = currentTimestamp - lastUpdatedTimestamp;
-
-  const minutesAgo = Math.floor(timeDifference / (1000 * 60));
-  const hoursAgo = Math.floor(minutesAgo / 60);
-
-  const locale = this.language;
-
-  const formatter = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
-
-  let formattedLastUpdated;
-
-  if (hoursAgo > 0) {
-    formattedLastUpdated = formatter.format(-hoursAgo, 'hour');
-  } else {
-    formattedLastUpdated = formatter.format(-minutesAgo, 'minute');
-  }
-
-  const showLastUpdated = this.config.show_last_changed == true;
-
-  if (!showLastUpdated) {
-    return x``;
-  }
-
-  return x`
+    }
+    renderLastUpdated() {
+        const lastUpdatedString = this.weather.last_changed;
+        const lastUpdatedTimestamp = new Date(lastUpdatedString).getTime();
+        const currentTimestamp = Date.now();
+        const timeDifference = currentTimestamp - lastUpdatedTimestamp;
+        const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+        const hoursAgo = Math.floor(minutesAgo / 60);
+        const locale = this.language;
+        const formatter = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+        let formattedLastUpdated;
+        if (hoursAgo > 0) {
+            formattedLastUpdated = formatter.format(-hoursAgo, 'hour');
+        }
+        else {
+            formattedLastUpdated = formatter.format(-minutesAgo, 'minute');
+        }
+        const showLastUpdated = this.config.show_last_changed == true;
+        if (!showLastUpdated) {
+            return b ``;
+        }
+        return b `
     <div class="updated">
       <div>
         ${formattedLastUpdated}
       </div>
     </div>
   `;
+    }
+    _fire(type, detail, options) {
+        const node = this.shadowRoot;
+        options = options || {};
+        detail = (detail === null || detail === undefined) ? {} : detail;
+        const event = new Event(type, {
+            bubbles: options.bubbles === undefined ? true : options.bubbles,
+            cancelable: Boolean(options.cancelable),
+            composed: options.composed === undefined ? true : options.composed
+        });
+        event.detail = detail;
+        node.dispatchEvent(event);
+        return event;
+    }
+    showMoreInfo(entity) {
+        this._fire('hass-more-info', { entityId: entity });
+    }
 }
-
-  _fire(type, detail, options) {
-    const node = this.shadowRoot;
-    options = options || {};
-    detail = (detail === null || detail === undefined) ? {} : detail;
-    const event = new Event(type, {
-      bubbles: options.bubbles === undefined ? true : options.bubbles,
-      cancelable: Boolean(options.cancelable),
-      composed: options.composed === undefined ? true : options.composed
-    });
-    event.detail = detail;
-    node.dispatchEvent(event);
-    return event;
-  }
-
-  showMoreInfo(entity) {
-    this._fire('hass-more-info', { entityId: entity });
-  }
-}
-
 customElements.define('weather-chart-card', WeatherChartCard);
-
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "weather-chart-card",
-  name: "Weather Chart Card",
-  description: "A custom weather card with chart.",
-  preview: true,
-  documentationURL: "https://github.com/mlamberts78/weather-chart-card",
+    type: "weather-chart-card",
+    name: "Weather Chart Card",
+    description: "A custom weather card with chart.",
+    preview: true,
+    documentationURL: "https://github.com/mlamberts78/weather-chart-card",
 });
