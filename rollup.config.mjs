@@ -24,7 +24,17 @@ export default {
     sourcemap: dev ? true : false,
   },
   plugins: [
-    typescript(),
+    typescript({
+      // Scoped to this plugin's own bundling pass, not the shared
+      // tsconfig.json used by `tsc --noEmit` - that one now also covers
+      // test/**/*.ts, which sits outside `src`, so rootDir/outDir can't
+      // live in the shared config without tsc rejecting the test files as
+      // "outside rootDir".
+      compilerOptions: {
+        rootDir: 'src',
+        outDir: 'dist',
+      },
+    }),
     resolve(),
     dev && serve(serveopts),
     copy({

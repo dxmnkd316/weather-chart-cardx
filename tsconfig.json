@@ -19,10 +19,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-
-    "rootDir": "src",
-    "outDir": "dist"
+    "isolatedModules": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js"]
+  "include": ["src/**/*.ts", "src/**/*.js", "test/**/*.ts"]
 }
